@@ -1,0 +1,1087 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dubbo,zookeeper,linux,tomcat," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="安装zookeeper1.下载安装包下载地址：http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.6/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dubbo+zookeeper">
+<meta property="og:url" content="http://www.volcfamily.cn/2016/12/12/DUBBO+ZOOKEEPER/index.html">
+<meta property="og:site_name" content="VOLC">
+<meta property="og:description" content="安装zookeeper1.下载安装包下载地址：http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.6/">
+<meta property="og:image" content="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/1.png">
+<meta property="og:image" content="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/2.png">
+<meta property="og:image" content="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/3.png">
+<meta property="og:image" content="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/4.png">
+<meta property="og:updated_time" content="2017-02-14T13:48:13.310Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dubbo+zookeeper">
+<meta name="twitter:description" content="安装zookeeper1.下载安装包下载地址：http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.6/">
+<meta name="twitter:image" content="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.volcfamily.cn/2016/12/12/DUBBO+ZOOKEEPER/"/>
+
+  <title> Dubbo+zookeeper | VOLC </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '85094232-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?87980c86b4555bd9921e799ec5e26fb5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">VOLC</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Volc's Blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Dubbo+zookeeper
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-12T11:19:29+08:00" content="2016-12-12">
+              2016-12-12
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2016-12-12
+                  11:19:29
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DUBBO/" itemprop="url" rel="index">
+                    <span itemprop="name">DUBBO</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2016/12/12/DUBBO+ZOOKEEPER/" class="leancloud_visitors" data-flag-title="Dubbo+zookeeper">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安装zookeeper"><a href="#安装zookeeper" class="headerlink" title="安装zookeeper"></a>安装zookeeper</h1><p>1.下载安装包<br>下载地址：<a href="http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.6/" target="_blank" rel="external">http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.6/</a><br><a id="more"></a><br>在/webapp下解压安装文件<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">tar</span> -xzvf zookeeper-3.4.5.tar.gz</div></pre></td></tr></table></figure></p>
+<p>/webapp/zookeeper-3.4.5下创建logs文件夹<br>2.zookeeper的环境变量的配置  </p>
+<p>在/etc/profile文件中加入如下的内容：  </p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#set zookeeper environment</span></div><div class="line"><span class="attribute">export</span> ZOOKEEPER_HOME=/home/haduser/zookeeper/zookeeper-3.4.5</div><div class="line"><span class="attribute">export</span> PATH=$PATH:$ZOOKEEPER_HOME/bin:$ZOOKEEPER_HOME/conf</div></pre></td></tr></table></figure>
+<p>3.集群部署<br>    在Zookeeper集群环境下只要一半以上的机器正常启动了，那么Zookeeper服务将是可用的。因此，集群上部署Zookeeper最好使用奇数台机器，这样如果有5台机器，只要3台正常工作则服务将正常使用。<br>下面我们将对Zookeeper的配置文件的参数进行设置：</p>
+<p>进入zookeeper-3.4.5/conf</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$:cp zoo_sample.cfg zoo.cfg</div><div class="line">$:vim zoo.cfg</div></pre></td></tr></table></figure>
+<p><img src="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/1.png" alt="1">   </p>
+<p>注意上图的配置中master，slave1分别为主机名，具体的对应的主机可参见之前的Hadoop的安装与配置的博文<br>在上面的配置文件中”server.id=host:port:port”中的第一个port是从机器（follower）连接到主机器（leader）的端口号，第二个port是进行leadership选举的端口号。  </p>
+<p>接下来在dataDir所指定的目录下创建一个文件名为myid的文件，文件中的内容只有一行，为本主机对应的id值，也就是上图中server.id中的id。例如：在服务器1中的myid的内容应该写入1。</p>
+<p>4.远程复制分发安装文件  </p>
+<p>接下来将上面的安装文件拷贝到集群中的其他机器上对应的目录下：<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">haduser</span>@master:~/zookeeper$ scp -r zookeeper-3.4.5/ slave1:/home/haduser/zookeeper/zookeeper-3.4.5  </div><div class="line"><span class="attribute">haduser</span>@master:~/zookeeper$ scp -r zookeeper-3.4.5/ slave2:/home/haduser/zookeeper/zookeeper-3.4.5</div></pre></td></tr></table></figure></p>
+<p>拷贝完成后修改对应的机器上的myid。例如修改slave1中的myid如下：<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">haduser</span>@slave1:~/zookeeper/zookeeper-3.4.5$ echo <span class="string">"2"</span> &gt; data/myid  </div><div class="line"><span class="attribute">haduser</span>@slave1:~/zookeeper/zookeeper-3.4.5$ cat data/myid</div></pre></td></tr></table></figure></p>
+<p>内容为：2    </p>
+<p>5.启动ZooKeeper集群<br>    在ZooKeeper集群的每个结点上，执行启动ZooKeeper服务的脚本，如下所示：<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">haduser</span>@master:~/zookeeper/zookeeper-3.4.5$ bin/zkServer.sh start</div><div class="line"><span class="attribute">haduser</span>@slave1:~/zookeeper/zookeeper-3.4.5$ bin/zkServer.sh start</div><div class="line"><span class="attribute">haduser</span>@slave2:~/zookeeper/zookeeper-3.4.5$ bin/zkServer.sh start</div></pre></td></tr></table></figure></p>
+<p><img src="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/2.png" alt="2"><br>其中，QuorumPeerMain是zookeeper进程，启动正常。<br>如上依次启动了所有机器上的Zookeeper之后可以通过ZooKeeper的脚本来查看启动状态，包括集群中各个结点的角色（或是Leader，或是Follower），如下所示，是在ZooKeeper集群中的每个结点上查询的结果：</p>
+<p><img src="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/3.png" alt="3"><br>通过上面状态查询结果可见，slave1是集群的Leader，其余的两个结点是Follower。  </p>
+<p>另外，可以通过客户端脚本，连接到ZooKeeper集群上。对于客户端来说，ZooKeeper是一个整体（ensemble），连接到ZooKeeper集群实际上感觉在独享整个集群的服务，所以，你可以在任何一个结点上建立到服务集群的连接，例如：<br>查看是否安装启动成功<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">bin</span>/zkCli.sh -server 116.62.2.289:2181</div></pre></td></tr></table></figure></p>
+<p><img src="https://volc1605.github.io/images/DUBBO+ZOOKEEPER/4.png" alt="4"> </p>
+<p>脚本启动<br>脚本内容：<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">aaa</span>=` ps aux| grep <span class="string">"/webapp/zookeeper"</span> | grep -v grep|awk '&#123;print <span class="number">$2</span>&#125;'`</div><div class="line"></div><div class="line"><span class="attribute">if</span><span class="meta"> [ "$aaa" = "" ];</span></div><div class="line">then</div><div class="line">  (/webapp/zookeeper-3.4.5/bin/zkServer.sh start) &amp;&amp; (echo "Start zookeeper  Service  Successful!") || (echo "Start zookeeper Service Fault")</div><div class="line">else</div><div class="line">   echo ""</div><div class="line">   echo "zookeeper is runging"</div><div class="line">   echo ""</div><div class="line"></div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>启动脚本<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">sh</span> zkServer.sh</div></pre></td></tr></table></figure></p>
+<p>启动结果：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@iZbp199af3f3y8j7fr8kolZ bin]# sh stop_zookeeper.sh </div><div class="line"> zookeeper is not runging </div><div class="line">[root@iZbp199af3f3y8j7fr8kolZ bin]# sh start_zookeeper.sh </div><div class="line">JMX enabled by default</div><div class="line">Using config: /webapp/zookeeper-3.4.5/bin/../conf/zoo.cfg</div><div class="line">Starting zookeeper ... STARTED</div><div class="line">Start zookeeper  Service  Successful!</div></pre></td></tr></table></figure></p>
+<p>配置参考：<a href="http://www.cnblogs.com/yuyijq/p/3438829.html" target="_blank" rel="external">http://www.cnblogs.com/yuyijq/p/3438829.html</a><br>配置参考：<a href="http://343614597.blog.51cto.com/7056394/1874745" target="_blank" rel="external">http://343614597.blog.51cto.com/7056394/1874745</a><br>启动zookeeper<br>    在zookper-3.3.6/bin目录下执行<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./zkServer.sh start 启动zookeeper</div></pre></td></tr></table></figure></p>
+<p>验证zookeeper是否启动<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">netstat</span> -lpn | grep 2181</div></pre></td></tr></table></figure></p>
+<h1 id="安装DUBBO"><a href="#安装DUBBO" class="headerlink" title="安装DUBBO"></a>安装DUBBO</h1><p>1.下载dubbo安装包  </p>
+<p>2.在根目录创建相应文件夹webapp/deploy/<br>并解压安装文件到deploy文件夹中  </p>
+<p>3.配置<br>    /webapp/deploy/dubbo-admin/WEB-INF<br>    中的dubbo.properties文件<br>    内容如下：<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">dubbo</span>.registry.address=zookeeper://127.0.0.1:2181  </div><div class="line"><span class="attribute">dubbo</span>.admin.root.password=root  </div><div class="line"><span class="attribute">dubbo</span>.admin.guest.password=guest</div></pre></td></tr></table></figure></p>
+<p>4.然后启动tomcat服务，显示登陆页面，说明dubbo-admin部署成功<br>    访问路径：<a href="http://服务器IP:8080/" target="_blank" rel="external">http://服务器IP:8080/</a><br>    账号：root<br>    密码：root  </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/w.png" alt="VOLC WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/z.jpg" alt="VOLC Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dubbo/" rel="tag">#dubbo</a>
+          
+            <a href="/tags/zookeeper/" rel="tag">#zookeeper</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/tomcat/" rel="tag">#tomcat</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/12/Nginx/" rel="next" title="linux安装Nginx">
+                <i class="fa fa-chevron-left"></i> linux安装Nginx
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/12/linux安装JDK/" rel="prev" title="linux安装JDK">
+                linux安装JDK <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/0.png"
+               alt="VOLC" />
+          <p class="site-author-name" itemprop="name">VOLC</p>
+          <p class="site-description motion-element" itemprop="description">volc</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/volc1605" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/volcliu" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2297464654/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/volc" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yisu.ren/index.php/" title="一俗人_PHP" target="_blank">一俗人_PHP</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.fackyou.org/" title="Delay.Hsiao_PHP" target="_blank">Delay.Hsiao_PHP</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装zookeeper"><span class="nav-number">1.</span> <span class="nav-text">安装zookeeper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装DUBBO"><span class="nav-number">2.</span> <span class="nav-text">安装DUBBO</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<div class="copyright" style="margin-right: 14px">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2017</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">VOLC</span>
+  </div>
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <div class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>本站总访问量<span><span id="busuanzi_value_site_pv"></span>
+    <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>您是第</span>
+    <span id="busuanzi_value_site_uv"></span>
+    <span>个小伙伴</span>
+	<span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+	<span id="showDays"></span>
+  </div>
+ 	
+<script>
+	var birthDay = new Date('09/1/2016');
+	var now = new Date();
+	var duration = now.getTime() - birthDay.getTime();
+	var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+	document.getElementById('showDays').innerHTML='本站已运行' + total + '天';
+</script>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+﻿
+
+
+
+  
+
+    
+
+  
+
+
+
+ 
+
+      <!-- UY BEGIN -->
+
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2128530"></script>
+
+      <!-- UY END -->
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uSB1w939Pcabp8qlmznF7Spw-gzGzoHsz", "98j3mTSX2edWrjz0KNvtWaI5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+          var UPDATED_AT = '.leancloud-updated-at'; // 新增代码 定义最近变更时间的class
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+          // console.log(results);
+          for(var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');   // 获取阅读量
+            var updatedT = item.updatedAt; // 新增代码 获取最近浏览时间 需要注意的是updateT是对象并不是字符串
+            var element = document.getElementById(url);
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+            // 新增代码 转换日期格式
+            if(updatedT != null && updatedT != '') {
+              var a = [updatedT.getFullYear(), updatedT.getMonth() + 1, updatedT.getDate(), updatedT.getHours(), updatedT.getMinutes(), updatedT.getSeconds()];
+              for(var j = 0,len = a.length; j < len; j++) {
+                  if(a[j] < 10) {
+                      a[j] = '0' + a[j];
+                  }
+              }
+              var updateTime = a[0] + '-' + a[1] + '-' + a[2] + ' ' + a[3] + ':' + a[4] + ':' + a[5];
+              $(element).find(UPDATED_AT).text(updateTime);
+            }
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            var updatedAtContent = $(element).find(UPDATED_AT);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+            // 新增代码 如果首页的文章没有更新侧默认为暂无更新
+            if(updatedAtContent.text() == '') {
+              updatedAtContent.text('无人浏览');
+            }
+            // 结束
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

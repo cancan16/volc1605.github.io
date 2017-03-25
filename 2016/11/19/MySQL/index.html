@@ -1,0 +1,1075 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="部门表dept和员工表empMySQL练习
+建表
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL">
+<meta property="og:url" content="http://www.volcfamily.cn/2016/11/19/MySQL/index.html">
+<meta property="og:site_name" content="VOLC">
+<meta property="og:description" content="部门表dept和员工表empMySQL练习
+建表
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919">
+<meta property="og:updated_time" content="2017-01-05T07:08:13.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL">
+<meta name="twitter:description" content="部门表dept和员工表empMySQL练习
+建表
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.volcfamily.cn/2016/11/19/MySQL/"/>
+
+  <title> MySQL | VOLC </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '85094232-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?87980c86b4555bd9921e799ec5e26fb5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">VOLC</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Volc's Blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MySQL
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-19T10:50:02+08:00" content="2016-11-19">
+              2016-11-19
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2017-01-04
+                  10:50:02
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2016/11/19/MySQL/" class="leancloud_visitors" data-flag-title="MySQL">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="部门表dept和员工表empMySQL练习"><a href="#部门表dept和员工表empMySQL练习" class="headerlink" title="部门表dept和员工表empMySQL练习"></a>部门表dept和员工表empMySQL练习</h1><blockquote>
+<p>建表</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">Navicat MySQL Data Transfer</div><div class="line"></div><div class="line">Source Server         : 10.1.1.241</div><div class="line">Source Server Version : 50547</div><div class="line">Source Host           : 10.1.1.241:3306</div><div class="line">Source Database       : test</div><div class="line"></div><div class="line">Target Server Type    : MYSQL</div><div class="line">Target Server Version : 50547</div><div class="line">File Encoding         : 65001</div><div class="line"></div><div class="line">Date: 2016-11-15 15:41:17</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS=<span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="comment">-- Table structure for bonus</span></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`bonus`</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`bonus`</span> (</div><div class="line">  <span class="string">`empno`</span> <span class="built_in">decimal</span>(<span class="number">4</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`job`</span> <span class="built_in">varchar</span>(<span class="number">9</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`sal`</span> <span class="built_in">decimal</span>(<span class="number">10</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`comm`</span> <span class="built_in">decimal</span>(<span class="number">10</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span></div><div class="line">) <span class="keyword">ENGINE</span>=MyISAM <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</div><div class="line"></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="comment">-- Records of bonus</span></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="comment">-- Table structure for dept</span></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`dept`</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`dept`</span> (</div><div class="line">  <span class="string">`deptno`</span> <span class="built_in">decimal</span>(<span class="number">2</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`dname`</span> <span class="built_in">varchar</span>(<span class="number">14</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`loc`</span> <span class="built_in">varchar</span>(<span class="number">13</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span></div><div class="line">) <span class="keyword">ENGINE</span>=MyISAM <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</div><div class="line"></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="comment">-- Records of dept</span></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`dept`</span> <span class="keyword">VALUES</span> (<span class="string">'10'</span>, <span class="string">'ACCOUNTING'</span>, <span class="string">'NEW YORK'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`dept`</span> <span class="keyword">VALUES</span> (<span class="string">'20'</span>, <span class="string">'RESEARCH'</span>, <span class="string">'DALLAS'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`dept`</span> <span class="keyword">VALUES</span> (<span class="string">'30'</span>, <span class="string">'SALES'</span>, <span class="string">'CHICAGO'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`dept`</span> <span class="keyword">VALUES</span> (<span class="string">'40'</span>, <span class="string">'OPERATIONS'</span>, <span class="string">'BOSTON'</span>);</div><div class="line"></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="comment">-- Table structure for emp</span></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`emp`</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`emp`</span> (</div><div class="line">  <span class="string">`empno`</span> <span class="built_in">decimal</span>(<span class="number">4</span>,<span class="number">0</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`ename`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`job`</span> <span class="built_in">varchar</span>(<span class="number">9</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`mgr`</span> <span class="built_in">decimal</span>(<span class="number">4</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`hiredate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`sal`</span> <span class="built_in">decimal</span>(<span class="number">7</span>,<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`comm`</span> <span class="built_in">decimal</span>(<span class="number">7</span>,<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`deptno`</span> <span class="built_in">decimal</span>(<span class="number">2</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span></div><div class="line">) <span class="keyword">ENGINE</span>=MyISAM <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</div><div class="line"></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="comment">-- Records of emp</span></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7369'</span>, <span class="string">'SMITH'</span>, <span class="string">'CLERK'</span>, <span class="string">'7902'</span>, <span class="string">'1980-12-17 00:00:00'</span>, <span class="string">'960.00'</span>, <span class="literal">null</span>, <span class="string">'20'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7499'</span>, <span class="string">'ALLEN'</span>, <span class="string">'SALESMAN'</span>, <span class="string">'7698'</span>, <span class="string">'1981-02-20 00:00:00'</span>, <span class="string">'2764.80'</span>, <span class="string">'300.00'</span>, <span class="string">'30'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7521'</span>, <span class="string">'WARD'</span>, <span class="string">'SALESMAN'</span>, <span class="string">'7698'</span>, <span class="string">'1981-02-22 00:00:00'</span>, <span class="string">'2160.00'</span>, <span class="string">'500.00'</span>, <span class="string">'30'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7566'</span>, <span class="string">'JONES'</span>, <span class="string">'MANAGER'</span>, <span class="string">'7839'</span>, <span class="string">'1981-04-02 00:00:00'</span>, <span class="string">'3570.00'</span>, <span class="literal">null</span>, <span class="string">'20'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7654'</span>, <span class="string">'MARTIN'</span>, <span class="string">'SALESMAN'</span>, <span class="string">'7698'</span>, <span class="string">'1981-09-28 00:00:00'</span>, <span class="string">'2160.00'</span>, <span class="string">'1400.00'</span>, <span class="string">'30'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7698'</span>, <span class="string">'BLAKE'</span>, <span class="string">'MANAGER'</span>, <span class="string">'7839'</span>, <span class="string">'1981-05-01 00:00:00'</span>, <span class="string">'4924.80'</span>, <span class="literal">null</span>, <span class="string">'30'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7782'</span>, <span class="string">'CLARK'</span>, <span class="string">'MANAGER'</span>, <span class="string">'7839'</span>, <span class="string">'1981-06-09 00:00:00'</span>, <span class="string">'2940.00'</span>, <span class="literal">null</span>, <span class="string">'10'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7788'</span>, <span class="string">'SCOTT'</span>, <span class="string">'ANALYST'</span>, <span class="string">'7566'</span>, <span class="string">'1982-12-09 00:00:00'</span>, <span class="string">'3600.00'</span>, <span class="literal">null</span>, <span class="string">'20'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7839'</span>, <span class="string">'KING'</span>, <span class="string">'PRESIDENT'</span>, <span class="literal">null</span>, <span class="string">'1981-11-17 00:00:00'</span>, <span class="string">'6000.00'</span>, <span class="literal">null</span>, <span class="string">'10'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7844'</span>, <span class="string">'TURNER'</span>, <span class="string">'SALESMAN'</span>, <span class="string">'7698'</span>, <span class="string">'1981-09-08 00:00:00'</span>, <span class="string">'2592.00'</span>, <span class="string">'0.00'</span>, <span class="string">'30'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7876'</span>, <span class="string">'ADAMS'</span>, <span class="string">'CLERK'</span>, <span class="string">'7788'</span>, <span class="string">'1983-01-12 00:00:00'</span>, <span class="string">'1320.00'</span>, <span class="literal">null</span>, <span class="string">'20'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7900'</span>, <span class="string">'JAMES'</span>, <span class="string">'CLERK'</span>, <span class="string">'7698'</span>, <span class="string">'1981-12-03 00:00:00'</span>, <span class="string">'1641.60'</span>, <span class="literal">null</span>, <span class="string">'30'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7902'</span>, <span class="string">'FORD'</span>, <span class="string">'ANALYST'</span>, <span class="string">'7566'</span>, <span class="string">'1981-12-03 00:00:00'</span>, <span class="string">'3600.00'</span>, <span class="literal">null</span>, <span class="string">'20'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`emp`</span> <span class="keyword">VALUES</span> (<span class="string">'7934'</span>, <span class="string">'MILLER'</span>, <span class="string">'CLERK'</span>, <span class="string">'7782'</span>, <span class="string">'1982-01-23 00:00:00'</span>, <span class="string">'1560.00'</span>, <span class="literal">null</span>, <span class="string">'10'</span>);</div><div class="line"></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="comment">-- Table structure for salgrade</span></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`salgrade`</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`salgrade`</span> (</div><div class="line">  <span class="string">`grade`</span> <span class="built_in">decimal</span>(<span class="number">10</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`losal`</span> <span class="built_in">decimal</span>(<span class="number">10</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`hisal`</span> <span class="built_in">decimal</span>(<span class="number">10</span>,<span class="number">0</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span></div><div class="line">) <span class="keyword">ENGINE</span>=MyISAM <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</div><div class="line"></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="comment">-- Records of salgrade</span></div><div class="line"><span class="comment">-- ----------------------------</span></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`salgrade`</span> <span class="keyword">VALUES</span> (<span class="string">'1'</span>, <span class="string">'700'</span>, <span class="string">'1200'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`salgrade`</span> <span class="keyword">VALUES</span> (<span class="string">'2'</span>, <span class="string">'1201'</span>, <span class="string">'1400'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`salgrade`</span> <span class="keyword">VALUES</span> (<span class="string">'3'</span>, <span class="string">'1401'</span>, <span class="string">'2000'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`salgrade`</span> <span class="keyword">VALUES</span> (<span class="string">'4'</span>, <span class="string">'2001'</span>, <span class="string">'3000'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`salgrade`</span> <span class="keyword">VALUES</span> (<span class="string">'5'</span>, <span class="string">'3001'</span>, <span class="string">'9999'</span>);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>练习</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="comment">-- 1.更新名称为'SALES'部门下的所有员工薪水上涨20%</span></div><div class="line"><span class="keyword">UPDATE</span> emp e <span class="keyword">SET</span> e.sal = e.sal * (<span class="number">1</span> + <span class="number">0.2</span>) <span class="keyword">WHERE</span> e.deptno = ( <span class="keyword">SELECT</span> d.deptno <span class="keyword">FROM</span> dept d <span class="keyword">WHERE</span> d.dname = <span class="string">'SALES'</span> );</div><div class="line"><span class="comment">-- 2.找出部门10中所有经理(MANAGER) 和部门20中所有办事员（CLERK）的详细资料</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> ( e.deptno = <span class="string">'10'</span> <span class="keyword">AND</span> e.job = <span class="string">'MANAGER'</span> ) <span class="keyword">OR</span> ( e.deptno = <span class="string">'20'</span> <span class="keyword">AND</span> e.job = <span class="string">'CLERK'</span>);</div><div class="line"><span class="comment">-- 3.找出部门10中所有经理，部门20中所有的办事员，既不是经理又不是办事员，但是薪金大于或等于2000的所有员工的资料</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> (deptno = <span class="number">10</span> <span class="keyword">AND</span> job = <span class="string">'MANAGER'</span>) <span class="keyword">OR</span> (deptno = <span class="number">20</span> <span class="keyword">AND</span> job = <span class="string">'CLERK'</span>) <span class="keyword">OR</span> ( job <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="string">'MANAGER'</span>, <span class="string">'CLERK'</span>) <span class="keyword">AND</span> sal &gt;= <span class="number">2000</span>);</div><div class="line"><span class="comment">-- 4.找出收取佣金（comm）的员工的不同工作：[DISTINCT-&gt;消除重复的关键字]</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> job <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> e.comm <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>;</div><div class="line"><span class="comment">-- 5.找个各月倒数第三天受雇的所有员工</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> e.hiredate = <span class="keyword">DATE_FORMAT</span>(<span class="keyword">LAST_DAY</span>(e.hiredate) - <span class="number">2</span>, <span class="string">'%Y-%m-%d %H:%i:%s'</span>);</div><div class="line">	<span class="comment">-- 需要注意的是有两点转换格式的大小写：</span></div><div class="line">	<span class="comment">-- 1.</span></div><div class="line">	<span class="comment">-- LAST_DAY(e.hiredate) 获取到的日期格式：2016-09-30</span></div><div class="line">	<span class="comment">-- LAST_DAY(e.hiredate) - 2 获取到的日期格式：20160928</span></div><div class="line">	<span class="comment">-- 2.转换格式的大小写：</span></div><div class="line">	<span class="comment">-- DATE_FORMAT('2016-11-15', '%Y-%m-%d %H:%i:%s');-&gt;2016-11-15 00:12:00</span></div><div class="line">	<span class="comment">-- DATE_FORMAT('2016-11-15', '%Y-%m-%d %h:%I:%S');-&gt;2016-11-15 12:00:00</span></div><div class="line"><span class="comment">-- 6.找出早于2012年前受雇的员工</span></div><div class="line">	<span class="comment">-- mysql:</span></div><div class="line">	<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> <span class="keyword">DATE_FORMAT</span>(e.hiredate, <span class="string">'%Y%m%d%H%i%s'</span>) &lt; <span class="string">'2012'</span>;</div><div class="line">	<span class="comment">-- oracle:</span></div><div class="line">	<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> MONTHS_BETWEEN(hiredate,<span class="string">'20120000'</span>)&gt;<span class="number">0</span>;</div><div class="line">	<span class="comment">-- MONTHS_BETWEEN('2012-01-01', '2016-11-12');表示2012-01-01到2016-11-12的月数，以小数形式返回</span></div><div class="line"><span class="comment">-- 7.按照首字母大写其余字母小写的方式显示员工姓名</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CONCAT</span>( <span class="keyword">UPPER</span>(<span class="keyword">LEFT</span>(e.ename, <span class="number">1</span>)), <span class="keyword">LOWER</span>( ( <span class="keyword">RIGHT</span> (e.ename, <span class="keyword">LENGTH</span>(e.ename) - <span class="number">1</span>) ) ) ) <span class="keyword">as</span> ename <span class="keyword">FROM</span> emp e;	</div><div class="line"><span class="comment">-- 8.显示正好为5个字符的员工的姓名</span></div><div class="line"><span class="keyword">SELECT</span> e.ename ad ename <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> <span class="keyword">LENGTH</span>(e.ename) = <span class="number">5</span>;	</div><div class="line"><span class="comment">-- 9.显示姓名不带'R'的员工的姓名</span></div><div class="line"><span class="keyword">SELECT</span> ename <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> ename <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">'%R%'</span>;	</div><div class="line"><span class="comment">-- 10.显示所有员工姓名的前3个字符</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">SUBSTR</span>(e.ename, <span class="number">1</span>, <span class="number">3</span>) <span class="keyword">FROM</span> emp e;</div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">LEFT</span>(e.ename, <span class="number">3</span>) <span class="keyword">FROM</span> emp e;</div><div class="line"><span class="comment">-- 11.显示所有员工的姓名，并且用“x” 替换替换所有的 “A”</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">REPLACE</span>(ename,<span class="string">'A'</span>,<span class="string">'x'</span>) <span class="keyword">FROM</span> emp;</div><div class="line"><span class="comment">-- 12.显示员工的姓名和受雇日期，并根据其服务年限，把资料最老的员工排在第在前面</span></div><div class="line"><span class="keyword">SELECT</span> ename,hiredate <span class="keyword">FROM</span> emp <span class="keyword">ORDER</span> <span class="keyword">BY</span> hiredate; <span class="comment">-- mysql默认是ASC升序	</span></div><div class="line"><span class="comment">-- 13.显示所有员工的姓名，加入公司的年份和月份，按受雇日期所在的年排序，若年份相同则讲最早月份的员工排在最前面</span></div><div class="line"><span class="keyword">SELECT</span> e.ename, <span class="keyword">DATE_FORMAT</span>(e.hiredate,<span class="string">'%Y'</span>) <span class="keyword">YEAR</span>, <span class="keyword">DATE_FORMAT</span>(e.hiredate,<span class="string">'%m'</span>) <span class="keyword">MONTH</span> <span class="keyword">FROM</span> emp e <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">YEAR</span>, <span class="keyword">MONTH</span>;</div><div class="line"><span class="comment">-- 14.显示在一个月为30天的情况所有员工的日薪金，并且忽略余数</span></div><div class="line"><span class="keyword">SELECT</span> e.ename, <span class="keyword">ROUND</span>(e.sal/<span class="number">30</span>) 日薪金 <span class="keyword">FROM</span> emp e;	</div><div class="line"><span class="comment">-- 15.找出在（任何年份）的2月受聘的所有员工</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> <span class="keyword">MONTH</span>(e.hiredate) = <span class="number">2</span>;	</div><div class="line"><span class="comment">-- 16.对于每个员工，显示其加入公司的天数</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">datediff</span>(<span class="keyword">SYSDATE</span>(),<span class="string">'2016-11-15 09:41:18'</span>) 两日期之间天数<span class="number">1</span>, <span class="keyword">TO_DAYS</span>(<span class="keyword">SYSDATE</span>()) - <span class="keyword">TO_DAYS</span>(<span class="string">'2016-11-15 09:41:18'</span>) 两日期之间天数<span class="number">2</span> <span class="keyword">FROM</span> emp e;	</div><div class="line">17.以年月的方式显示所有员工的服务年限</div><div class="line"><span class="keyword">SELECT</span> (<span class="keyword">YEAR</span>(<span class="keyword">SYSDATE</span>())-<span class="keyword">YEAR</span>(e.hiredate)) 年份, (<span class="keyword">YEAR</span>(<span class="keyword">SYSDATE</span>())-<span class="keyword">YEAR</span>(e.hiredate))*<span class="number">12</span> + <span class="keyword">MONTH</span>(<span class="keyword">SYSDATE</span>())-<span class="keyword">MONTH</span>(e.hiredate) 月份 <span class="keyword">FROM</span> emp e;	</div><div class="line"><span class="comment">-- 18.列出至少有三个员工的所有部门和部门信息</span></div><div class="line">	<span class="comment">-- 方式一:</span></div><div class="line">	<span class="keyword">SELECT</span> d.deptno, d.dname, d.loc, <span class="keyword">count</span>(<span class="number">1</span>) 部门人数 <span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dept d <span class="keyword">ON</span> d.deptno = e.deptno <span class="keyword">GROUP</span> <span class="keyword">BY</span> e.deptno <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(e.empno) &gt; <span class="number">3</span>;</div><div class="line">	<span class="comment">-- 方式二</span></div><div class="line">	<span class="keyword">SELECT</span> d.*, ed.count 部门人数 <span class="keyword">FROM</span> dept d, (<span class="keyword">SELECT</span> deptno, <span class="keyword">COUNT</span>(empno) <span class="keyword">COUNT</span> <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(empno) &gt; <span class="number">3</span>) ed <span class="keyword">WHERE</span> d.deptno = ed.deptno;</div><div class="line"><span class="comment">-- 19.列出薪金比“ALLEN”多的所有员工</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> e.sal &gt; (<span class="keyword">SELECT</span> e1.sal <span class="keyword">FROM</span> emp e1 <span class="keyword">WHERE</span> e1.ename=<span class="string">'ALLEN'</span>);	</div><div class="line"><span class="comment">-- 20.列出所有员工的姓名及其上级的姓名</span></div><div class="line"><span class="keyword">SELECT</span> e.ename 员工姓名, e1.ename 员工上级姓名 <span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> emp e1 <span class="keyword">ON</span> e.mgr=e1.empno;	</div><div class="line"><span class="comment">-- 21.列出受雇日期早于直接上级的所有员工的编号，姓名，部门名称</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> e.hiredate &lt; (<span class="keyword">SELECT</span> e1.hiredate <span class="keyword">FROM</span> emp e1 <span class="keyword">WHERE</span> e1.empno=e.mgr);</div><div class="line"><span class="comment">-- 22.列出部门名称和这些部门员工的信息，同时列出那些没有员工的部门</span></div><div class="line"><span class="keyword">SELECT</span> d.dname, e.* <span class="keyword">FROM</span> dept d <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> emp e <span class="keyword">ON</span> e.deptno = d.deptno;	</div><div class="line"><span class="comment">-- 23.列出“CLERK”的姓名和部门名称，部门人数</span></div><div class="line"><span class="keyword">SELECT</span> e.ename, d.dname, ep.cou <span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dept d <span class="keyword">ON</span> d.deptno=e.deptno <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> e1.deptno, <span class="keyword">COUNT</span>(empno) cou <span class="keyword">FROM</span> emp e1 <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno) ep <span class="keyword">ON</span> ep.deptno=d.deptno <span class="keyword">WHERE</span> e.job = <span class="string">'CLERK'</span>;	</div><div class="line"><span class="comment">-- 24.列出最低薪金大于1500的各种工作以及从事此工作的全部雇员人数</span></div><div class="line"><span class="keyword">SELECT</span> e.job, ep.count <span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> e1.job, <span class="keyword">count</span>(e1.job) <span class="keyword">COUNT</span> <span class="keyword">FROM</span> emp e1 <span class="keyword">GROUP</span> <span class="keyword">BY</span> e1.job) ep <span class="keyword">ON</span> e.job=ep.job <span class="keyword">WHERE</span> e.sal&gt;<span class="number">1500</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> e.job;	</div><div class="line"><span class="comment">-- 25.列出薪金高于工资平均薪金的所有员工，所在部门，上级领导，公司的工资等级</span></div><div class="line"><span class="keyword">SELECT</span> e.empno, d.dname 所在部门名称,e1.ename 上级领导,e.sal 工资, s.grade 工资等级 <span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dept d <span class="keyword">ON</span> d.deptno=e.deptno <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> emp e1 <span class="keyword">ON</span> e.mgr=e1.empno <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> salgrade s <span class="keyword">ON</span> e.sal <span class="keyword">BETWEEN</span> s.losal <span class="keyword">AND</span> s.hisal <span class="keyword">WHERE</span> e.sal&gt; (<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(e1.sal) <span class="keyword">FROM</span> emp e1);</div><div class="line"><span class="comment">-- 26.列出和“SCOTT”从事相同工作的所有员工及部门名称</span></div><div class="line"><span class="keyword">SELECT</span> e1.empno, e1.job, e1.deptno, d.dname <span class="keyword">FROM</span> emp e1 <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dept d <span class="keyword">ON</span> d.deptno=e1.deptno <span class="keyword">WHERE</span> e1.job= (<span class="keyword">SELECT</span> e.job <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> e.ename=<span class="string">'SCOTT'</span>);	</div><div class="line"><span class="comment">-- 27.列出薪金等于部门30中员工薪金的所有员工的姓名和薪金</span></div><div class="line"><span class="keyword">SELECT</span> ename, sal <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> sal <span class="keyword">IN</span> (<span class="keyword">SELECT</span> sal <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> deptno=<span class="string">'30'</span>) <span class="keyword">AND</span> deptno!=<span class="string">'30'</span>;</div><div class="line"><span class="comment">-- 28.列出薪金高于在部门30工作的所有员工的薪金的员工姓名和薪金、部门名称</span></div><div class="line"><span class="keyword">SELECT</span> e.ename 员工姓名, e.sal 薪金, d.dname <span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dept d <span class="keyword">ON</span> d.deptno=e.deptno <span class="keyword">WHERE</span> e.sal&gt; (<span class="keyword">SELECT</span> <span class="keyword">max</span>(e1.sal) <span class="keyword">FROM</span> emp e1 <span class="keyword">WHERE</span> e1.deptno=<span class="string">'30'</span>);</div><div class="line"><span class="comment">-- 29.列出每个部门工作的员工数量、平均工资和平均服务期限</span></div><div class="line"><span class="keyword">SELECT</span> d.dname 部门名称, <span class="keyword">count</span>(e.deptno) 员工数量, <span class="keyword">AVG</span>(e.sal) 平均工资, <span class="keyword">AVG</span>(((<span class="keyword">YEAR</span> (<span class="keyword">SYSDATE</span>()) - <span class="keyword">YEAR</span> (e.hiredate)) * <span class="number">12</span> + <span class="keyword">MONTH</span> (<span class="keyword">SYSDATE</span>()) - <span class="keyword">MONTH</span> (e.hiredate)) / <span class="number">12</span>) 工作平均年限 <span class="keyword">FROM</span> dept d <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> emp e <span class="keyword">ON</span> e.deptno = d.deptno <span class="keyword">GROUP</span> <span class="keyword">BY</span> e.deptno;	</div><div class="line"><span class="comment">-- 30.列出各个部门的MANAGER 的最低薪金</span></div><div class="line"><span class="keyword">SELECT</span> ep.*, <span class="keyword">MIN</span>(ep.sal) 部门最低薪水 <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> d.dname 部门名称,e.* <span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dept d <span class="keyword">ON</span> d.deptno=e.deptno <span class="keyword">WHERE</span> e.job=<span class="string">'MANAGER'</span>) ep <span class="keyword">GROUP</span> <span class="keyword">BY</span> ep.部门名称;</div><div class="line"><span class="comment">-- 31.查询出某个员工的上级主管，并要求这些主管中的薪水超过3000</span></div><div class="line"><span class="keyword">SELECT</span> e.* <span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> emp e1 <span class="keyword">ON</span> e1.deptno=e.mgr <span class="keyword">WHERE</span> e.sal&gt;<span class="number">3000</span>;</div><div class="line"><span class="comment">-- 32.求出部门名称中带有’S‘字符的部门员工的工资合计，部门人数</span></div><div class="line"><span class="keyword">SELECT</span> d.dname 部门名称, <span class="keyword">sum</span>(e.sal) 工资合计, <span class="keyword">count</span>(e.deptno) <span class="keyword">FROM</span> dept d <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> emp e <span class="keyword">ON</span> e.deptno=d.deptno <span class="keyword">WHERE</span> d.dname <span class="keyword">LIKE</span> <span class="string">'%S%'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> d.deptno;	</div><div class="line"><span class="comment">-- 33.给任职日期超过10年的人加薪10%</span></div><div class="line"><span class="keyword">UPDATE</span> emp e <span class="keyword">SET</span> e.sal=e.sal*<span class="number">1.1</span> <span class="keyword">WHERE</span> (<span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">MONTH</span>,e.hiredate,<span class="keyword">SYSDATE</span>()))/<span class="number">12</span> &gt; <span class="number">10</span>;	</div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">DAY</span>,<span class="string">'2012-10-01'</span>,<span class="string">'2013-01-13'</span>); <span class="comment">-- 获取两日期之间天数</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DATEDIFF</span>(<span class="string">'2013-01-13'</span>,<span class="string">'2012-10-01'</span>) <span class="keyword">FROM</span> dual; <span class="comment">-- 获取两日期之间天数</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">MONTH</span>,<span class="string">'2012-10-01'</span>,<span class="string">'2013-01-13'</span>); <span class="comment">-- 获取两日期月数</span></div></pre></td></tr></table></figure>
+<h1 id="EXISTS和IN"><a href="#EXISTS和IN" class="headerlink" title="EXISTS和IN"></a>EXISTS和IN</h1><p>效率差<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">	<span class="number">1</span></div><div class="line"><span class="keyword">FROM</span></div><div class="line">	tp_parcel_info f</div><div class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> tp_station_info s <span class="keyword">ON</span> s.f_station_id = f.f_station_id</div><div class="line"><span class="keyword">WHERE</span></div><div class="line">	<span class="number">1</span> = <span class="number">1</span></div><div class="line"><span class="keyword">AND</span> f.f_parcel_status <span class="keyword">IN</span> (<span class="number">0</span>)</div><div class="line"><span class="keyword">AND</span> f.f_last_time &gt;= <span class="string">'20160901000000'</span></div><div class="line"><span class="keyword">AND</span> f.f_last_time &lt;= <span class="string">'20161131235959'</span></div><div class="line"><span class="keyword">AND</span> f.f_company_id = <span class="string">'108'</span></div><div class="line"><span class="keyword">AND</span> <span class="keyword">EXISTS</span> (</div><div class="line">	<span class="keyword">SELECT</span></div><div class="line">		<span class="number">1</span></div><div class="line">	<span class="keyword">FROM</span></div><div class="line">		tp_express_branch_com_dz d</div><div class="line">	<span class="keyword">WHERE</span></div><div class="line">		d.f_exp_id = <span class="string">'2729'</span></div><div class="line">	<span class="keyword">AND</span> f.f_station_id = d.f_station_id</div><div class="line">	<span class="keyword">AND</span> d.f_branch_state = <span class="number">0</span></div><div class="line">)</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></div><div class="line">	f.f_last_time <span class="keyword">DESC</span></div></pre></td></tr></table></figure></p>
+<p>效率高<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">	f.f_parcel_id,</div><div class="line">	f.f_exp_id,</div><div class="line">	f.f_branch_id,</div><div class="line">	f.f_station_id,</div><div class="line">	f.f_mail_no,</div><div class="line">	f.f_company_id,</div><div class="line">	f.f_company_name,</div><div class="line">	f.f_recipient_name,</div><div class="line">	f.f_recipient_mobile,</div><div class="line">	f.f_frame_code,</div><div class="line">	f.f_take_code,</div><div class="line">	f.f_num,</div><div class="line">	f.f_input_way,</div><div class="line">	f.f_input_source,</div><div class="line">	f.f_arrive_time,</div><div class="line">	f.f_parcel_status,</div><div class="line">	f.f_is_detention,</div><div class="line">	f.f_out_way,</div><div class="line">	f.f_out_source,</div><div class="line">	f.f_app_notice_status,</div><div class="line">	f.f_weixin_notice_status,</div><div class="line">	f.f_sms_notice_status,</div><div class="line">	f.f_out_time,</div><div class="line">	f.f_last_time,</div><div class="line">	f.f_type,</div><div class="line">	f.f_comment,</div><div class="line">	s.f_station_name</div><div class="line"><span class="keyword">FROM</span></div><div class="line">	tp_parcel_info f</div><div class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> tp_station_info s <span class="keyword">ON</span> s.f_station_id = f.f_station_id</div><div class="line"><span class="keyword">WHERE</span></div><div class="line">	<span class="number">1</span> = <span class="number">1</span></div><div class="line"><span class="keyword">AND</span> f.f_parcel_status <span class="keyword">IN</span> (<span class="number">0</span>)</div><div class="line"><span class="keyword">AND</span> f.f_last_time &gt;= <span class="string">'20160901000000'</span></div><div class="line"><span class="keyword">AND</span> f.f_last_time &lt;= <span class="string">'20161131235959'</span></div><div class="line"><span class="keyword">AND</span> f.f_company_id = <span class="string">'108'</span></div><div class="line"><span class="keyword">AND</span> f.f_station_id <span class="keyword">IN</span> (</div><div class="line">	<span class="keyword">SELECT</span></div><div class="line">		d.f_station_id</div><div class="line">	<span class="keyword">FROM</span></div><div class="line">		tp_express_branch_com_dz d</div><div class="line">	<span class="keyword">WHERE</span></div><div class="line">		d.f_exp_id = <span class="string">'2729'</span></div><div class="line">	<span class="keyword">AND</span> d.f_branch_state = <span class="number">0</span></div><div class="line">)</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></div><div class="line">	f.f_last_time <span class="keyword">DESC</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>例如</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">-- 例如：表A（小表），表B（大表）</span></div><div class="line"><span class="comment">-- 1：</span></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> A <span class="keyword">where</span> cc <span class="keyword">in</span> (<span class="keyword">select</span> cc <span class="keyword">from</span> B)</div><div class="line"><span class="comment">-- 效率低，用到了A表上cc列的索引；</span></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> A <span class="keyword">where</span> <span class="keyword">exists</span>(<span class="keyword">select</span> cc <span class="keyword">from</span> B <span class="keyword">where</span> cc=A.cc)</div><div class="line"><span class="comment">-- 效率高，用到了B表上cc列的索引。</span></div><div class="line"><span class="comment">-- 相反的</span></div><div class="line"><span class="comment">-- 2：</span></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> B <span class="keyword">where</span> cc <span class="keyword">in</span> (<span class="keyword">select</span> cc <span class="keyword">from</span> A)</div><div class="line"><span class="comment">-- 效率高，用到了B表上cc列的索引；</span></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> B <span class="keyword">where</span> <span class="keyword">exists</span>(<span class="keyword">select</span> cc <span class="keyword">from</span> A <span class="keyword">where</span> cc=B.cc)</div><div class="line"><span class="comment">-- 效率低，用到了A表上cc列的索引。</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>总结    </p>
+</blockquote>
+<font color="#FF0000" face="Menlo">in是把外表和内表作hash连接，而exists是对外表作loop循环，每次loop循环再对内表进行查询，一直以来认为exists比in效率高的说法是不准确的。如果查询的两个表大小相当，那么用in和exists差别不大；如果两个表中一个较小一个较大，则子查询表大的用exists(大表)，子查询表小的用in(小表);<br>跟显示字段的多少没有太大区别。<br></font>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/w.png" alt="VOLC WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/z.jpg" alt="VOLC Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/01/notes/" rel="next" title="Notes">
+                <i class="fa fa-chevron-left"></i> Notes
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/23/linux/" rel="prev" title="linux常用命令">
+                linux常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/0.png"
+               alt="VOLC" />
+          <p class="site-author-name" itemprop="name">VOLC</p>
+          <p class="site-description motion-element" itemprop="description">volc</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/volc1605" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/volcliu" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2297464654/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/volc" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yisu.ren/index.php/" title="一俗人_PHP" target="_blank">一俗人_PHP</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.fackyou.org/" title="Delay.Hsiao_PHP" target="_blank">Delay.Hsiao_PHP</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#部门表dept和员工表empMySQL练习"><span class="nav-number">1.</span> <span class="nav-text">部门表dept和员工表empMySQL练习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EXISTS和IN"><span class="nav-number">2.</span> <span class="nav-text">EXISTS和IN</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<div class="copyright" style="margin-right: 14px">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2017</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">VOLC</span>
+  </div>
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <div class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>本站总访问量<span><span id="busuanzi_value_site_pv"></span>
+    <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>您是第</span>
+    <span id="busuanzi_value_site_uv"></span>
+    <span>个小伙伴</span>
+	<span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+	<span id="showDays"></span>
+  </div>
+ 	
+<script>
+	var birthDay = new Date('09/1/2016');
+	var now = new Date();
+	var duration = now.getTime() - birthDay.getTime();
+	var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+	document.getElementById('showDays').innerHTML='本站已运行' + total + '天';
+</script>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+﻿
+
+
+
+  
+
+    
+
+  
+
+
+
+ 
+
+      <!-- UY BEGIN -->
+
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2128530"></script>
+
+      <!-- UY END -->
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uSB1w939Pcabp8qlmznF7Spw-gzGzoHsz", "98j3mTSX2edWrjz0KNvtWaI5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+          var UPDATED_AT = '.leancloud-updated-at'; // 新增代码 定义最近变更时间的class
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+          // console.log(results);
+          for(var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');   // 获取阅读量
+            var updatedT = item.updatedAt; // 新增代码 获取最近浏览时间 需要注意的是updateT是对象并不是字符串
+            var element = document.getElementById(url);
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+            // 新增代码 转换日期格式
+            if(updatedT != null && updatedT != '') {
+              var a = [updatedT.getFullYear(), updatedT.getMonth() + 1, updatedT.getDate(), updatedT.getHours(), updatedT.getMinutes(), updatedT.getSeconds()];
+              for(var j = 0,len = a.length; j < len; j++) {
+                  if(a[j] < 10) {
+                      a[j] = '0' + a[j];
+                  }
+              }
+              var updateTime = a[0] + '-' + a[1] + '-' + a[2] + ' ' + a[3] + ':' + a[4] + ':' + a[5];
+              $(element).find(UPDATED_AT).text(updateTime);
+            }
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            var updatedAtContent = $(element).find(UPDATED_AT);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+            // 新增代码 如果首页的文章没有更新侧默认为暂无更新
+            if(updatedAtContent.text() == '') {
+              updatedAtContent.text('无人浏览');
+            }
+            // 结束
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

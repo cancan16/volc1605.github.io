@@ -1,0 +1,1123 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mysql,主从,读写分离," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1 mysql简单配置主从参考方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL主从读写分离">
+<meta property="og:url" content="http://www.volcfamily.cn/2017/01/05/MySQL主从读写分离/index.html">
+<meta property="og:site_name" content="VOLC">
+<meta property="og:description" content="1 mysql简单配置主从参考方式">
+<meta property="og:image" content="https://volc1605.github.io/images/MySQL主从配置和读写分离/1.png">
+<meta property="og:image" content="https://volc1605.github.io/images/MySQL主从配置和读写分离/2.png">
+<meta property="og:image" content="https://volc1605.github.io/images/MySQL主从配置和读写分离/3.png">
+<meta property="og:image" content="https://volc1605.github.io/images/MySQL主从配置和读写分离/4.png">
+<meta property="og:image" content="https://volc1605.github.io/images/MySQL主从配置和读写分离/9.png">
+<meta property="og:image" content="https://volc1605.github.io/images/MySQL主从配置和读写分离/10.png">
+<meta property="og:updated_time" content="2017-03-05T03:13:57.877Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL主从读写分离">
+<meta name="twitter:description" content="1 mysql简单配置主从参考方式">
+<meta name="twitter:image" content="https://volc1605.github.io/images/MySQL主从配置和读写分离/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.volcfamily.cn/2017/01/05/MySQL主从读写分离/"/>
+
+  <title> MySQL主从读写分离 | VOLC </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '85094232-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?87980c86b4555bd9921e799ec5e26fb5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">VOLC</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Volc's Blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MySQL主从读写分离
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-05T19:35:20+08:00" content="2017-01-05">
+              2017-01-05
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2017-03-04
+                  12:24:20
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2017/01/05/MySQL主从读写分离/" class="leancloud_visitors" data-flag-title="MySQL主从读写分离">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-mysql简单配置主从参考方式"><a href="#1-mysql简单配置主从参考方式" class="headerlink" title="1 mysql简单配置主从参考方式"></a>1 mysql简单配置主从参考方式</h3><a id="more"></a>
+<p>注意：<br>1、    主DB server和从DB server数据库的版本一致。<br>2、    主DB server和从DB server数据库数据一致[ 这里就会可以把主的备份在从上还原，也可以直接将主的数据目录拷贝到从的相应数据目录]。<br>3、    主DB server开启二进制日志,主DB server和从DB server的server_id都必须唯一。<br>4、 mysql主从有延迟，是由于原理所致，需要根据业务场景分析是否实现主从，以免造成不可逆的代价。<br>5、 读写分离解决读数据库的压力，并不能很好的解决写数据库。<br>步骤：<br>为主从mysql添加服务<br>进入D:\mysql\3381\bin目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.\mysqld.exe install MySQL-3380 --defaults-file=&quot;D:\mysql\3380\data\my.ini&quot;</div></pre></td></tr></table></figure></p>
+<p>1.主库配置，开启二进制日志，用于从库调用进行同步<br>2.主库为从库授权</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># &apos;用户名称&apos;@&apos;主库IP&apos; by &apos;用户访问密码&apos;</div><div class="line">grant replication slave on *.* to &apos;slave01&apos;@&apos;127.0.0.1&apos; identified by &apos;123456&apos;;</div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
+<p>3.从库配置<br>主库执行获取二进制日志文件名称<br>使用navicat连接主库执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SHOW MASTER STATUS;</div><div class="line"># 结果：</div><div class="line">mysql-bin.000002   420	taotao</div></pre></td></tr></table></figure>
+<p>mysql-bin.000002用于从库配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CHANGE MASTER TO</div><div class="line"> master_host=&apos;127.0.0.1&apos;,</div><div class="line"> master_user=&apos;slave01&apos;,</div><div class="line"> master_password=&apos;123456&apos;,</div><div class="line"> master_port=3380,</div><div class="line"> master_log_file=&apos;mysql-bin.000002&apos;,</div><div class="line"> master_log_pos=420;</div></pre></td></tr></table></figure>
+<p>4.启动从库同步，查看从库状态<br>进入从库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">START SLAVE;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SHOW SLAVE STATUS;</div><div class="line"># 结果：</div><div class="line">	127.0.0.1	slave01	3380	60	mysql-bin.000002	420	PC-201701242302-relay-bin.000001	4	mysql-bin.000002	No	Yes							0		0	420	120	None		0	No							No	1593	Fatal error: The slave I/O thread stops because master and slave have equal MySQL server UUIDs; these UUIDs must be different for replication to work.	0			80		D:\mysql\3381\data\data\master.info	0		Slave has read all relay log; waiting for the slave I/O thread to update it	86400		170304 12:18:46						0</div></pre></td></tr></table></figure>
+<p>查看结果<br>Slave_IO_Running:No<br>Slave_SQL_Running:Yes<br>两个都为Yes说明主从配置成功，需要查看从库日志排除配置失败的原因<br>D:\mysql\3381\logs\mysql.err.log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2017-03-04 12:18:46 7764 [ERROR] Slave I/O: Fatal error: The slave I/O thread stops because master and slave have equal MySQL server UUIDs; these UUIDs must be different for replication to work. Error_code: 1593</div></pre></td></tr></table></figure>
+<p>说明主从数据库uuid相同了，需要从新设置从mysql的uuid<br>找到从数据库中D:\mysql\3381\data\data\auto.cnf配置文件，内容如下，修改一个值即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[auto]</div><div class="line">server-uuid=d71ec2ee-65ba-11e5-a4e3-000c29deb96f</div></pre></td></tr></table></figure>
+<p>重启从数据库服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SHOW SLAVE STATUS;</div><div class="line"># 结果</div><div class="line">Waiting for master to send event	127.0.0.1	slave01	3380	60	mysql-bin.000002	420	PC-201701242302-relay-bin.000003	283	mysql-bin.000002	Yes	Yes							0		0	420	466	None		0	No						0	No	0		0			80	d71ec2ee-65ba-11e5-a4e3-000c29deb96e	D:\mysql\3381\data\data\master.info	0		Slave has read all relay log; waiting for the slave I/O thread to update it	86400								0</div></pre></td></tr></table></figure>
+<p>Slave_IO_Running:Yes<br>Slave_SQL_Running:Yes<br>要重新启动从库同步</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">START SLAVE;</div></pre></td></tr></table></figure>
+<p>不同需要步时执行以下sql停止同步</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">START SLAVE;</div></pre></td></tr></table></figure>
+<p>5.测试主从<br>修改主数据数据，从数据库跟着该表，MySql主从同步成功。<br>以下是详细配置文件<br>主my.ini：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">no-beep</div><div class="line"></div><div class="line"># pipe</div><div class="line">socket=0.0</div><div class="line">port=3380</div><div class="line"></div><div class="line">[mysql]</div><div class="line"></div><div class="line">default-character-set=utf8</div><div class="line"></div><div class="line"># SERVER SECTION</div><div class="line"># ----------------------------------------------------------------------</div><div class="line">#</div><div class="line"># The following options will be read by the MySQL Server. Make sure that</div><div class="line"># you have installed the server correctly (see above) so it reads this </div><div class="line"># file.</div><div class="line">#</div><div class="line"># server_type=3</div><div class="line">[mysqld]</div><div class="line"></div><div class="line">enable-named-pipe</div><div class="line"></div><div class="line">shared-memory</div><div class="line"></div><div class="line">shared-memory-base-name=MYSQL-3380</div><div class="line"></div><div class="line"># The Pipe the MySQL Server will use</div><div class="line">socket=MYSQL-3380</div><div class="line"></div><div class="line"># The TCP/IP Port the MySQL Server will listen on</div><div class="line">port=3380</div><div class="line"></div><div class="line"># Path to installation directory. All paths are usually resolved relative to this.</div><div class="line"># basedir=&quot;D:/mysql/3380/&quot;</div><div class="line"></div><div class="line"># Path to the database root</div><div class="line">datadir=D:/mysql/3380/data/Data</div><div class="line"></div><div class="line">character-set-server=utf8</div><div class="line"></div><div class="line">default-storage-engine=INNODB</div><div class="line"></div><div class="line">sql-mode=&quot;STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot;</div><div class="line"></div><div class="line">log-output=FILE</div><div class="line">general-log=0</div><div class="line">general_log_file=&quot;WIN-A1JA6NUDTV4.log&quot;</div><div class="line">slow-query-log=1</div><div class="line">slow_query_log_file=&quot;D:/mysql/3380/logs/mysql-slow.log&quot;</div><div class="line">long_query_time=10</div><div class="line"></div><div class="line"># Binary Logging. 主数据库要开启二进制日志</div><div class="line">log-bin=&quot;D:/mysql/3380/logs/mysql-bin&quot;</div><div class="line"></div><div class="line"># Error Logging.</div><div class="line">log-error=&quot;D:/mysql/3380/logs/mysql.err.log&quot;</div><div class="line"></div><div class="line"># Server Id.</div><div class="line">server-id=80</div><div class="line"></div><div class="line"># 主数据库中配置需要同步的数据库为taotao</div><div class="line">binlog-do-db=taotao</div><div class="line"></div><div class="line">max_connections=151</div><div class="line"></div><div class="line">query_cache_size=0</div><div class="line"></div><div class="line">table_open_cache=2000</div><div class="line"></div><div class="line">tmp_table_size=14M</div><div class="line"></div><div class="line">thread_cache_size=10</div><div class="line"></div><div class="line">myisam_max_sort_file_size=100G</div><div class="line"></div><div class="line">myisam_sort_buffer_size=18M</div><div class="line"></div><div class="line">key_buffer_size=8M</div><div class="line"></div><div class="line">read_buffer_size=37K</div><div class="line">read_rnd_buffer_size=256K</div><div class="line"></div><div class="line">sort_buffer_size=256K</div><div class="line"></div><div class="line">innodb_additional_mem_pool_size=2M</div><div class="line"></div><div class="line">innodb_flush_log_at_trx_commit=1</div><div class="line"></div><div class="line">innodb_log_buffer_size=1M</div><div class="line"></div><div class="line">innodb_buffer_pool_size=43M</div><div class="line"></div><div class="line">innodb_log_file_size=48M</div><div class="line"></div><div class="line">innodb_thread_concurrency=8</div><div class="line"></div><div class="line">innodb_autoextend_increment=64</div><div class="line"></div><div class="line">innodb_buffer_pool_instances=8</div><div class="line"></div><div class="line">innodb_concurrency_tickets=5000</div><div class="line"></div><div class="line">innodb_old_blocks_time=1000</div><div class="line"></div><div class="line">innodb_open_files=300</div><div class="line"></div><div class="line">innodb_stats_on_metadata=0</div><div class="line"></div><div class="line">innodb_file_per_table=1</div><div class="line"></div><div class="line">innodb_checksum_algorithm=0</div><div class="line"></div><div class="line">back_log=80</div><div class="line"></div><div class="line">flush_time=0</div><div class="line"></div><div class="line">join_buffer_size=256K</div><div class="line"></div><div class="line">max_allowed_packet=4M</div><div class="line"></div><div class="line">max_connect_errors=100</div><div class="line"></div><div class="line">open_files_limit=4161</div><div class="line"></div><div class="line">query_cache_type=0</div><div class="line"></div><div class="line">sort_buffer_size=256K</div><div class="line"></div><div class="line">table_definition_cache=1400</div><div class="line"></div><div class="line">binlog_row_event_max_size=8K</div><div class="line"></div><div class="line">sync_master_info=10000</div><div class="line"></div><div class="line">sync_relay_log=10000</div><div class="line"></div><div class="line">sync_relay_log_info=10000</div></pre></td></tr></table></figure>
+<p>从my.ini<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">no-beep</div><div class="line"></div><div class="line"># pipe</div><div class="line">socket=0.0</div><div class="line">port=3381</div><div class="line"></div><div class="line">[mysql]</div><div class="line"></div><div class="line">default-character-set=utf8</div><div class="line"></div><div class="line"># SERVER SECTION</div><div class="line"># ----------------------------------------------------------------------</div><div class="line">#</div><div class="line"># The following options will be read by the MySQL Server. Make sure that</div><div class="line"># you have installed the server correctly (see above) so it reads this </div><div class="line"># file.</div><div class="line">#</div><div class="line"># server_type=3</div><div class="line">[mysqld]</div><div class="line"></div><div class="line"># The next three options are mutually exclusive to SERVER_PORT below.</div><div class="line"># skip-networking</div><div class="line"></div><div class="line">enable-named-pipe</div><div class="line"></div><div class="line">shared-memory</div><div class="line"></div><div class="line">shared-memory-base-name=MYSQL-3381</div><div class="line"></div><div class="line"># The Pipe the MySQL Server will use</div><div class="line">socket=MYSQL-3381</div><div class="line"></div><div class="line"># The TCP/IP Port the MySQL Server will listen on</div><div class="line">port=3381</div><div class="line"></div><div class="line"># Path to installation directory. All paths are usually resolved relative to this.</div><div class="line"># basedir=&quot;D:/mysql/3381/&quot;</div><div class="line"></div><div class="line"># Path to the database root</div><div class="line">datadir=D:/mysql/3381/data/data</div><div class="line"></div><div class="line"># The default character set that will be used when a new schema or table is</div><div class="line"># created and no character set is defined</div><div class="line">character-set-server=utf8</div><div class="line"></div><div class="line"># The default storage engine that will be used when create new tables when</div><div class="line">default-storage-engine=INNODB</div><div class="line"></div><div class="line"># Set the SQL mode to strict</div><div class="line">sql-mode=&quot;STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot;</div><div class="line"></div><div class="line"># Enable Windows Authentication</div><div class="line"># plugin-load=authentication_windows.dll</div><div class="line"></div><div class="line"># General and Slow logging.</div><div class="line">log-output=FILE</div><div class="line">general-log=0</div><div class="line">general_log_file=&quot;WIN-A1JA6NUDTV4.log&quot;</div><div class="line">slow-query-log=1</div><div class="line">slow_query_log_file=&quot;D:/mysql/3381/logs/mysql-slow.log&quot;</div><div class="line">long_query_time=10</div><div class="line"></div><div class="line"># Binary Logging.</div><div class="line">log-bin=&quot;D:/mysql/3381/logs/mysql-bin&quot;</div><div class="line"></div><div class="line"># Error Logging.</div><div class="line">log-error=&quot;D:/mysql/3381/logs/mysql.err.log&quot;</div><div class="line"></div><div class="line"># Server Id.</div><div class="line">server-id=81</div><div class="line"></div><div class="line">max_connections=151</div><div class="line"></div><div class="line">query_cache_size=0</div><div class="line"></div><div class="line">table_open_cache=2000</div><div class="line"></div><div class="line">tmp_table_size=14M</div><div class="line"></div><div class="line">thread_cache_size=10</div><div class="line"></div><div class="line">myisam_max_sort_file_size=100G</div><div class="line"></div><div class="line">myisam_sort_buffer_size=18M</div><div class="line"></div><div class="line">key_buffer_size=8M</div><div class="line"></div><div class="line">read_buffer_size=37K</div><div class="line">read_rnd_buffer_size=256K</div><div class="line"></div><div class="line">sort_buffer_size=256K</div><div class="line"></div><div class="line">innodb_additional_mem_pool_size=2M</div><div class="line"></div><div class="line">innodb_flush_log_at_trx_commit=1</div><div class="line"></div><div class="line">innodb_log_buffer_size=1M</div><div class="line"></div><div class="line">innodb_buffer_pool_size=43M</div><div class="line"></div><div class="line">innodb_log_file_size=48M</div><div class="line"></div><div class="line">innodb_thread_concurrency=8</div><div class="line"></div><div class="line">innodb_autoextend_increment=64</div><div class="line"></div><div class="line">innodb_buffer_pool_instances=8</div><div class="line"></div><div class="line">innodb_concurrency_tickets=5000</div><div class="line"></div><div class="line">innodb_old_blocks_time=1000</div><div class="line"></div><div class="line">innodb_open_files=300</div><div class="line"></div><div class="line">innodb_stats_on_metadata=0</div><div class="line"></div><div class="line">innodb_file_per_table=1</div><div class="line"></div><div class="line">innodb_checksum_algorithm=0</div><div class="line"></div><div class="line">back_log=80</div><div class="line"></div><div class="line">flush_time=0</div><div class="line"></div><div class="line">join_buffer_size=256K</div><div class="line"></div><div class="line">max_allowed_packet=4M</div><div class="line"></div><div class="line">max_connect_errors=100</div><div class="line"></div><div class="line">open_files_limit=4161</div><div class="line"></div><div class="line">query_cache_type=0</div><div class="line"></div><div class="line">sort_buffer_size=256K</div><div class="line"></div><div class="line">table_definition_cache=1400</div><div class="line"></div><div class="line">binlog_row_event_max_size=8K</div><div class="line"></div><div class="line">sync_master_info=10000</div><div class="line"></div><div class="line">sync_relay_log=10000</div><div class="line"></div><div class="line">sync_relay_log_info=10000</div></pre></td></tr></table></figure></p>
+<hr>
+<p>之前的主从配置和使用第三方开源框架实现读写分离</p>
+<p>详细实现主从如下</p>
+<h3 id="2-MySQL主从"><a href="#2-MySQL主从" class="headerlink" title="2 MySQL主从"></a>2 MySQL主从</h3><p>这里介绍win环境下MySQL的主从和读写分离，同样Linux操作系统下也是这个原理  </p>
+<p>master(IP:192.168.1.15)主服务器mysql<br>slave(IP:192.168.1.200)从服务器mysql<br>需要注意的地方<br>1.数据库主从和读写分离不同服务器上mysql版本尽量保持一致，以免造成不必要的麻烦。<br>2.不同服务器都要含有需要同步的指定数据库。<br>3.数据库中已存在的表在同步成功后从数据库中也不会同步，只能同步成功配置同步以后创建的表。</p>
+<h4 id="开启log-bin"><a href="#开启log-bin" class="headerlink" title="开启log_bin"></a>开启log_bin</h4><p>安装服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\mysql\mysql-5.5.47-win32\bin&gt;mysql -install</div></pre></td></tr></table></figure></p>
+<p>参考：<a href="https://volc1605.github.io/2017/01/05/win%E9%85%8D%E7%BD%AEMySQL/" target="_blank" rel="external">win配置mysql</a><br><!-- more --><br>查看log_bin是否开启<br><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/1.png" alt="查看log_bin是否开启"><br>如果log_bin的值OFF需要在配置文件中开启<br>找到mysql安装目录下的配置文件my.ini，在[mysqld]追加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"># 开启log_bin</div><div class="line">log_bin</div></pre></td></tr></table></figure></p>
+<h4 id="配置master-主数据库-my-ini"><a href="#配置master-主数据库-my-ini" class="headerlink" title="配置master(主数据库)my.ini"></a>配置master(主数据库)my.ini</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">追加[mysqld]配置</div><div class="line"># =============读写===========</div><div class="line"></div><div class="line">log-bin = mysql-bin</div><div class="line"></div><div class="line">log-bin-index = mysql-bin.index</div><div class="line"></div><div class="line"># 服务Id，和slave 的server-id不一样，一般取ip最后一节</div><div class="line">server-id = 15</div><div class="line"></div><div class="line">sync_binlog = 1</div><div class="line"></div><div class="line">binlog_format = mixed</div><div class="line"></div><div class="line"># 做主从同步的数据库名</div><div class="line">binlog-do-db = test</div><div class="line"></div><div class="line">binlog-ignore-db = mysql</div><div class="line"></div><div class="line">binlog-ignore-db = performance_schema</div><div class="line"></div><div class="line">binlog-ignore-db = information_schema</div><div class="line"># =============结束===========</div></pre></td></tr></table></figure>
+<h4 id="关联从数据库，并给予全部权限"><a href="#关联从数据库，并给予全部权限" class="headerlink" title="关联从数据库，并给予全部权限"></a>关联从数据库，并给予全部权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; grant all privileges on *.* to &apos;root&apos;@&apos;192.168.1.200&apos; identified by &apos;root&apos; with grant option;</div></pre></td></tr></table></figure>
+<p><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/2.png" alt="关联从数据库并给予权限"></p>
+<p>‘root’                     slave从数据库账户<br>‘192.168.1.200’            slaveIP<br>‘root’                    slave登录密码</p>
+<p>刷新权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; flush privileges;</div></pre></td></tr></table></figure></p>
+<p>在从服务器上链接主服务器mysql<br><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/3.png" alt="链接master数据库"></p>
+<h4 id="获取master状态信息"><a href="#获取master状态信息" class="headerlink" title="获取master状态信息"></a>获取master状态信息</h4><p><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/4.png" alt="获取master状态信息"></p>
+<p>记录以下两个字段值，从服务器上mysql配置需要用到<br>File: mysql-bin.000015<br>Position: 107</p>
+<h4 id="配置slave数据库"><a href="#配置slave数据库" class="headerlink" title="配置slave数据库"></a>配置slave数据库</h4><p>配置my.ini<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line">#=========新增=====</div><div class="line"># 服务Id，和master 的server-id不一样</div><div class="line">server-id = 200</div><div class="line">log-bin = mysql-bin</div><div class="line">relay-log-index = slave-relay-bin.index</div><div class="line">relay-log = slave-relay-bin</div><div class="line">sync_master_info = 1</div><div class="line">sync_relay_log = 1</div><div class="line">sync_relay_log_info = 1</div><div class="line">#=========结束======</div></pre></td></tr></table></figure></p>
+<p>重新启动从服务器上的mysql服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; net stop mysql</div><div class="line">mysql&gt; net start mysql</div></pre></td></tr></table></figure></p>
+<p>确认在从服务器上可以链接本地的mysql后进行以下操作<br>关闭slave数据库同步，关联master数据库信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line">mysql&gt; stop slave;</div><div class="line">mysql&gt; change master to master_host=&apos;192.168.1.15&apos;,master_user=&apos;root&apos;,master_port=3306,master_password=&apos;root&apos;,master_log_file=&apos;mysql-bin.000015&apos;,master_log_pos=107;</div><div class="line">Query OK, 0 rows affected (0.21 sec)</div><div class="line"></div><div class="line">mysql&gt; show slave status\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">               Slave_IO_State:</div><div class="line">                  Master_Host: 192.168.1.15</div><div class="line">                  Master_User: root</div><div class="line">                  Master_Port: 3306</div><div class="line">                Connect_Retry: 60</div><div class="line">              Master_Log_File: mysql-bin.000015</div><div class="line">          Read_Master_Log_Pos: 107</div><div class="line">               Relay_Log_File: slave-relay-bin.000001</div><div class="line">                Relay_Log_Pos: 4</div><div class="line">        Relay_Master_Log_File: mysql-bin.000015</div><div class="line">             Slave_IO_Running: No</div><div class="line">            Slave_SQL_Running: No</div><div class="line">              Replicate_Do_DB:</div><div class="line">          Replicate_Ignore_DB:</div><div class="line">           Replicate_Do_Table:</div><div class="line">       Replicate_Ignore_Table:</div><div class="line">      Replicate_Wild_Do_Table:</div><div class="line">  Replicate_Wild_Ignore_Table:</div><div class="line">                   Last_Errno: 0</div><div class="line">                   Last_Error:</div><div class="line">                 Skip_Counter: 0</div><div class="line">          Exec_Master_Log_Pos: 107</div><div class="line">              Relay_Log_Space: 107</div><div class="line">              Until_Condition: None</div><div class="line">               Until_Log_File:</div><div class="line">                Until_Log_Pos: 0</div><div class="line">           Master_SSL_Allowed: No</div><div class="line">           Master_SSL_CA_File:</div><div class="line">           Master_SSL_CA_Path:</div><div class="line">              Master_SSL_Cert:</div><div class="line">            Master_SSL_Cipher:</div><div class="line">               Master_SSL_Key:</div><div class="line">        Seconds_Behind_Master: NULL</div><div class="line">Master_SSL_Verify_Server_Cert: No</div><div class="line">                Last_IO_Errno: 0</div><div class="line">                Last_IO_Error:</div><div class="line">               Last_SQL_Errno: 0</div><div class="line">               Last_SQL_Error:</div><div class="line">  Replicate_Ignore_Server_Ids:</div><div class="line">             Master_Server_Id: 15</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; start slave;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; show slave status\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">               Slave_IO_State: Waiting for master to send event</div><div class="line">                  Master_Host: 192.168.1.15</div><div class="line">                  Master_User: root</div><div class="line">                  Master_Port: 3306</div><div class="line">                Connect_Retry: 60</div><div class="line">              Master_Log_File: mysql-bin.000015</div><div class="line">          Read_Master_Log_Pos: 107</div><div class="line">               Relay_Log_File: slave-relay-bin.000002</div><div class="line">                Relay_Log_Pos: 253</div><div class="line">        Relay_Master_Log_File: mysql-bin.000015</div><div class="line">             Slave_IO_Running: Yes</div><div class="line">            Slave_SQL_Running: Yes</div><div class="line">              Replicate_Do_DB:</div><div class="line">          Replicate_Ignore_DB:</div><div class="line">           Replicate_Do_Table:</div><div class="line">       Replicate_Ignore_Table:</div><div class="line">      Replicate_Wild_Do_Table:</div><div class="line">  Replicate_Wild_Ignore_Table:</div><div class="line">                   Last_Errno: 0</div><div class="line">                   Last_Error:</div><div class="line">                 Skip_Counter: 0</div><div class="line">          Exec_Master_Log_Pos: 107</div><div class="line">              Relay_Log_Space: 409</div><div class="line">              Until_Condition: None</div><div class="line">               Until_Log_File:</div><div class="line">                Until_Log_Pos: 0</div><div class="line">           Master_SSL_Allowed: No</div><div class="line">           Master_SSL_CA_File:</div><div class="line">           Master_SSL_CA_Path:</div><div class="line">              Master_SSL_Cert:</div><div class="line">            Master_SSL_Cipher:</div><div class="line">               Master_SSL_Key:</div><div class="line">        Seconds_Behind_Master: 0</div><div class="line">Master_SSL_Verify_Server_Cert: No</div><div class="line">                Last_IO_Errno: 0</div><div class="line">                Last_IO_Error:</div><div class="line">               Last_SQL_Errno: 0</div><div class="line">               Last_SQL_Error:</div><div class="line">  Replicate_Ignore_Server_Ids:</div><div class="line">             Master_Server_Id: 15</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt;</div></pre></td></tr></table></figure></p>
+<p>注意<br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes<br>说明主从配置成功</p>
+<h4 id="测试主从"><a href="#测试主从" class="headerlink" title="测试主从"></a>测试主从</h4><p>master中test数据库和slave中test数据库进行同步测试。<br>在master中test数据库新建test表，刷新slave中test数据库会发现同步成功。<br>而master不会同步slave中创建的表，想让master同步slave中创建的表可参考以下方案。</p>
+<h4 id="master与slave数据恢复"><a href="#master与slave数据恢复" class="headerlink" title="master与slave数据恢复"></a>master与slave数据恢复</h4><h4 id="应用切换到slave"><a href="#应用切换到slave" class="headerlink" title="应用切换到slave"></a>应用切换到slave</h4><p>如果master mysql坏掉了，需要将应用转移到slave段。首先在slave端执行：show master status;<br>把输出保存下来，然后再把应用切换过去。保存输出的File和Position值将可以用于以后从slave恢复master。<br> 具体从slave恢复master的办法：<br> 在master端执行：<br>CHANGE MASTER to MASTER_HOST=’192.168.0.203’, MASTER_PORT=3306, MASTER_USER=’repl’, MASTER_PASSWORD=’repl’,<br>MASTER_LOG_FILE=’mysql-bin.000006’, MASTER_LOG_POS=98 ;<br>其中 MASTER_HOST 为slave的ip, MASTER_LOG_FILE, MASTER_LOG_POS为切换到slave时记录下的File和Position值。<br>在master执行：start slave;<br>待master内容基本恢复以后（在master执行：show slave status \G; Slave_IO_State显示为Waiting for master to send event）<br>将应用切换回master。<br>待系统稳定后master执行：stop slave停止slave。如果要避免master重启以后自动开启slave，可以将master<br>mysql的data文件夹的master.info文件删掉。<br>参考：<a href="http://blog.sina.com.cn/s/blog_620adf7f0100kj5e.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_620adf7f0100kj5e.html</a>  </p>
+<h3 id="使用Amoeba-阿米巴-开源框架实现mysql读写分离-负载均衡"><a href="#使用Amoeba-阿米巴-开源框架实现mysql读写分离-负载均衡" class="headerlink" title="使用Amoeba(阿米巴)开源框架实现mysql读写分离(负载均衡)"></a>使用Amoeba(阿米巴)开源框架实现mysql读写分离(负载均衡)</h3><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>环境:<br>    windows 64<br>    amoeba-for-mysql-2.2.0.zip<br>    java version “1.8.0_31”<br>    mysql-5.5.47-win32<br>win需要安装jdk运行环境支持amoeba的运行<br>mastermysqlIP:192.168.1.15<br>slavemysqlIP:192.168.1.200<br>amoeba-for-mysql-2安装在IP:192.168.1.15<br>master和slave已实现了主从，配置主从可参考上面<br>下面介绍一下amoeba的使用</p>
+<h3 id="配置amoeba"><a href="#配置amoeba" class="headerlink" title="配置amoeba"></a>配置amoeba</h3><p>将下载好的amoeba-for-mysql-2.2.0.zip文件解压到C:\mysql\amoeba-for-mysql-2.2.0<br><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/9.png" alt="目录结构"></p>
+<p>conf目录下有dbServers.xml和amoeba.xml两个文件需要修改<br>dbServers.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;gbk&quot;?&gt;</div><div class="line"></div><div class="line">&lt;!DOCTYPE amoeba:dbServers SYSTEM &quot;dbserver.dtd&quot;&gt;</div><div class="line">&lt;amoeba:dbServers xmlns:amoeba=&quot;http://amoeba.meidusa.com/&quot;&gt;</div><div class="line"></div><div class="line">		&lt;!-- </div><div class="line">			Each dbServer needs to be configured into a Pool,</div><div class="line">			If you need to configure multiple dbServer with load balancing that can be simplified by the following configuration:</div><div class="line">			 add attribute with name virtual = &quot;true&quot; in dbServer, but the configuration does not allow the element with name factoryConfig</div><div class="line">			 such as &apos;multiPool&apos; dbServer   </div><div class="line">		--&gt;</div><div class="line">		</div><div class="line">	&lt;dbServer name=&quot;abstractServer&quot; abstractive=&quot;true&quot;&gt;</div><div class="line">		&lt;factoryConfig class=&quot;com.meidusa.amoeba.mysql.net.MysqlServerConnectionFactory&quot;&gt;</div><div class="line">			&lt;property name=&quot;manager&quot;&gt;$&#123;defaultManager&#125;&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;sendBufferSize&quot;&gt;64&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;receiveBufferSize&quot;&gt;128&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- amoeba账户信息，主从服务器上的mysql需要为amoeba账号授权 --&gt;</div><div class="line">			&lt;!-- mysql port master数据库端口号--&gt;</div><div class="line">			&lt;property name=&quot;port&quot;&gt;3306&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- mysql schema master读写分离的数据库名称--&gt;</div><div class="line">			&lt;property name=&quot;schema&quot;&gt;newchange&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- mysql user amoeba账号名称--&gt;</div><div class="line">			&lt;property name=&quot;user&quot;&gt;amoeba&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- amoeba账号密码 --&gt;</div><div class="line">			&lt;property name=&quot;password&quot;&gt;123456&lt;/property&gt;</div><div class="line">			</div><div class="line">		&lt;/factoryConfig&gt;</div><div class="line"></div><div class="line">		&lt;poolConfig class=&quot;com.meidusa.amoeba.net.poolable.PoolableObjectPool&quot;&gt;</div><div class="line">			&lt;property name=&quot;maxActive&quot;&gt;500&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;maxIdle&quot;&gt;500&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;minIdle&quot;&gt;10&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;minEvictableIdleTimeMillis&quot;&gt;600000&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;timeBetweenEvictionRunsMillis&quot;&gt;600000&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;testOnBorrow&quot;&gt;true&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;testOnReturn&quot;&gt;true&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;testWhileIdle&quot;&gt;true&lt;/property&gt;</div><div class="line">		&lt;/poolConfig&gt;</div><div class="line">	&lt;/dbServer&gt;</div><div class="line">	&lt;!-- mastermysql --&gt;</div><div class="line">	&lt;dbServer name=&quot;master&quot;  parent=&quot;abstractServer&quot;&gt;</div><div class="line">		&lt;factoryConfig&gt;</div><div class="line">			&lt;!-- mysql ip --&gt;</div><div class="line">			&lt;property name=&quot;ipAddress&quot;&gt;192.168.1.15&lt;/property&gt;</div><div class="line">		&lt;/factoryConfig&gt;</div><div class="line">	&lt;/dbServer&gt;</div><div class="line">	&lt;!-- slavemysql --&gt;</div><div class="line">	&lt;dbServer name=&quot;slave&quot;  parent=&quot;abstractServer&quot;&gt;</div><div class="line">		&lt;factoryConfig&gt;</div><div class="line">			&lt;!-- mysql ip --&gt;</div><div class="line">			&lt;property name=&quot;ipAddress&quot;&gt;192.168.1.200&lt;/property&gt;</div><div class="line">		&lt;/factoryConfig&gt;</div><div class="line">	&lt;/dbServer&gt;</div><div class="line">	</div><div class="line">	&lt;dbServer name=&quot;multiPool&quot; virtual=&quot;true&quot;&gt;</div><div class="line">		&lt;poolConfig class=&quot;com.meidusa.amoeba.server.MultipleServerPool&quot;&gt;</div><div class="line">			&lt;!-- Load balancing strategy: 1=ROUNDROBIN , 2=WEIGHTBASED , 3=HA--&gt;</div><div class="line">			&lt;!-- 1为轮询，2为并 --&gt;</div><div class="line">			&lt;property name=&quot;loadbalance&quot;&gt;1&lt;/property&gt;</div><div class="line">			&lt;!-- Separated by commas,such as: server1,server2,server1 --&gt;</div><div class="line">			&lt;property name=&quot;poolNames&quot;&gt;master,slave&lt;/property&gt;</div><div class="line">		&lt;/poolConfig&gt;</div><div class="line">	&lt;/dbServer&gt;</div><div class="line">		</div><div class="line">&lt;/amoeba:dbServers&gt;</div></pre></td></tr></table></figure></p>
+<p>amoeba.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;gbk&quot;?&gt;</div><div class="line"></div><div class="line">&lt;!DOCTYPE amoeba:configuration SYSTEM &quot;amoeba.dtd&quot;&gt;</div><div class="line">&lt;amoeba:configuration xmlns:amoeba=&quot;http://amoeba.meidusa.com/&quot;&gt;</div><div class="line"></div><div class="line">	&lt;proxy&gt;</div><div class="line">	</div><div class="line">		&lt;!-- service class must implements com.meidusa.amoeba.service.Service --&gt;</div><div class="line">		&lt;service name=&quot;Amoeba for Mysql&quot; class=&quot;com.meidusa.amoeba.net.ServerableConnectionManager&quot;&gt;</div><div class="line">			&lt;!-- port amoeba账号访问端口 --&gt;</div><div class="line">			&lt;property name=&quot;port&quot;&gt;8066&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- bind ipAddress --&gt;</div><div class="line">			</div><div class="line">			&lt;property name=&quot;ipAddress&quot;&gt;127.0.0.1&lt;/property&gt;</div><div class="line">			</div><div class="line">			</div><div class="line">			&lt;property name=&quot;manager&quot;&gt;$&#123;clientConnectioneManager&#125;&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;property name=&quot;connectionFactory&quot;&gt;</div><div class="line">				&lt;bean class=&quot;com.meidusa.amoeba.mysql.net.MysqlClientConnectionFactory&quot;&gt;</div><div class="line">					&lt;property name=&quot;sendBufferSize&quot;&gt;128&lt;/property&gt;</div><div class="line">					&lt;property name=&quot;receiveBufferSize&quot;&gt;64&lt;/property&gt;</div><div class="line">				&lt;/bean&gt;</div><div class="line">			&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;property name=&quot;authenticator&quot;&gt;</div><div class="line">				&lt;bean class=&quot;com.meidusa.amoeba.mysql.server.MysqlClientAuthenticator&quot;&gt;</div><div class="line">					</div><div class="line">					&lt;!-- mysql客户端访问amoeba账号配置 --&gt;</div><div class="line">					&lt;property name=&quot;user&quot;&gt;amoebaroot&lt;/property&gt;</div><div class="line">					&lt;property name=&quot;password&quot;&gt;123456&lt;/property&gt;</div><div class="line">					&lt;property name=&quot;filter&quot;&gt;</div><div class="line">						&lt;bean class=&quot;com.meidusa.amoeba.server.IPAccessController&quot;&gt;</div><div class="line">							&lt;property name=&quot;ipFile&quot;&gt;$&#123;amoeba.home&#125;/conf/access_list.conf&lt;/property&gt;</div><div class="line">						&lt;/bean&gt;</div><div class="line">					&lt;/property&gt;</div><div class="line">				&lt;/bean&gt;</div><div class="line">			&lt;/property&gt;</div><div class="line">			</div><div class="line">		&lt;/service&gt;</div><div class="line">		</div><div class="line">		&lt;!-- server class must implements com.meidusa.amoeba.service.Service --&gt;</div><div class="line">		&lt;service name=&quot;Amoeba Monitor Server&quot; class=&quot;com.meidusa.amoeba.monitor.MonitorServer&quot;&gt;</div><div class="line">			&lt;!-- port --&gt;</div><div class="line">			&lt;!--  default value: random number</div><div class="line">			&lt;property name=&quot;port&quot;&gt;9066&lt;/property&gt;</div><div class="line">			--&gt;</div><div class="line">			&lt;!-- bind ipAddress --&gt;</div><div class="line">			&lt;property name=&quot;ipAddress&quot;&gt;127.0.0.1&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;daemon&quot;&gt;true&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;manager&quot;&gt;$&#123;clientConnectioneManager&#125;&lt;/property&gt;</div><div class="line">			&lt;property name=&quot;connectionFactory&quot;&gt;</div><div class="line">				&lt;bean class=&quot;com.meidusa.amoeba.monitor.net.MonitorClientConnectionFactory&quot;&gt;&lt;/bean&gt;</div><div class="line">			&lt;/property&gt;</div><div class="line">			</div><div class="line">		&lt;/service&gt;</div><div class="line">		</div><div class="line">		&lt;runtime class=&quot;com.meidusa.amoeba.mysql.context.MysqlRuntimeContext&quot;&gt;</div><div class="line">			&lt;!-- proxy server net IO Read thread size --&gt;</div><div class="line">			&lt;property name=&quot;readThreadPoolSize&quot;&gt;20&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- proxy server client process thread size --&gt;</div><div class="line">			&lt;property name=&quot;clientSideThreadPoolSize&quot;&gt;30&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- mysql server data packet process thread size --&gt;</div><div class="line">			&lt;property name=&quot;serverSideThreadPoolSize&quot;&gt;30&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- per connection cache prepared statement size  --&gt;</div><div class="line">			&lt;property name=&quot;statementCacheSize&quot;&gt;500&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- query timeout( default: 60 second , TimeUnit:second) --&gt;</div><div class="line">			&lt;property name=&quot;queryTimeout&quot;&gt;60&lt;/property&gt;</div><div class="line">		&lt;/runtime&gt;</div><div class="line">		</div><div class="line">	&lt;/proxy&gt;</div><div class="line">	</div><div class="line">	&lt;!-- </div><div class="line">		Each ConnectionManager will start as thread</div><div class="line">		manager responsible for the Connection IO read , Death Detection</div><div class="line">	--&gt;</div><div class="line">	&lt;connectionManagerList&gt;</div><div class="line">		&lt;connectionManager name=&quot;clientConnectioneManager&quot; class=&quot;com.meidusa.amoeba.net.MultiConnectionManagerWrapper&quot;&gt;</div><div class="line">			&lt;property name=&quot;subManagerClassName&quot;&gt;com.meidusa.amoeba.net.ConnectionManager&lt;/property&gt;</div><div class="line">			&lt;!-- </div><div class="line">			  default value is avaliable Processors </div><div class="line">			&lt;property name=&quot;processors&quot;&gt;5&lt;/property&gt;</div><div class="line">			 --&gt;</div><div class="line">		&lt;/connectionManager&gt;</div><div class="line">		&lt;connectionManager name=&quot;defaultManager&quot; class=&quot;com.meidusa.amoeba.net.MultiConnectionManagerWrapper&quot;&gt;</div><div class="line">			&lt;property name=&quot;subManagerClassName&quot;&gt;com.meidusa.amoeba.net.AuthingableConnectionManager&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;!-- </div><div class="line">			  default value is avaliable Processors </div><div class="line">			&lt;property name=&quot;processors&quot;&gt;5&lt;/property&gt;</div><div class="line">			 --&gt;</div><div class="line">		&lt;/connectionManager&gt;</div><div class="line">	&lt;/connectionManagerList&gt;</div><div class="line">	</div><div class="line">		&lt;!-- default using file loader --&gt;</div><div class="line">	&lt;dbServerLoader class=&quot;com.meidusa.amoeba.context.DBServerConfigFileLoader&quot;&gt;</div><div class="line">		&lt;property name=&quot;configFile&quot;&gt;$&#123;amoeba.home&#125;/conf/dbServers.xml&lt;/property&gt;</div><div class="line">	&lt;/dbServerLoader&gt;</div><div class="line">	</div><div class="line">	&lt;queryRouter class=&quot;com.meidusa.amoeba.mysql.parser.MysqlQueryRouter&quot;&gt;</div><div class="line">		&lt;property name=&quot;ruleLoader&quot;&gt;</div><div class="line">			&lt;bean class=&quot;com.meidusa.amoeba.route.TableRuleFileLoader&quot;&gt;</div><div class="line">				&lt;property name=&quot;ruleFile&quot;&gt;$&#123;amoeba.home&#125;/conf/rule.xml&lt;/property&gt;</div><div class="line">				&lt;property name=&quot;functionFile&quot;&gt;$&#123;amoeba.home&#125;/conf/ruleFunctionMap.xml&lt;/property&gt;</div><div class="line">			&lt;/bean&gt;</div><div class="line">		&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;sqlFunctionFile&quot;&gt;$&#123;amoeba.home&#125;/conf/functionMap.xml&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;LRUMapSize&quot;&gt;1500&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;defaultPool&quot;&gt;master&lt;/property&gt;</div><div class="line">		&lt;!-- 可写数据库 --&gt;</div><div class="line">		&lt;property name=&quot;writePool&quot;&gt;master&lt;/property&gt;</div><div class="line">		&lt;!-- 可读的数据库 --&gt;</div><div class="line">		&lt;property name=&quot;readPool&quot;&gt;multiPool&lt;/property&gt;	</div><div class="line">		&lt;property name=&quot;needParse&quot;&gt;true&lt;/property&gt;</div><div class="line">	&lt;/queryRouter&gt;</div><div class="line">&lt;/amoeba:configuration&gt;</div></pre></td></tr></table></figure></p>
+<p>配置文件配置完成，主从mysql为amoeba授权</p>
+<p>分别登录主从mysql执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; grant all on newchange.* to amoeba@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;</div><div class="line">flush privileges;</div></pre></td></tr></table></figure></p>
+<p>启动amoeba<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">C:\mysql\amoeba-for-mysql-2.2.0\bin&gt;amoeba</div><div class="line">amoeba start|stop</div><div class="line">请按任意键继续. . .</div><div class="line"></div><div class="line">C:\mysql\amoeba-for-mysql-2.2.0\bin&gt;amoeba start</div><div class="line">log4j:WARN log4j config load completed from file:C:\mysql\amoeba-for-mysql-2.2.0</div><div class="line">\bin\..\conf\log4j.xml</div><div class="line">2017-01-06 14:46:42,470 INFO  context.MysqlRuntimeContext - Amoeba for Mysql cur</div><div class="line">rent versoin=5.1.45-mysql-amoeba-proxy-2.2.0</div><div class="line">log4j:WARN ip access config load completed from file:C:\mysql\amoeba-for-mysql-2</div><div class="line">.2.0\bin\../conf/access_list.conf</div><div class="line">2017-01-06 14:46:42,645 INFO  net.ServerableConnectionManager - Amoeba for Mysql</div><div class="line"> listening on /127.0.0.1:8066.</div><div class="line">2017-01-06 14:46:42,648 INFO  net.ServerableConnectionManager - Amoeba Monitor S</div><div class="line">erver listening on /127.0.0.1:49986.</div></pre></td></tr></table></figure></p>
+<h4 id="测试读写分离及负载均衡"><a href="#测试读写分离及负载均衡" class="headerlink" title="测试读写分离及负载均衡"></a>测试读写分离及负载均衡</h4><p>在登录master主库上newchange数据库中创建liu表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; create table liu (id int(10), text varchar(20));</div><div class="line">mysql&gt; insert into liu values(&apos;1&apos;, &apos;this_is_master&apos;);</div></pre></td></tr></table></figure></p>
+<p>登录slave从库停掉从库复制进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; stop slave;</div><div class="line">mysql&gt; insert into liu values(&apos;2&apos;,,&apos;this_is_slave&apos;);</div></pre></td></tr></table></figure></p>
+<p>192.168.1.15(master服务器)连接amoeba客户端<br><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/10.png" alt="链接amoeba"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">C:\mysql\mysql-5.5.47-win32\bin&gt;mysql -u amoebaroot -p -h 127.0.0.1 -P 8066</div><div class="line">Enter password: ******</div><div class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</div><div class="line">Your MySQL connection id is 1164729376</div><div class="line">Server version: 5.1.45-mysql-amoeba-proxy-2.2.0 MySQL Community Server (GPL)</div><div class="line"></div><div class="line">Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.</div><div class="line"></div><div class="line">Oracle is a registered trademark of Oracle Corporation and/or its</div><div class="line">affiliates. Other names may be trademarks of their respective</div><div class="line">owners.</div><div class="line"></div><div class="line">Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.</div><div class="line"></div><div class="line">mysql&gt; use newchange;</div><div class="line">Database changed</div></pre></td></tr></table></figure>
+<p>因为默认连的数据库是主库，第一次查询查的是主库的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select * from liu;</div><div class="line">+------+----------------+</div><div class="line">| id   | text           |</div><div class="line">+------+----------------+</div><div class="line">|  1   | this_is_master |</div><div class="line">+------+----------------+</div><div class="line">1 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>因为开启了负载均衡并采用轮询模式该查询查的是从库的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select * from liu;</div><div class="line">+------+---------------+</div><div class="line">| id   | text          |</div><div class="line">+------+---------------+</div><div class="line">|  1   | this_is_master|</div><div class="line">|  2   | this_is_slave |</div><div class="line">+------+---------------+</div><div class="line">2 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>插入两条数据，观察数据插入到哪个库中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; insert into liu values(&apos;3&apos;,&apos;this_is_master&apos;);</div><div class="line">Query OK, 1 row affected (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; insert into liu values(&apos;3&apos;,&apos;this_is_master&apos;);</div><div class="line">Query OK, 1 row affected (0.01 sec)</div></pre></td></tr></table></figure>
+<p>在主库查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select * from liu;</div><div class="line">+------+----------------+</div><div class="line">| id   | text           |</div><div class="line">+------+----------------+</div><div class="line">|  1   | this_is_master |</div><div class="line">|  3   | this_is_master |</div><div class="line">|  4   | this_is_master |</div><div class="line">+------+----------------+</div><div class="line">3 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>在从库查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select * from liu;</div><div class="line">+------+---------------+</div><div class="line">| id   |   text        |</div><div class="line">+------+---------------+</div><div class="line">|  2   | this_is_slave |</div><div class="line">+------+---------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>可见数据插入到了主库上，因为配置了主库可读写、从库为只读，且主从同步中从库的同步进程已被停用。</p>
+<p>配置参考：<a href="http://docs.hexnova.com/amoeba/single-dbserver.html#example.dbServer.abstractServer.port" target="_blank" rel="external">http://docs.hexnova.com/amoeba/single-dbserver.html#example.dbServer.abstractServer.port</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/w.png" alt="VOLC WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/z.jpg" alt="VOLC Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
+            <a href="/tags/主从/" rel="tag">#主从</a>
+          
+            <a href="/tags/读写分离/" rel="tag">#读写分离</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/05/win配置MySQL/" rel="next" title="win配置MySQL">
+                <i class="fa fa-chevron-left"></i> win配置MySQL
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/13/PHP请求/" rel="prev" title="PHP外部请求">
+                PHP外部请求 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/0.png"
+               alt="VOLC" />
+          <p class="site-author-name" itemprop="name">VOLC</p>
+          <p class="site-description motion-element" itemprop="description">volc</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/volc1605" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/volcliu" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2297464654/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/volc" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yisu.ren/index.php/" title="一俗人_PHP" target="_blank">一俗人_PHP</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.fackyou.org/" title="Delay.Hsiao_PHP" target="_blank">Delay.Hsiao_PHP</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-mysql简单配置主从参考方式"><span class="nav-number">1.</span> <span class="nav-text">1 mysql简单配置主从参考方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MySQL主从"><span class="nav-number">2.</span> <span class="nav-text">2 MySQL主从</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开启log-bin"><span class="nav-number">2.1.</span> <span class="nav-text">开启log_bin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置master-主数据库-my-ini"><span class="nav-number">2.2.</span> <span class="nav-text">配置master(主数据库)my.ini</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关联从数据库，并给予全部权限"><span class="nav-number">2.3.</span> <span class="nav-text">关联从数据库，并给予全部权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取master状态信息"><span class="nav-number">2.4.</span> <span class="nav-text">获取master状态信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置slave数据库"><span class="nav-number">2.5.</span> <span class="nav-text">配置slave数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试主从"><span class="nav-number">2.6.</span> <span class="nav-text">测试主从</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#master与slave数据恢复"><span class="nav-number">2.7.</span> <span class="nav-text">master与slave数据恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用切换到slave"><span class="nav-number">2.8.</span> <span class="nav-text">应用切换到slave</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Amoeba-阿米巴-开源框架实现mysql读写分离-负载均衡"><span class="nav-number">3.</span> <span class="nav-text">使用Amoeba(阿米巴)开源框架实现mysql读写分离(负载均衡)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">4.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置amoeba"><span class="nav-number">5.</span> <span class="nav-text">配置amoeba</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#测试读写分离及负载均衡"><span class="nav-number">5.1.</span> <span class="nav-text">测试读写分离及负载均衡</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<div class="copyright" style="margin-right: 14px">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2017</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">VOLC</span>
+  </div>
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <div class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>本站总访问量<span><span id="busuanzi_value_site_pv"></span>
+    <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>您是第</span>
+    <span id="busuanzi_value_site_uv"></span>
+    <span>个小伙伴</span>
+	<span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+	<span id="showDays"></span>
+  </div>
+ 	
+<script>
+	var birthDay = new Date('09/1/2016');
+	var now = new Date();
+	var duration = now.getTime() - birthDay.getTime();
+	var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+	document.getElementById('showDays').innerHTML='本站已运行' + total + '天';
+</script>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+﻿
+
+
+
+  
+
+    
+
+  
+
+
+
+ 
+
+      <!-- UY BEGIN -->
+
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2128530"></script>
+
+      <!-- UY END -->
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uSB1w939Pcabp8qlmznF7Spw-gzGzoHsz", "98j3mTSX2edWrjz0KNvtWaI5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+          var UPDATED_AT = '.leancloud-updated-at'; // 新增代码 定义最近变更时间的class
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+          // console.log(results);
+          for(var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');   // 获取阅读量
+            var updatedT = item.updatedAt; // 新增代码 获取最近浏览时间 需要注意的是updateT是对象并不是字符串
+            var element = document.getElementById(url);
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+            // 新增代码 转换日期格式
+            if(updatedT != null && updatedT != '') {
+              var a = [updatedT.getFullYear(), updatedT.getMonth() + 1, updatedT.getDate(), updatedT.getHours(), updatedT.getMinutes(), updatedT.getSeconds()];
+              for(var j = 0,len = a.length; j < len; j++) {
+                  if(a[j] < 10) {
+                      a[j] = '0' + a[j];
+                  }
+              }
+              var updateTime = a[0] + '-' + a[1] + '-' + a[2] + ' ' + a[3] + ':' + a[4] + ':' + a[5];
+              $(element).find(UPDATED_AT).text(updateTime);
+            }
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            var updatedAtContent = $(element).find(UPDATED_AT);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+            // 新增代码 如果首页的文章没有更新侧默认为暂无更新
+            if(updatedAtContent.text() == '') {
+              updatedAtContent.text('无人浏览');
+            }
+            // 结束
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1107 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,mysql,存储过程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1 java调用存储过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL存储过程">
+<meta property="og:url" content="http://www.volcfamily.cn/2017/01/20/MySQL存储过程/index.html">
+<meta property="og:site_name" content="VOLC">
+<meta property="og:description" content="1 java调用存储过程">
+<meta property="og:updated_time" content="2017-02-22T15:41:02.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL存储过程">
+<meta name="twitter:description" content="1 java调用存储过程">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.volcfamily.cn/2017/01/20/MySQL存储过程/"/>
+
+  <title> MySQL存储过程 | VOLC </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '85094232-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?87980c86b4555bd9921e799ec5e26fb5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">VOLC</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Volc's Blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MySQL存储过程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-20T19:13:26+08:00" content="2017-01-20">
+              2017-01-20
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2017-01-22
+                  19:13:26
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2017/01/20/MySQL存储过程/" class="leancloud_visitors" data-flag-title="MySQL存储过程">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-java调用存储过程"><a href="#1-java调用存储过程" class="headerlink" title="1 java调用存储过程"></a>1 java调用存储过程</h3><a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//	String url = "jdbc:mysql://192.168.1.1:3306/xmbg?characterEncoding=utf-8";</span></div><div class="line"><span class="comment">//	String user = "root";</span></div><div class="line"><span class="comment">//	String password = "yangqiang88";</span></div><div class="line"><span class="comment">//	Connection conn = DriverManager.getConnection(url, user, password);</span></div><div class="line">	Connection conn = dataSource.getConnection();</div><div class="line">	conn.setAutoCommit(<span class="keyword">false</span>);</div><div class="line">	CallableStatement cstmt = conn.prepareCall(<span class="string">"&#123; call test2(?) &#125;"</span>);</div><div class="line">	cstmt.registerOutParameter(<span class="number">1</span>, Types.VARCHAR);</div><div class="line">	cstmt.execute();</div><div class="line">	conn.commit();</div><div class="line">	String testPrint = cstmt.getString(<span class="number">1</span>);</div><div class="line">	System.out.println(<span class="string">"返回值：：：：：： "</span> + testPrint);</div></pre></td></tr></table></figure>
+<p>参考：<br><a href="http://blog.csdn.net/evankaka/article/details/47276339" target="_blank" rel="external">http://blog.csdn.net/evankaka/article/details/47276339</a></p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="创建表："><a href="#创建表：" class="headerlink" title="创建表："></a>创建表：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">DROP TABLE IF EXISTS `t_user`;</div><div class="line">CREATE TABLE `t_user` (</div><div class="line">  `USER_ID` int(11) NOT NULL AUTO_INCREMENT,</div><div class="line">  `USER_NAME` char(30) NOT NULL,</div><div class="line">  `USER_PASSWORD` char(10) NOT NULL,</div><div class="line">  `USER_EMAIL` char(30) NOT NULL,</div><div class="line">  PRIMARY KEY (`USER_ID`),</div><div class="line">  KEY `IDX_NAME` (`USER_NAME`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;</div><div class="line"></div><div class="line">-- ----------------------------</div><div class="line">-- Records of t_user</div><div class="line">-- ----------------------------</div><div class="line">INSERT INTO `t_user` VALUES (&apos;1&apos;, &apos;王小二&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;2&apos;, &apos;葫芦娃&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;3&apos;, &apos;红孩儿&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;4&apos;, &apos;哪儿托&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;5&apos;, &apos;丹童&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;6&apos;, &apos;清风&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;7&apos;, &apos;明月&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;8&apos;, &apos;药童&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;9&apos;, &apos;郓哥&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div><div class="line">INSERT INTO `t_user` VALUES (&apos;10&apos;, &apos;高峰&apos;, &apos;123&apos;, &apos;123@qq.com&apos;);</div></pre></td></tr></table></figure>
+<h4 id="带IN的存储过程"><a href="#带IN的存储过程" class="headerlink" title="带IN的存储过程"></a>带IN的存储过程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">CREATE  PROCEDURE  SP_SEARCH(IN p_name CHAR(20))  </div><div class="line">BEGIN  </div><div class="line">IF p_name is null or p_name=&apos;&apos; THEN  </div><div class="line">SELECT * FROM t_user;  </div><div class="line">ELSE  </div><div class="line">SELECT * FROM t_user WHERE USER_NAME LIKE p_name;  </div><div class="line">END IF;  </div><div class="line">END</div></pre></td></tr></table></figure>
+<p>调用存储过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CALL SP_SEARCH(&apos;王小二&apos;);</div></pre></td></tr></table></figure></p>
+<h3 id="带OUT的存储过程"><a href="#带OUT的存储过程" class="headerlink" title="带OUT的存储过程"></a>带OUT的存储过程</h3><p>根据传入用户名称进行查询，统计次数返回给p_int变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CREATE  PROCEDURE  SP_SEARCH2(IN p_name CHAR(20),OUT p_int INT)  </div><div class="line">BEGIN  </div><div class="line">IF p_name is null or p_name=&apos;&apos; THEN  </div><div class="line">SELECT * FROM t_user;  </div><div class="line">ELSE  </div><div class="line">SELECT * FROM t_user WHERE USER_NAME LIKE p_name;  </div><div class="line">END IF;  </div><div class="line">SELECT FOUND_ROWS() INTO p_int;  </div><div class="line">END</div></pre></td></tr></table></figure></p>
+<p>分别执行调用：<br>查询高字开头的用户信息，定义参数@p_num，用于接收返回值，然后显示返回值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CALL SP_SEARCH2(&apos;高%&apos;,@p_num);</div><div class="line">SELECT @p_num;</div></pre></td></tr></table></figure></p>
+<h4 id="带INOUT的存储过程"><a href="#带INOUT的存储过程" class="headerlink" title="带INOUT的存储过程"></a>带INOUT的存储过程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CREATE PROCEDURE sp_inout(INOUT p_num INT)  </div><div class="line">BEGIN  </div><div class="line">SET p_num=p_num*10;  </div><div class="line">END</div><div class="line"></div><div class="line">-- 调用</div><div class="line">SET @p_num=2;  </div><div class="line">call sp_inout(@p_num);  </div><div class="line">SELECT @p_num;</div></pre></td></tr></table></figure>
+<h3 id="存储过程体"><a href="#存储过程体" class="headerlink" title="存储过程体"></a>存储过程体</h3><p>1.局部变量<br>DECLARE var_name,…,… type [DEFAULT value]<br>Var_name:指定局部变量的名称<br>    Declare var1, var2, var3 INT;<br>    Declare cid int(10) [DEFAULT 0];<br>Type:用于声明局部变量的数据类型<br>default子句:用于为局部变量指定一个默认值。若没有指定，默认为null.</p>
+<p>使用说明：<br>局部变量只能在存储过程体的begin…end语句块中声明。<br>局部变量必须在存储过程体的开头处声明。<br>局部变量的作用范围仅限于声明它的begin..end语句块，其他语句块中的语句不可以使用它。<br>局部变量不同于用户变量，两者区别：局部变量声明时，在其前面没有使用@符号，并且它只能在begin..end语句块中使用；而用户变量在声明时，会在其名称前面使用@符号，同时已声明的用户变量存在于整个会话之中。</p>
+<p>2.set语句<br>使用set语句为局部变量赋值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Set var_name=expr  </div><div class="line">Set cid=910;</div></pre></td></tr></table></figure></p>
+<p>3.select … into 语句<br>Select col_name[,…] into var_name[,…] table_expr<br>Col_name:用于指定列名<br>Var_name:用于指定要赋值的变量名<br>Table_expr:表示select语句中的from字句及后面的语法部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT sum(f_sms_count) into today_count from tp_user_send_msg_log s where s.f_user_id = uid</div></pre></td></tr></table></figure></p>
+<p>说明:存储过程体中的select…into语句返回的结果集只能有一行数据。</p>
+<p>4.定义处理程序<br>是事先定义程序执行过程中可能遇到的问题。并且可以在处理程序中定义解决这些问题的办法。这种方式可以提前预测可能出现的问题，并提出解决方法。<br>DECLARE handler_type HANDLER FOR condition_value[,…] sp_statement<br>handler_type:CONTINUE | EXIT | UNDO<br>Condition_value:Sqlwarning | not found | sqlexception </p>
+<p>5.流程控制语句</p>
+<h4 id="条件判断语句"><a href="#条件判断语句" class="headerlink" title="条件判断语句"></a>条件判断语句</h4><pre><code>If语句:
+If search_condition then statement_list  
+[elseif search_condition then statement_list]…  
+[else statement_list]  
+End if 
+</code></pre><p>Search_condition参数:条件判断语句<br>Statement_list参数:不同条件的执行语句<br>多重IF的存储过程实例<br>数据准备<br>学生表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">DROP TABLE IF EXISTS `t_student`;</div><div class="line">CREATE TABLE `t_student` (</div><div class="line">  `STU_ID` int(11) NOT NULL AUTO_INCREMENT,</div><div class="line">  `STU_NAME` char(10) NOT NULL,</div><div class="line">  `STU_CLASS` int(11) NOT NULL,</div><div class="line">  `STU_SEX` char(2) NOT NULL,</div><div class="line">  `STU_AGE` int(11) NOT NULL,</div><div class="line">  PRIMARY KEY (`STU_ID`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;</div><div class="line"></div><div class="line">-- ----------------------------</div><div class="line">-- Records of t_student</div><div class="line">-- ----------------------------</div><div class="line">INSERT INTO `t_student` VALUES (&apos;1&apos;, &apos;name1&apos;, &apos;1&apos;, &apos;1&apos;, &apos;1&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;2&apos;, &apos;name2&apos;, &apos;2&apos;, &apos;2&apos;, &apos;2&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;3&apos;, &apos;name3&apos;, &apos;3&apos;, &apos;3&apos;, &apos;3&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;4&apos;, &apos;name4&apos;, &apos;4&apos;, &apos;4&apos;, &apos;4&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;5&apos;, &apos;name5&apos;, &apos;5&apos;, &apos;5&apos;, &apos;5&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;6&apos;, &apos;name6&apos;, &apos;6&apos;, &apos;6&apos;, &apos;6&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;7&apos;, &apos;name7&apos;, &apos;7&apos;, &apos;7&apos;, &apos;7&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;8&apos;, &apos;name8&apos;, &apos;8&apos;, &apos;8&apos;, &apos;8&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;9&apos;, &apos;name9&apos;, &apos;9&apos;, &apos;9&apos;, &apos;9&apos;);</div><div class="line">INSERT INTO `t_student` VALUES (&apos;10&apos;, &apos;name10&apos;, &apos;10&apos;, &apos;10&apos;, &apos;10&apos;);</div></pre></td></tr></table></figure></p>
+<p>成绩表（STU_ID是学生表是外键关系）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">DROP TABLE IF EXISTS `t_grade`;</div><div class="line">CREATE TABLE `t_grade` (</div><div class="line">  `STU_ID` int(11) NOT NULL,</div><div class="line">  `STU_SCORE` int(11) NOT NULL,</div><div class="line">  KEY `STU_ID` (`STU_ID`),</div><div class="line">  CONSTRAINT `t_grade_ibfk_1` FOREIGN KEY (`STU_ID`) REFERENCES `t_student` (`STU_ID`)</div><div class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8;</div><div class="line"></div><div class="line">-- ----------------------------</div><div class="line">-- Records of t_grade</div><div class="line">-- ----------------------------</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;1&apos;, &apos;70&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;2&apos;, &apos;80&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;3&apos;, &apos;70&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;4&apos;, &apos;80&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;5&apos;, &apos;70&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;6&apos;, &apos;78&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;7&apos;, &apos;98&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;8&apos;, &apos;78&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;9&apos;, &apos;67&apos;);</div><div class="line">INSERT INTO `t_grade` VALUES (&apos;10&apos;, &apos;75&apos;);</div></pre></td></tr></table></figure></p>
+<p>然后写一个存储过程：返回各个分数等级的人<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">CREATE  PROCEDURE SP_SCHOLARSHIP_LEVEL(IN p_level char(1))  </div><div class="line">BEGIN  </div><div class="line">IF p_level =&apos;A&apos;  THEN  </div><div class="line">SELECT * FROM t_grade WHERE STU_SCORE &gt;=90;  </div><div class="line">ELSEIF  p_level =&apos;B&apos;  THEN  </div><div class="line">SELECT * FROM t_grade WHERE STU_SCORE &lt;90 AND  STU_SCORE&gt;=80;  </div><div class="line">ELSEIF  p_level =&apos;C&apos;  THEN  </div><div class="line">SELECT * FROM t_grade WHERE STU_SCORE &lt;80 AND  STU_SCORE&gt;=70;  </div><div class="line">ELSEIF  p_level =&apos;D&apos;  THEN  </div><div class="line">SELECT * FROM t_grade WHERE STU_SCORE &lt;60;  </div><div class="line">ELSE  </div><div class="line">SELECT * FROM t_grade;  </div><div class="line">END IF;  </div><div class="line">END</div></pre></td></tr></table></figure></p>
+<p>调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CALL SP_SCHOLARSHIP_LEVEL(&apos;A&apos;);</div></pre></td></tr></table></figure></p>
+<p>Case 语句<br>表达形式1<br>Case case_value<br>When when_value then statement_list<br>[When when_value then statement_list]…<br>[else statement_list]<br>End case<br>表达形式2<br>Case<br>When search_condition then statement_list<br>End case </p>
+<p>使用范例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">CREATE  PROCEDURE SP_SCHOLARSHIP_LEVEL3(IN p_level char(1))  </div><div class="line">BEGIN  </div><div class="line">DECLARE p_num int DEFAULT  0;  </div><div class="line">CASE p_level  </div><div class="line">WHEN &apos;A&apos;  THEN  </div><div class="line">SET p_num=90;  </div><div class="line">WHEN &apos;B&apos;  THEN  </div><div class="line">SET p_num=80;  </div><div class="line">WHEN &apos;C&apos;  THEN  </div><div class="line">SET p_num=70;  </div><div class="line">WHEN &apos;D&apos;  THEN  </div><div class="line">SET p_num=60;  </div><div class="line">ELSE  </div><div class="line">SET p_num=0;  </div><div class="line">END CASE;  </div><div class="line">SELECT * FROM t_grade g, t_student s WHERE g.STU_ID=s.STU_ID AND g.STU_SCORE &gt;= p_num ;  </div><div class="line">END</div></pre></td></tr></table></figure></p>
+<p>调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CALL SP_SCHOLARSHIP_LEVEL3(&apos;d&apos;);</div></pre></td></tr></table></figure></p>
+<h4 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h4><h5 id="While语句、repeat语句和loop语句。"><a href="#While语句、repeat语句和loop语句。" class="headerlink" title="While语句、repeat语句和loop语句。"></a>While语句、repeat语句和loop语句。</h5><p>While语句：<br>[begin_label:]<br>while search_condition do<br>Statement_list<br>End while<br>[end_label]</p>
+<p>判断条件search_condition是否为真,若为真,则执行statement_list中的语句，然后再进行判断，如若仍然为真则继续循环，直至条件判断不为真时循环结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">CREATE PROCEDURE sp_cal(IN p_num INT,OUT p_result INT)  </div><div class="line">BEGIN  </div><div class="line"> SET p_result=1;  </div><div class="line"> WHILE p_num &gt; 1 DO  </div><div class="line">  SET p_result = p_num * p_result;  </div><div class="line">  SET p_num = p_num-1;  </div><div class="line"> END WHILE;  </div><div class="line">END  </div><div class="line">//调用并输出结果  </div><div class="line">CALL sp_cal(5,@result);  </div><div class="line">SELECT @result;</div></pre></td></tr></table></figure>
+<h5 id="Repeat语句语法格式"><a href="#Repeat语句语法格式" class="headerlink" title="Repeat语句语法格式"></a>Repeat语句语法格式</h5><p>[begin_label:]<br>repeat<br>Statement_list<br>Until search_condition<br>End repeat<br>[end_label]</p>
+<p>Repeat语句首先执行statement_list中的语句，然后判断条件search_condition是否为真，倘若为真，则结束循环，若不为真，继续循环。<br>Repeat先执行后判断，while先判断后执行。<br>使用范例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">CREATE PROCEDURE sp_cal2(IN p_num INT,OUT p_result INT)  </div><div class="line">BEGIN  </div><div class="line">  SET p_result=1;  </div><div class="line">  REPEAT  </div><div class="line">    SET p_result = p_num * p_result;  </div><div class="line">    SET p_num = p_num-1;  </div><div class="line">    UNTIL p_num&lt;=1  </div><div class="line">  END REPEAT;  </div><div class="line">END  </div><div class="line">//调用并输出结果  </div><div class="line">CALL sp_cal2(5,@result);  </div><div class="line">SELECT @result;</div></pre></td></tr></table></figure></p>
+<h4 id="调用存储过程"><a href="#调用存储过程" class="headerlink" title="调用存储过程"></a>调用存储过程</h4><p>Call sp_name([parameter[,…]]);<br>Sp_name被调用存储过程的名称<br>Parameter:指定调用存储过程所要使用的参数。</p>
+<h4 id="修改存储过程"><a href="#修改存储过程" class="headerlink" title="修改存储过程"></a>修改存储过程</h4><p>Alter procedure proc_name[characteristic…]<br>只能修改存储过程的特征，如果要修改存储过程的内容，可以先删除该存储过程，然后再重新创建</p>
+<h3 id="删除存储过程"><a href="#删除存储过程" class="headerlink" title="删除存储过程"></a>删除存储过程</h3><p>Drop procedure if exists sp_name; </p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>MySQL中，创建存储函数的基本形式如下：</p>
+<p>CREATE FUNCTION sp_name([func_parameter[,…]])<br>RETURNS type<br>[characteristic …] routine_body<br>Return  </p>
+<p>子句用于声明存储函数返回值的数据类型。存储过程是用户定义的一系列sql语句的集合，涉及特定表或其它对象的任务，用户可以调用存储过程，而函数通常是数据库已定义的方法，它接收参数并返回某种类型的值并且不涉及特定用户表。<br>调用存储函数<br>Select sp_name([func_parameter…])<br>Select fn_search(2);<br>删除存储函数drop<br>修改存储函数alter 修改存储函数的某些相关特征。</p>
+<h4 id="函数使用例子"><a href="#函数使用例子" class="headerlink" title="函数使用例子"></a>函数使用例子</h4><p>比较大小 ，返回大的数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CREATE FUNCTION sp_cal_max(p_num1 INT,p_num2 INT)  </div><div class="line">RETURNS INT  </div><div class="line">BEGIN  </div><div class="line">IF p_num1 &gt;= p_num2 THEN  </div><div class="line">RETURN p_num1;  </div><div class="line">ELSE  </div><div class="line">RETURN p_num2;  </div><div class="line">END IF;  </div><div class="line">END</div></pre></td></tr></table></figure></p>
+<p>报错：you <em>might</em> want to use the less safe log_bin_trust_function_creators variable<br>执行：SET GLOBAL log_bin_trust_function_creators = 1;解决问题</p>
+<p>调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SET @p_num1=2;  </div><div class="line">SET @p_num2=34;  </div><div class="line">SELECT sp_cal_max(@p_num1,@p_num2);</div></pre></td></tr></table></figure></p>
+<h4 id="存储过程和函数区别"><a href="#存储过程和函数区别" class="headerlink" title="存储过程和函数区别"></a>存储过程和函数区别</h4><p style="fond:red"><br>1）一般来说，存储过程实现的功能要复杂一点，而函数的实现的功能针对性比较强。存储过程，功能强大，可以执行包括修改表等一系列数据库操作；用户定义函数不能用于执行一组修改全局数据库状态的操作。<br>2）对于存储过程来说可以返回参数，如记录集，而函数只能返回值或者表对象。函数只能返回一个变量；而存储过程可以返回多个。存储过程的参数可以有IN,OUT,INOUT三种类型，而函数只能有IN类~~存储过程声明时不需要返回类型，而函数声明时必须描述返回类型，且函数体中必须包含一个有效的RETURN语句。<br>3）存储过程，可以使用非确定函数，不允许在用户定义函数主体中内置非确定函数。<br>4）存储过程一般是作为一个独立的部分来执行（ EXECUTE 语句执行），而函数可以作为查询语句的一个部分来调用（SELECT调用），由于函数可以返回一个表对象，因此它可以在查询语句中位于FROM关键字的后面。 SQL语句中不可用存储过程，而可以使用函数。<br>5）存储过程查寻结果和返回值作用域在一个会话中,建立新的会话不能使用另一个会话中存储过程中的数据。<br></p>
+
+<h3 id="光标（游标）"><a href="#光标（游标）" class="headerlink" title="光标（游标）"></a>光标（游标）</h3><p>查询语句可能查询出多条记录，在存储过程和函数中使用光标标来逐条读取查询结果集中的记录。光标的使用包括声明光标、打开光标、使用光标和关闭光标。光标必须声明光标、打开光标、使用光标和关闭光标。光标必须声明在处理程序之前，并且声明在变量和条件之后。</p>
+<h4 id="声明光标"><a href="#声明光标" class="headerlink" title="声明光标"></a>声明光标</h4><p>Declare cursor_name cursor forselect_statement;<br>Cursor_name:光标名称<br>Select_statement:select语句的内容<br>Declare cur_employee cursor forselect name,age from employee; </p>
+<h4 id="打开光标"><a href="#打开光标" class="headerlink" title="打开光标"></a>打开光标</h4><p>Open cursor_name<br>Open cur_employee; </p>
+<h4 id="使用光标"><a href="#使用光标" class="headerlink" title="使用光标"></a>使用光标</h4><p>Mysql中使用fetch关键字来使用光标，语法形式<br>Fetch cur_name intovar_name[,var_name…];<br>Cur_name表示光标的名称<br>Var_name表示将光标中的select语句查询出来的信息存入该参数。Var_name必须在声明光标前就定义好。<br>Fetch cur_employee intoemp_name,emp_age; </p>
+<h4 id="关闭光标"><a href="#关闭光标" class="headerlink" title="关闭光标"></a>关闭光标</h4><p>[sql] view plain copy<br>Close cursor_name;<br>Close cur_employee;<br>每个光标不再需要时都应该被关闭，使用close语句将会释放光标所使用的全部资源。在一个光标被关闭后，如果没有重新被打开，则不能被使用。对于声明过的光标，则不需要再次声明，可直接使用open语句打开。</p>
+<h4 id="使用范例"><a href="#使用范例" class="headerlink" title="使用范例"></a>使用范例</h4><p>（将表test_cur1数据复制到test_cur2）<br>创建表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE `test_cur1` (    </div><div class="line">  `id` int(11) NOT NULL auto_increment,    </div><div class="line">  `type` char(11) default NULL,    </div><div class="line">  `order1` char(11) default NULL,    </div><div class="line">  PRIMARY KEY  (`id`)    </div><div class="line">)   </div><div class="line">INSERT INTO `test_cur1` VALUES (1, &apos;145&apos;, &apos;d1&apos;);    </div><div class="line">INSERT INTO `test_cur1` VALUES (2, &apos;134&apos;, &apos;1d&apos;);    </div><div class="line">INSERT INTO `test_cur1` VALUES (3, &apos;123&apos;, &apos;1ad&apos;);    </div><div class="line">INSERT  INTO `test_cur1` VALUES (4, &apos;121&apos;, &apos;1as&apos;);  </div><div class="line">   </div><div class="line">CREATE TABLE `test_cur2` (    </div><div class="line">  `id` int(11) NOT NULL auto_increment,    </div><div class="line">  `type` char(11) default NULL,    </div><div class="line">  `order1` char(11) default NULL,    </div><div class="line">  PRIMARY KEY  (`id`)    </div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>然后写光标了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">create procedure get_cur ()  </div><div class="line">BEGIN  </div><div class="line">  DECLARE done INT DEFAULT 0;  </div><div class="line">  DECLARE ID int(11);  </div><div class="line">  DECLARE type char(11);  </div><div class="line">  DECLARE order1 char(11);  </div><div class="line">  DECLARE mycur CURSOR FOR SELECT * FROM test_cur1; -- 定义光标 </div><div class="line">  DECLARE CONTINUE HANDLER FOR SQLSTATE &apos;02000&apos; SET done = 1;  -- 当游标取到最后一个数据的下一个不存在的数据时，done会被值为1，那么就要在repeat中进行done的判断，当done不为1的时候，才执行循环</div><div class="line">  OPEN mycur; -- 打开光标</div><div class="line">  REPEAT  -- 开始循环</div><div class="line">    FETCH mycur INTO ID,type,order1; -- 去除光标内容到临时变量</div><div class="line">    IF NOT done THEN  -- 当done不为0时为false not false为true进行循环</div><div class="line">      INSERT INTO test_cur2 VALUES (ID,type,order1);</div><div class="line">    END IF;    </div><div class="line">  UNTIL done END REPEAT; -- until为false时继续进行下一循环，如果true时进行下一循环后结束</div><div class="line">  CLOSE mycur;  </div><div class="line">END</div></pre></td></tr></table></figure>
+<p>调用存储过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call get_cur();</div></pre></td></tr></table></figure></p>
+<h3 id="实用的存储过程"><a href="#实用的存储过程" class="headerlink" title="实用的存储过程"></a>实用的存储过程</h3><h3 id="分割字符串"><a href="#分割字符串" class="headerlink" title="分割字符串"></a>分割字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">drop PROCEDURE if exists procedure_split;</div><div class="line">CREATE PROCEDURE `procedure_split`(</div><div class="line">    inputstring varchar(1000),</div><div class="line">    delim char(1)</div><div class="line">)</div><div class="line">begin</div><div class="line">    declare strlen int DEFAULT length(inputstring);</div><div class="line">    declare last_index int DEFAULT 0;</div><div class="line">    declare cur_index int DEFAULT 1;</div><div class="line">    declare cur_char VARCHAR(200);</div><div class="line">    declare len int;</div><div class="line">    drop temporary table if exists splittable;</div><div class="line">    create TEMPORARY table splittable(</div><div class="line">        value VARCHAR(20)</div><div class="line">    ) ;</div><div class="line">    WHILE(cur_index&lt;=strlen) DO    </div><div class="line">    begin</div><div class="line">        if substring(inputstring from cur_index for 1)=delim or cur_index=strlen then</div><div class="line">            set len=cur_index-last_index-1;</div><div class="line">            if cur_index=strlen then</div><div class="line">               set len=len+1;</div><div class="line">            end if;</div><div class="line">            insert into splittable(`value`)values(substring(inputstring from (last_index+1) for len));</div><div class="line">            set last_index=cur_index;</div><div class="line">        end if;</div><div class="line">        set cur_index=cur_index+1;</div><div class="line">    END;</div><div class="line">    end while;</div><div class="line">end ;</div><div class="line">-- 调用：</div><div class="line">call PROCEDURE_split(&apos;中国,开源,社区&apos;,&apos;,&apos;);</div><div class="line">select * from splittable;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">drop PROCEDURE if exists result_mail_no;</div><div class="line">CREATE PROCEDURE result_mail_no(IN mailno varchar(1000),IN fStationId CHAR(10))  </div><div class="line">BEGIN</div><div class="line">call PROCEDURE_split(mailno,&apos;,&apos;);</div><div class="line">select pi.f_mail_no from tp_parcel_info pi where pi.f_parcel_status not in (&apos;0&apos;, &apos;4&apos;) AND pi.f_station_id = fStationId AND </div><div class="line">EXISTS (select 1 from splittable s WHERE s.value = pi.f_mail_no);</div><div class="line">END;</div><div class="line">-- 调用：</div><div class="line">call result_mail_no(&apos;883960354731823677,3453&apos;,&apos;1618&apos;);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/w.png" alt="VOLC WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/z.jpg" alt="VOLC Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
+            <a href="/tags/存储过程/" rel="tag">#存储过程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/18/MySQL分表/" rel="next" title="MySQL分表">
+                <i class="fa fa-chevron-left"></i> MySQL分表
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/06/Jdbc复习/" rel="prev" title="JDBC">
+                JDBC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/0.png"
+               alt="VOLC" />
+          <p class="site-author-name" itemprop="name">VOLC</p>
+          <p class="site-description motion-element" itemprop="description">volc</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/volc1605" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/volcliu" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2297464654/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/volc" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yisu.ren/index.php/" title="一俗人_PHP" target="_blank">一俗人_PHP</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.fackyou.org/" title="Delay.Hsiao_PHP" target="_blank">Delay.Hsiao_PHP</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java调用存储过程"><span class="nav-number">1.</span> <span class="nav-text">1 java调用存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表："><span class="nav-number">2.1.</span> <span class="nav-text">创建表：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带IN的存储过程"><span class="nav-number">2.2.</span> <span class="nav-text">带IN的存储过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带OUT的存储过程"><span class="nav-number">3.</span> <span class="nav-text">带OUT的存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#带INOUT的存储过程"><span class="nav-number">3.1.</span> <span class="nav-text">带INOUT的存储过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程体"><span class="nav-number">4.</span> <span class="nav-text">存储过程体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件判断语句"><span class="nav-number">4.1.</span> <span class="nav-text">条件判断语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环语句"><span class="nav-number">4.2.</span> <span class="nav-text">循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#While语句、repeat语句和loop语句。"><span class="nav-number">4.2.1.</span> <span class="nav-text">While语句、repeat语句和loop语句。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Repeat语句语法格式"><span class="nav-number">4.2.2.</span> <span class="nav-text">Repeat语句语法格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用存储过程"><span class="nav-number">4.3.</span> <span class="nav-text">调用存储过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改存储过程"><span class="nav-number">4.4.</span> <span class="nav-text">修改存储过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除存储过程"><span class="nav-number">5.</span> <span class="nav-text">删除存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">6.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数使用例子"><span class="nav-number">6.1.</span> <span class="nav-text">函数使用例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储过程和函数区别"><span class="nav-number">6.2.</span> <span class="nav-text">存储过程和函数区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#光标（游标）"><span class="nav-number">7.</span> <span class="nav-text">光标（游标）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明光标"><span class="nav-number">7.1.</span> <span class="nav-text">声明光标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开光标"><span class="nav-number">7.2.</span> <span class="nav-text">打开光标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用光标"><span class="nav-number">7.3.</span> <span class="nav-text">使用光标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭光标"><span class="nav-number">7.4.</span> <span class="nav-text">关闭光标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用范例"><span class="nav-number">7.5.</span> <span class="nav-text">使用范例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实用的存储过程"><span class="nav-number">8.</span> <span class="nav-text">实用的存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割字符串"><span class="nav-number">9.</span> <span class="nav-text">分割字符串</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<div class="copyright" style="margin-right: 14px">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2017</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">VOLC</span>
+  </div>
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <div class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>本站总访问量<span><span id="busuanzi_value_site_pv"></span>
+    <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>您是第</span>
+    <span id="busuanzi_value_site_uv"></span>
+    <span>个小伙伴</span>
+	<span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+	<span id="showDays"></span>
+  </div>
+ 	
+<script>
+	var birthDay = new Date('09/1/2016');
+	var now = new Date();
+	var duration = now.getTime() - birthDay.getTime();
+	var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+	document.getElementById('showDays').innerHTML='本站已运行' + total + '天';
+</script>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+﻿
+
+
+
+  
+
+    
+
+  
+
+
+
+ 
+
+      <!-- UY BEGIN -->
+
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2128530"></script>
+
+      <!-- UY END -->
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uSB1w939Pcabp8qlmznF7Spw-gzGzoHsz", "98j3mTSX2edWrjz0KNvtWaI5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+          var UPDATED_AT = '.leancloud-updated-at'; // 新增代码 定义最近变更时间的class
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+          // console.log(results);
+          for(var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');   // 获取阅读量
+            var updatedT = item.updatedAt; // 新增代码 获取最近浏览时间 需要注意的是updateT是对象并不是字符串
+            var element = document.getElementById(url);
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+            // 新增代码 转换日期格式
+            if(updatedT != null && updatedT != '') {
+              var a = [updatedT.getFullYear(), updatedT.getMonth() + 1, updatedT.getDate(), updatedT.getHours(), updatedT.getMinutes(), updatedT.getSeconds()];
+              for(var j = 0,len = a.length; j < len; j++) {
+                  if(a[j] < 10) {
+                      a[j] = '0' + a[j];
+                  }
+              }
+              var updateTime = a[0] + '-' + a[1] + '-' + a[2] + ' ' + a[3] + ':' + a[4] + ':' + a[5];
+              $(element).find(UPDATED_AT).text(updateTime);
+            }
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            var updatedAtContent = $(element).find(UPDATED_AT);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+            // 新增代码 如果首页的文章没有更新侧默认为暂无更新
+            if(updatedAtContent.text() == '') {
+              updatedAtContent.text('无人浏览');
+            }
+            // 结束
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
