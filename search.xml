@@ -884,7 +884,7 @@ innodb_data_home_dir=&quot;D:/&quot;。
       <title><![CDATA[Hexo之NexT主题搭建博客详细过程]]></title>
       <url>http://www.volcfamily.cn/2016/10/03/Hexo%E4%B9%8BNexT%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B/</url>
       <content type="html"><![CDATA[<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=451521699&auto=0&height=66"></iframe><a id="more"></a><br>本站是用hexo来搭建的，使用的是next主题。这里记录一下搭建的整个过程，仅供参考！有什么问题请留言通知，谢谢支持！</p>
-<h1 id="更新内容"><a href="#更新内容" class="headerlink" title="更新内容"></a>更新内容</h1><blockquote>
+<h1 id="更新内容-2017-03-24"><a href="#更新内容-2017-03-24" class="headerlink" title="更新内容 2017-03-24"></a>更新内容 2017-03-24</h1><blockquote>
 <ul>
 <li>使用友言评论功能</li>
 <li>解析域名</li>
