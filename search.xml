@@ -883,7 +883,7 @@ innodb_data_home_dir=&quot;D:/&quot;。
     <entry>
       <title><![CDATA[Hexo之NexT主题搭建博客详细过程]]></title>
       <url>http://www.volcfamily.cn/2016/10/03/Hexo%E4%B9%8BNexT%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B/</url>
-      <content type="html"><![CDATA[<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=451521699&auto=1&height=66"></iframe><br><a id="more"></a><br>本站是用hexo来搭建的，使用的是next主题。这里记录一下搭建的整个过程，仅供参考！有什么问题请留言通知，谢谢支持！</p>
+      <content type="html"><![CDATA[<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=451521699&auto=0&height=66"></iframe><a id="more"></a><br>本站是用hexo来搭建的，使用的是next主题。这里记录一下搭建的整个过程，仅供参考！有什么问题请留言通知，谢谢支持！</p>
 <h1 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h1><p>下载安装nodejs和git(for window)，声明一下我的搭建环境win764</p>
 <h2 id="1-1-nodejs安装"><a href="#1-1-nodejs安装" class="headerlink" title="1.1.nodejs安装"></a>1.1.nodejs安装</h2><p>官网下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a> 下载v<em>*</em> LTS Recommended For Most Users</p>
 <blockquote>
