@@ -80,7 +80,7 @@
 <meta name="description" content="优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL优化">
-<meta property="og:url" content="http://www.volcfamily.cn/2017/01/18/MySQL优化/index.html">
+<meta property="og:url" content="https://volc1605.github.io/2017/01/18/MySQL优化/index.html">
 <meta property="og:site_name" content="VOLC">
 <meta property="og:description" content="优化">
 <meta property="og:updated_time" content="2017-02-21T02:20:19.876Z">
@@ -107,7 +107,7 @@
 
 
 
-  <link rel="canonical" href="http://www.volcfamily.cn/2017/01/18/MySQL优化/"/>
+  <link rel="canonical" href="https://volc1605.github.io/2017/01/18/MySQL优化/"/>
 
   <title> MySQL优化 | VOLC </title>
 </head>
@@ -389,7 +389,7 @@
 
       
         <h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><a id="more"></a>
-<p>EXISTS 和 IN<br><a href="https://volc1605.github.io/2016/11/19/MySQL/" target="_blank" rel="external">用法</a></p>
+<p>EXISTS 和 IN<br><a href="https://volc1605.github.io/2016/11/19/MySQL/">用法</a></p>
 <p>参考：<a href="http://www.voidcn.com/blog/u010331428/article/p-3922833.html" target="_blank" rel="external">http://www.voidcn.com/blog/u010331428/article/p-3922833.html</a><br>MySQL实现join的原理，原来MySQL内部采用了一种叫做 nested loop join的算法。Nested Loop Join 实际上就是通过驱动表的结果集作为循环基础数据，然后一条一条的通过该结果集中的数据作为过滤条件到下一个表中查询数据，然后合并结果。如果还有第三个参与 Join，则再通过前两个表的 Join 结果集作为循环基础数据，再一次通过循环查询条件到第三个表中查询数据，如此往复，基本上MySQL采用的是最容易理解的算法来实现join。所以驱动表的选择非常重要，驱动表的数据小可以显著降低扫描的行数。<br>一般情况下参与联合查询的两张表都会一大一小，如果是join，在没有其他过滤条件的情况下MySQL会选择小表作为驱动表，但是left join一般用作大表去join小表，而left join本身的特性决定了MySQL会用大表去做驱动表，这样下来效率就差了不少。</p>
 <p>1.如果where条件中含有右表的非空条件（除开右表使用is null判断），则left join语句等同于join语句，可直接改写成join语句。<br>SELECT<em> FROM A pi LEFT JOIN B si ON si.f_station_id = pi.f_station_id; – 以左表为驱动表<br>SELECT</em> FROM A pi LEFT JOIN B si ON si.f_station_id = pi.f_station_id WHERE pi.f_station_id &gt;= ‘7231’ – 以小表为驱动表等同于join</p>
 <p>那么如何优化left join：<br>1、条件中尽量能够过滤一些行将驱动表变得小一点，用小数据表去驱动大数据表<br>2、右表的条件列一定要加上索引（主键、唯一索引、前缀索引等），最好能够使type达到range及以上（ref,eq_ref,const,system）<br>3、无视以上两点，一般不要用left join</p>

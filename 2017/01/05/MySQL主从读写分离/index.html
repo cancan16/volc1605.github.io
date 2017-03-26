@@ -80,7 +80,7 @@
 <meta name="description" content="1 mysql简单配置主从参考方式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL主从读写分离">
-<meta property="og:url" content="http://www.volcfamily.cn/2017/01/05/MySQL主从读写分离/index.html">
+<meta property="og:url" content="https://volc1605.github.io/2017/01/05/MySQL主从读写分离/index.html">
 <meta property="og:site_name" content="VOLC">
 <meta property="og:description" content="1 mysql简单配置主从参考方式">
 <meta property="og:image" content="https://volc1605.github.io/images/MySQL主从配置和读写分离/1.png">
@@ -114,7 +114,7 @@
 
 
 
-  <link rel="canonical" href="http://www.volcfamily.cn/2017/01/05/MySQL主从读写分离/"/>
+  <link rel="canonical" href="https://volc1605.github.io/2017/01/05/MySQL主从读写分离/"/>
 
   <title> MySQL主从读写分离 | VOLC </title>
 </head>
@@ -425,7 +425,7 @@
 <h3 id="2-MySQL主从"><a href="#2-MySQL主从" class="headerlink" title="2 MySQL主从"></a>2 MySQL主从</h3><p>这里介绍win环境下MySQL的主从和读写分离，同样Linux操作系统下也是这个原理  </p>
 <p>master(IP:192.168.1.15)主服务器mysql<br>slave(IP:192.168.1.200)从服务器mysql<br>需要注意的地方<br>1.数据库主从和读写分离不同服务器上mysql版本尽量保持一致，以免造成不必要的麻烦。<br>2.不同服务器都要含有需要同步的指定数据库。<br>3.数据库中已存在的表在同步成功后从数据库中也不会同步，只能同步成功配置同步以后创建的表。</p>
 <h4 id="开启log-bin"><a href="#开启log-bin" class="headerlink" title="开启log_bin"></a>开启log_bin</h4><p>安装服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\mysql\mysql-5.5.47-win32\bin&gt;mysql -install</div></pre></td></tr></table></figure></p>
-<p>参考：<a href="https://volc1605.github.io/2017/01/05/win%E9%85%8D%E7%BD%AEMySQL/" target="_blank" rel="external">win配置mysql</a><br><!-- more --><br>查看log_bin是否开启<br><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/1.png" alt="查看log_bin是否开启"><br>如果log_bin的值OFF需要在配置文件中开启<br>找到mysql安装目录下的配置文件my.ini，在[mysqld]追加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"># 开启log_bin</div><div class="line">log_bin</div></pre></td></tr></table></figure></p>
+<p>参考：<a href="https://volc1605.github.io/2017/01/05/win%E9%85%8D%E7%BD%AEMySQL/">win配置mysql</a><br><!-- more --><br>查看log_bin是否开启<br><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/1.png" alt="查看log_bin是否开启"><br>如果log_bin的值OFF需要在配置文件中开启<br>找到mysql安装目录下的配置文件my.ini，在[mysqld]追加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"># 开启log_bin</div><div class="line">log_bin</div></pre></td></tr></table></figure></p>
 <h4 id="配置master-主数据库-my-ini"><a href="#配置master-主数据库-my-ini" class="headerlink" title="配置master(主数据库)my.ini"></a>配置master(主数据库)my.ini</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">追加[mysqld]配置</div><div class="line"># =============读写===========</div><div class="line"></div><div class="line">log-bin = mysql-bin</div><div class="line"></div><div class="line">log-bin-index = mysql-bin.index</div><div class="line"></div><div class="line"># 服务Id，和slave 的server-id不一样，一般取ip最后一节</div><div class="line">server-id = 15</div><div class="line"></div><div class="line">sync_binlog = 1</div><div class="line"></div><div class="line">binlog_format = mixed</div><div class="line"></div><div class="line"># 做主从同步的数据库名</div><div class="line">binlog-do-db = test</div><div class="line"></div><div class="line">binlog-ignore-db = mysql</div><div class="line"></div><div class="line">binlog-ignore-db = performance_schema</div><div class="line"></div><div class="line">binlog-ignore-db = information_schema</div><div class="line"># =============结束===========</div></pre></td></tr></table></figure>
 <h4 id="关联从数据库，并给予全部权限"><a href="#关联从数据库，并给予全部权限" class="headerlink" title="关联从数据库，并给予全部权限"></a>关联从数据库，并给予全部权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; grant all privileges on *.* to &apos;root&apos;@&apos;192.168.1.200&apos; identified by &apos;root&apos; with grant option;</div></pre></td></tr></table></figure>
 <p><img src="https://volc1605.github.io/images/MySQL主从配置和读写分离/2.png" alt="关联从数据库并给予权限"></p>
