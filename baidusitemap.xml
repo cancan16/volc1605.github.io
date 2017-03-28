@@ -3,6 +3,26 @@
 
 
     
+  <url>
+    <loc>https://volc1605.github.io/2017/03/28/%E5%90%8C%E6%AD%A5github/</loc>
+    <lastmod>2017-03-28T13:36:30.198Z</lastmod>
+    <data>
+        <display>
+        <title>使用idea开发工具同步本地代码到github远程仓库</title>
+        <pubTime>2017-03-28T09:42:33.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="GIT" url="https://volc1605.github.io/categories/GIT/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://volc1605.github.io/2017/03/26/%E7%9B%90%E5%80%BC%E5%8A%A0%E5%AF%86/</loc>
@@ -672,9 +692,9 @@
         <title>MyBatis</title>
         <pubTime>2016-10-18T13:41:21.000Z</pubTime>
         
-        <tag>mybatis</tag>
-         
         <tag>mysql</tag>
+         
+        <tag>mybatis</tag>
          
          
            
