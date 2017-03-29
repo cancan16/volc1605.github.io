@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/03/29/js%E4%B8%AD%E9%80%BB%E8%BE%91%E6%88%96%E7%94%A8%E6%B3%95/</loc>
+    <lastmod>2017-03-29T15:56:31.047Z</lastmod>
+    <data>
+        <display>
+        <title>js中逻辑或用法</title>
+        <pubTime>2017-03-29T15:30:33.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+         
+           
+             
+              <breadCrumb title="JA" url="https://volc1605.github.io/categories/JA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2017/03/28/%E5%90%8C%E6%AD%A5github/</loc>
     <lastmod>2017-03-28T14:43:26.099Z</lastmod>
     <data>
@@ -692,9 +712,9 @@
         <title>MyBatis</title>
         <pubTime>2016-10-18T13:41:21.000Z</pubTime>
         
-        <tag>mysql</tag>
-         
         <tag>mybatis</tag>
+         
+        <tag>mysql</tag>
          
          
            

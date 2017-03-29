@@ -4,6 +4,15 @@
   
     
     <entry>
+      <title><![CDATA[js中逻辑或用法]]></title>
+      <url>https://volc1605.github.io/2017/03/29/js%E4%B8%AD%E9%80%BB%E8%BE%91%E6%88%96%E7%94%A8%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h3 id="1-js中-的用法"><a href="#1-js中-的用法" class="headerlink" title="1 js中||的用法"></a>1 js中||的用法</h3><a id="more"></a>
+<p>js中||运算符的含义：<br>例如a || b<br>系统先判断A表达式的布尔值，是真是假。如果为真，直接返回a对象。如果为假，直接返回b对象(并不只是b的值，还有类型)。<br>所以，var a = a || {}这行代码中如果a为false则直接返回null对象{}赋值给a。<br>这样写，虽然看着比较复杂点，但是效率高，特别是判断一些变量，属性或者是传参是否存在，如果存在就直接用，不存在，就赋予一个空变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        test(<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a</span>) </span>&#123; <span class="comment">// 如果a为1，a的类型b值为number，如果a为0，a的类型b值为object</span></div><div class="line">        a = a || &#123;&#125;; <span class="comment">// 如果a为</span></div><div class="line">        <span class="keyword">var</span> b = <span class="keyword">typeof</span> a;</div><div class="line">        alert(b);</div><div class="line">        <span class="keyword">if</span> (a === <span class="string">'1'</span>) &#123;</div><div class="line">            alert(a);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<p>作者：李文龙<br>链接：<a href="https://www.zhihu.com/question/22914542/answer/23070403" target="_blank" rel="external">https://www.zhihu.com/question/22914542/answer/23070403</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[使用idea开发工具同步本地代码到github远程仓库]]></title>
       <url>https://volc1605.github.io/2017/03/28/%E5%90%8C%E6%AD%A5github/</url>
       <content type="html"><![CDATA[<p><img src="http://p1.pstatp.com/large/19420003a59e4ef41c50" alt="taiji"><br><a id="more"></a></p>
