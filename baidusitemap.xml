@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/01/05/win%E9%85%8D%E7%BD%AEMySQL/</loc>
+    <lastmod>2017-03-31T12:06:54.986Z</lastmod>
+    <data>
+        <display>
+        <title>win配置MySQL</title>
+        <pubTime>2017-01-05T04:07:09.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2016/11/24/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2017-03-31T05:08:22.110Z</lastmod>
     <data>
@@ -611,26 +631,6 @@
         <display>
         <title>关于mysql关键字between and，>=<，in，or性能及优化</title>
         <pubTime>2016-12-22T05:37:32.000Z</pubTime>
-        
-        <tag>mysql</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2017/01/05/win%E9%85%8D%E7%BD%AEMySQL/</loc>
-    <lastmod>2017-02-21T02:21:12.098Z</lastmod>
-    <data>
-        <display>
-        <title>win配置MySQL</title>
-        <pubTime>2017-01-05T04:07:09.000Z</pubTime>
         
         <tag>mysql</tag>
          
