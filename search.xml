@@ -439,8 +439,8 @@ VARCHAR(M)定义的列的长度为可变长字符串
     <entry>
       <title><![CDATA[win配置MySQL]]></title>
       <url>https://volc1605.github.io/2017/01/05/win%E9%85%8D%E7%BD%AEMySQL/</url>
-      <content type="html"><![CDATA[<h4 id="1-遇到的错误"><a href="#1-遇到的错误" class="headerlink" title="1 遇到的错误"></a>1 遇到的错误</h4><a id="more"></a>
-<h5 id="1-1-mysql服务启动不了"><a href="#1-1-mysql服务启动不了" class="headerlink" title="1.1 mysql服务启动不了"></a>1.1 mysql服务启动不了</h5><p>查看D:\mysql\3381\logs\mysql.err.log错误日志文件</p>
+      <content type="html"><![CDATA[<h3 id="1-遇到的错误"><a href="#1-遇到的错误" class="headerlink" title="1 遇到的错误"></a>1 遇到的错误</h3><a id="more"></a>
+<h4 id="1-1-mysql服务启动不了"><a href="#1-1-mysql服务启动不了" class="headerlink" title="1.1 mysql服务启动不了"></a>1.1 mysql服务启动不了</h4><p>查看D:\mysql\3381\logs\mysql.err.log错误日志文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2016-02-03 10:19:54 6448 [ERROR] InnoDB: Attempted to open a previously opened tablespace. Previous tablespace mysql/innodb_table_stats uses space ID: 1 at filepath: .\mysql\innodb_table_stats.ibd. Cannot open tablespace scrapers/openpasts_records which uses space ID: 1 at filepath: .\scrapers\openpasts_records.ibd</div></pre></td></tr></table></figure>
 <p>问题出现原因是，由于移动其他盘的空间扩充到系统盘，系统盘扩充不会受到影响，而其他盘的文件索引改变了导致问题出现。</p>
 <p>解决方法：<br>1 停止mysql服务<br>2 备份数据库，删掉出问题的数据库<br>3 删掉D:\mysql\3381\data\data文件夹下ibdata1及log文件,删掉D:\mysql\3381\logs中的日志文件<br>4 重启mysqls服务，导入新库</p>
