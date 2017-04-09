@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/04/09/spring%E6%95%B4%E5%90%88quartz/</loc>
+    <lastmod>2017-04-09T09:02:26.553Z</lastmod>
+    <data>
+        <display>
+        <title>spring整合quartz</title>
+        <pubTime>2017-04-09T04:29:23.000Z</pubTime>
+        
+        <tag>quartz</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2017/04/08/%E6%94%B6%E5%8F%91%E9%82%AE%E4%BB%B6/</loc>
     <lastmod>2017-04-08T14:50:31.972Z</lastmod>
     <data>
@@ -819,9 +839,9 @@
         <title>JDBC</title>
         <pubTime>2017-02-06T01:18:52.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>jdbc</tag>
+         
+        <tag>java</tag>
          
          
            

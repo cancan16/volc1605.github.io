@@ -303,6 +303,179 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/09/spring整合quartz/" itemprop="url">
+                  spring整合quartz
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-09T12:29:23+08:00" content="2017-04-09">
+              2017-04-09
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2017-04-09
+                  12:29:23
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2017/04/09/spring整合quartz/" class="leancloud_visitors" data-flag-title="spring整合quartz">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+                  |
+                  <span class="post-meta-item-text">最近 </span>
+                  <span class="leancloud-updated-at"></span>
+                  </span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-quartz使用"><a href="#1-quartz使用" class="headerlink" title="1 quartz使用"></a>1 quartz使用</h3><p>quartz核心接口</p>
+<blockquote>
+<ul>
+<li>Schecduler  核心调度器</li>
+<li>Job         任务</li>
+<li>JobDetail   任务描述</li>
+<li>Trigger     触发器</li>
+</ul>
+</blockquote>
+<p>quratz任务的注册(蓝线)和执行(红线)</p>
+<p><img src="http://volcfamily.cn/images/spring整合quratz/quratz.png" alt="quartz"></p>
+<p>Tigger</p>
+<blockquote>
+<ul>
+<li>SimpleTrigger 简单的触发，指定时间</li>
+<li>CronTrigger 表达式触发,处理复杂时间执行，类似日历</li>
+</ul>
+</blockquote>
+<h3 id="2-简单使用demo"><a href="#2-简单使用demo" class="headerlink" title="2 简单使用demo"></a>2 简单使用demo</h3><p>定义job<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"><span class="keyword">import</span> org.slf4j.Logger;</div><div class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</div><div class="line"><span class="keyword">import</span> org.quartz.Job;</div><div class="line"><span class="keyword">import</span> org.quartz.JobExecutionContext;</div><div class="line"><span class="keyword">import</span> org.quartz.JobExecutionException;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * &lt;p&gt;</div><div class="line"> * This is just a simple job that says "Hello" to the world.</div><div class="line"> * &lt;/p&gt;</div><div class="line"> * </div><div class="line"> * <span class="doctag">@author</span> Bill Kratzer</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloJob</span> <span class="keyword">implements</span> <span class="title">Job</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger _log = LoggerFactory.getLogger(HelloJob.class);</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * &lt;p&gt;</div><div class="line">     * Empty constructor for job initilization</div><div class="line">     * &lt;/p&gt;</div><div class="line">     * &lt;p&gt;</div><div class="line">     * Quartz requires a public empty constructor so that the</div><div class="line">     * scheduler can instantiate the class whenever it needs.</div><div class="line">     * &lt;/p&gt;</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HelloJob</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * &lt;p&gt;</div><div class="line">     * Called by the &lt;code&gt;&#123;<span class="doctag">@link</span> org.quartz.Scheduler&#125;&lt;/code&gt; when a</div><div class="line">     * &lt;code&gt;&#123;<span class="doctag">@link</span> org.quartz.Trigger&#125;&lt;/code&gt; fires that is associated with</div><div class="line">     * the &lt;code&gt;Job&lt;/code&gt;.</div><div class="line">     * &lt;/p&gt;</div><div class="line">     * </div><div class="line">     * <span class="doctag">@throws</span> JobExecutionException</div><div class="line">     *             if there is an exception while executing the job.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext context)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">// Say Hello to the World and display the date/time</span></div><div class="line">	_log.info(<span class="string">"Hello World! - "</span> + <span class="keyword">new</span> Date());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>简单注册和触发demo<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.quartz.DateBuilder.evenMinuteDate;</div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.quartz.JobBuilder.newJob;</div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.quartz.TriggerBuilder.newTrigger;</div><div class="line"><span class="keyword">import</span> org.quartz.JobDetail;</div><div class="line"><span class="keyword">import</span> org.quartz.Scheduler;</div><div class="line"><span class="keyword">import</span> org.quartz.SchedulerFactory;</div><div class="line"><span class="keyword">import</span> org.quartz.Trigger;</div><div class="line"><span class="keyword">import</span> org.quartz.impl.StdSchedulerFactory;</div><div class="line"><span class="keyword">import</span> org.slf4j.Logger;</div><div class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * This Example will demonstrate how to start and shutdown the Quartz scheduler and how to schedule</div><div class="line"> * a job to run in Quartz.</div><div class="line"> * </div><div class="line"> * <span class="doctag">@author</span> Bill Kratzer</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleExample</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">	Logger log = LoggerFactory.getLogger(SimpleExample.class);</div><div class="line"></div><div class="line">	log.info(<span class="string">"------- Initializing ----------------------"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 定义调度器</span></div><div class="line">	SchedulerFactory sf = <span class="keyword">new</span> StdSchedulerFactory();</div><div class="line">	Scheduler sched = sf.getScheduler();</div><div class="line"></div><div class="line">	log.info(<span class="string">"------- Initialization Complete -----------"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 获取当前时间的下一分钟</span></div><div class="line">	Date runTime = evenMinuteDate(<span class="keyword">new</span> Date());</div><div class="line"></div><div class="line">	log.info(<span class="string">"------- Scheduling Job  -------------------"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 定义job,要执行的HelloJob,组曾jobdetail</span></div><div class="line">	<span class="comment">// 在quartz中，有组的概念，组+job名称 唯一的</span></div><div class="line">	JobDetail job = newJob(HelloJob.class).withIdentity(<span class="string">"job1"</span>, <span class="string">"group1"</span>).build();</div><div class="line"></div><div class="line">	<span class="comment">// 定义触发器，在下一分钟启动</span></div><div class="line">	Trigger trigger = newTrigger().withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>).startAt(runTime).build();</div><div class="line"></div><div class="line">	<span class="comment">// 将job注册到调度器</span></div><div class="line">	sched.scheduleJob(job, trigger);</div><div class="line">	log.info(job.getKey() + <span class="string">" will run at: "</span> + runTime);</div><div class="line"></div><div class="line">	<span class="comment">// 启动调度器</span></div><div class="line">	sched.start();</div><div class="line"></div><div class="line">	log.info(<span class="string">"------- Started Scheduler -----------------"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 等待65秒</span></div><div class="line">	log.info(<span class="string">"------- Waiting 65 seconds... -------------"</span>);</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">	    <span class="comment">// wait 65 seconds to show job</span></div><div class="line">	    Thread.sleep(<span class="number">65L</span> * <span class="number">1000L</span>);</div><div class="line">	    <span class="comment">// executing...</span></div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	    <span class="comment">//</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// 关闭调度器</span></div><div class="line">	log.info(<span class="string">"------- Shutting Down ---------------------"</span>);</div><div class="line">	sched.shutdown(<span class="keyword">true</span>);</div><div class="line">	log.info(<span class="string">"------- Shutdown Complete -----------------"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line"></div><div class="line">	SimpleExample example = <span class="keyword">new</span> SimpleExample();</div><div class="line">	example.run();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>表达式注册和触发demo<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.quartz.CronScheduleBuilder.cronSchedule;</div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.quartz.DateBuilder.evenMinuteDate;</div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.quartz.JobBuilder.newJob;</div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.quartz.TriggerBuilder.newTrigger;</div><div class="line"><span class="keyword">import</span> org.quartz.JobDetail;</div><div class="line"><span class="keyword">import</span> org.quartz.Scheduler;</div><div class="line"><span class="keyword">import</span> org.quartz.SchedulerFactory;</div><div class="line"><span class="keyword">import</span> org.quartz.Trigger;</div><div class="line"><span class="keyword">import</span> org.quartz.impl.StdSchedulerFactory;</div><div class="line"><span class="keyword">import</span> org.slf4j.Logger;</div><div class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * This Example will demonstrate how to start and shutdown the Quartz scheduler and how to schedule</div><div class="line"> * a job to run in Quartz.</div><div class="line"> * </div><div class="line"> * <span class="doctag">@author</span> Bill Kratzer</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleCronExample</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">	Logger log = LoggerFactory.getLogger(SimpleCronExample.class);</div><div class="line"></div><div class="line">	log.info(<span class="string">"------- Initializing ----------------------"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 定义调度器</span></div><div class="line">	SchedulerFactory sf = <span class="keyword">new</span> StdSchedulerFactory();</div><div class="line">	Scheduler sched = sf.getScheduler();</div><div class="line"></div><div class="line">	log.info(<span class="string">"------- Initialization Complete -----------"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 获取当前时间的下一分钟</span></div><div class="line">	Date runTime = evenMinuteDate(<span class="keyword">new</span> Date());</div><div class="line"></div><div class="line">	log.info(<span class="string">"------- Scheduling Job  -------------------"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 定义job</span></div><div class="line">	JobDetail job = newJob(HelloJob.class).withIdentity(<span class="string">"job1"</span>, <span class="string">"group1"</span>).build();</div><div class="line"></div><div class="line">	<span class="comment">// 定义触发器，每2秒执行一次</span></div><div class="line">	Trigger trigger = newTrigger().withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>).withSchedule(cronSchedule(<span class="string">"0 0/1 * * * ?"</span>)).build();</div><div class="line"></div><div class="line">	<span class="comment">// 将job注册到调度器</span></div><div class="line">	sched.scheduleJob(job, trigger);</div><div class="line">	log.info(job.getKey() + <span class="string">" will run at: "</span> + runTime);</div><div class="line"></div><div class="line">	<span class="comment">// 启动调度器</span></div><div class="line">	sched.start();</div><div class="line"></div><div class="line">	log.info(<span class="string">"------- Started Scheduler -----------------"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 等待1分钟</span></div><div class="line">	log.info(<span class="string">"------- Waiting 60 seconds... -------------"</span>);</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">	    Thread.sleep(<span class="number">60L</span> * <span class="number">1000L</span>);</div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	    <span class="comment">//</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// 关闭调度器</span></div><div class="line">	log.info(<span class="string">"------- Shutting Down ---------------------"</span>);</div><div class="line">	sched.shutdown(<span class="keyword">true</span>);</div><div class="line">	log.info(<span class="string">"------- Shutdown Complete -----------------"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line"></div><div class="line">	SimpleCronExample example = <span class="keyword">new</span> SimpleCronExample();</div><div class="line">	example.run();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="3-spring整合quartz"><a href="#3-spring整合quartz" class="headerlink" title="3 spring整合quartz"></a>3 spring整合quartz</h3><h4 id="3-1-导入依赖"><a href="#3-1-导入依赖" class="headerlink" title="3.1 导入依赖"></a>3.1 导入依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.quartz-scheduler&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;quartz&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;2.2.1&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<h4 id="3-2-继承抽象类QuartzJobBean实现其中的executeInternal方法"><a href="#3-2-继承抽象类QuartzJobBean实现其中的executeInternal方法" class="headerlink" title="3.2 继承抽象类QuartzJobBean实现其中的executeInternal方法"></a>3.2 继承抽象类QuartzJobBean实现其中的executeInternal方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> org.quartz.JobExecutionContext;</div><div class="line"><span class="keyword">import</span> org.quartz.JobExecutionException;</div><div class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</div><div class="line"><span class="keyword">import</span> org.springframework.scheduling.quartz.QuartzJobBean;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * </div><div class="line"> * </div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJob</span> <span class="keyword">extends</span> <span class="title">QuartzJobBean</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">executeInternal</span><span class="params">(JobExecutionContext context)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</div><div class="line">	System.out.println(<span class="string">"myJob 执行了............."</span> + context.getTrigger().getKey().getName());</div><div class="line">	ApplicationContext applicationContext = (ApplicationContext) context.getJobDetail().getJobDataMap().get(<span class="string">"applicationContext"</span>); <span class="comment">// 配置中设置applicationContext</span></div><div class="line">	System.out.println(<span class="string">"获取到的Spring容器是： "</span> + applicationContext);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-3-加载scheduler配置文件"><a href="#3-3-加载scheduler配置文件" class="headerlink" title="3.3 加载scheduler配置文件"></a>3.3 加载scheduler配置文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"classpath:applicationContext-scheduler.xml"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="3-3-1-applicationContext-scheduler-xml配置文件"><a href="#3-3-1-applicationContext-scheduler-xml配置文件" class="headerlink" title="3.3.1 applicationContext-scheduler.xml配置文件"></a>3.3.1 applicationContext-scheduler.xml配置文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 定义任务bean --&gt;</div><div class="line">	&lt;bean name=&quot;myJobDetail&quot; class=&quot;org.springframework.scheduling.quartz.JobDetailFactoryBean&quot;&gt;</div><div class="line">		&lt;!-- 指定具体的job类 --&gt;</div><div class="line">		&lt;property name=&quot;jobClass&quot; value=&quot;cn.test.quartz.MyJob&quot; /&gt;</div><div class="line">		&lt;!-- 指定job的名称 --&gt;</div><div class="line">		&lt;property name=&quot;name&quot; value=&quot;myJob&quot; /&gt;</div><div class="line">		&lt;!-- 指定job的分组 --&gt;</div><div class="line">		&lt;property name=&quot;group&quot; value=&quot;jobs&quot; /&gt;</div><div class="line">		&lt;!-- 必须设置为true，如果为false，当没有活动的触发器与之关联时会在调度器中删除该任务 --&gt;</div><div class="line">		&lt;property name=&quot;durability&quot; value=&quot;true&quot; /&gt;</div><div class="line">		&lt;!-- 指定spring容器的key，如果不设定在job中的jobmap中是获取不到spring容器的 --&gt;</div><div class="line">		&lt;property name=&quot;applicationContextJobDataKey&quot; value=&quot;applicationContext&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line"></div><div class="line">	&lt;!-- 定义触发器 --&gt;</div><div class="line">	&lt;bean id=&quot;cronTrigger&quot; class=&quot;org.springframework.scheduling.quartz.CronTriggerFactoryBean&quot;&gt;</div><div class="line">		&lt;property name=&quot;jobDetail&quot; ref=&quot;myJobDetail&quot; /&gt;</div><div class="line">		&lt;!-- 每一分钟执行一次 --&gt;</div><div class="line">		&lt;property name=&quot;cronExpression&quot; value=&quot;0/5 * * * * ?&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line"></div><div class="line">	&lt;!-- 定义触发器 --&gt;</div><div class="line">	&lt;!-- 演示：一个job可以有多个trigger； --&gt;</div><div class="line">	&lt;!-- &lt;bean id=&quot;cronTrigger2&quot; class=&quot;org.springframework.scheduling.quartz.CronTriggerFactoryBean&quot;&gt; &lt;property name=&quot;jobDetail&quot; ref=&quot;myJobDetail&quot; /&gt; 每一分钟执行一次 &lt;property name=&quot;cronExpression&quot; value=&quot;0 */1 </div><div class="line">		* * * ?&quot; /&gt; &lt;/bean&gt; --&gt;</div><div class="line">	&lt;!-- 定义调度器 --&gt;</div><div class="line">	&lt;bean class=&quot;org.springframework.scheduling.quartz.SchedulerFactoryBean&quot;&gt;</div><div class="line">		&lt;property name=&quot;triggers&quot;&gt;</div><div class="line">			&lt;list&gt;</div><div class="line">				&lt;ref bean=&quot;cronTrigger&quot; /&gt;</div><div class="line">				&lt;ref bean=&quot;cronTrigger2&quot; /&gt;</div><div class="line">			&lt;/list&gt;</div><div class="line">		&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="4-quratz-cron表达式"><a href="#4-quratz-cron表达式" class="headerlink" title="4 quratz cron表达式"></a>4 quratz cron表达式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">1.	CronTrigger</div><div class="line">CronTriggers往往比SimpleTrigger更有用，如果您需要基于日历的概念，而非SimpleTrigger完全指定的时间间隔，复发的发射工作的时间表。</div><div class="line">CronTrigger，你可以指定触发的时间表如“每星期五中午”，或“每个工作日9:30时”，甚至“每5分钟一班9:00和10:00逢星期一上午，星期三星期五“。</div><div class="line">即便如此，SimpleTrigger一样，CronTrigger拥有的startTime指定的时间表时生效，指定的时间表时，应停止（可选）结束时间。</div><div class="line">2.	Cron Expressions</div><div class="line">cron的表达式被用来配置CronTrigger实例。 cron的表达式是字符串，实际上是由七子表达式，描述个别细节的时间表。这些子表达式是分开的空白，代表：</div><div class="line">1.	1.        Seconds</div><div class="line">2.	2.        Minutes</div><div class="line">3.	3.        Hours</div><div class="line">4.	4.        Day-of-Month</div><div class="line">5.	5.        Month</div><div class="line">6.	6.        Day-of-Week</div><div class="line">7.	7.        Year (可选字段)</div><div class="line">例  &quot;0 0 12 ? * WED&quot; 在每星期三下午12:00 执行,</div><div class="line">个别子表达式可以包含范围, 例如，在前面的例子里(&quot;WED&quot;)可以替换成 &quot;MON-FRI&quot;, &quot;MON, WED, FRI&quot;甚至&quot;MON-WED,SAT&quot;.</div><div class="line">“*” 代表整个时间段.</div><div class="line">每一个字段都有一套可以指定有效值，如</div><div class="line">Seconds (秒)         ：可以用数字0－59 表示，</div><div class="line">Minutes(分)          ：可以用数字0－59 表示，</div><div class="line">Hours(时)             ：可以用数字0-23表示,</div><div class="line">Day-of-Month(天) ：可以用数字1-31 中的任一一个值，但要注意一些特别的月份</div><div class="line">Month(月)            ：可以用0-11 或用字符串  “JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV and DEC” 表示</div><div class="line">Day-of-Week(每周)：可以用数字1-7表示（1 ＝ 星期日）或用字符口串“SUN, MON, TUE, WED, THU, FRI and SAT”表示</div><div class="line">“/”：为特别单位，表示为“每”如“0/15”表示每隔15分钟执行一次,“0”表示为从“0”分开始, “3/20”表示表示每隔20分钟执行一次，“3”表示从第3分钟开始执行</div><div class="line">“?”：表示每月的某一天，或第周的某一天</div><div class="line">“L”：用于每月，或每周，表示为每月的最后一天，或每个月的最后星期几如“6L”表示“每月的最后一个星期五”</div><div class="line">“W”：表示为最近工作日，如“15W”放在每月（day-of-month）字段上表示为“到本月15日最近的工作日”</div><div class="line">““#”：是用来指定“的”每月第n个工作日,例 在每周（day-of-week）这个字段中内容为&quot;6#3&quot; or &quot;FRI#3&quot; 则表示“每月第三个星期五”</div><div class="line"> </div><div class="line">1）Cron表达式的格式：秒 分 时 日 月 周 年(可选)。</div><div class="line">               字段名                 允许的值                        允许的特殊字符  </div><div class="line">               秒                         0-59                               , - * /  </div><div class="line">               分                         0-59                               , - * /  </div><div class="line">               小时                     0-23                               , - * /  </div><div class="line">               日                         1-31                               , - * ? / L W C  </div><div class="line">               月                         1-12 or JAN-DEC         , - * /  </div><div class="line">               周几                     1-7 or SUN-SAT           , - * ? / L C #  </div><div class="line">               年 (可选字段)     empty, 1970-2099      , - * /</div><div class="line"> </div><div class="line">               “?”字符：表示不确定的值</div><div class="line">               “,”字符：指定数个值</div><div class="line">               “-”字符：指定一个值的范围</div><div class="line">               “/”字符：指定一个值的增加幅度。n/m表示从n开始，每次增加m</div><div class="line">               “L”字符：用在日表示一个月中的最后一天，用在周表示该月最后一个星期X</div><div class="line">               “W”字符：指定离给定日期最近的工作日(周一到周五)</div><div class="line">               “#”字符：表示该月第几个周X。6#3表示该月第3个周五</div><div class="line"> </div><div class="line"> </div><div class="line">         2）Cron表达式范例：</div><div class="line">                 每隔5秒执行一次：*/5 * * * * ?</div><div class="line">                 每隔1分钟执行一次：0 */1 * * * ?</div><div class="line">                 每天23点执行一次：0 0 23 * * ?</div><div class="line">                 每天凌晨1点执行一次：0 0 1 * * ?</div><div class="line">                 每月1号凌晨1点执行一次：0 0 1 1 * ?</div><div class="line">                 每月最后一天23点执行一次：0 0 23 L * ?</div><div class="line">                 每周星期天凌晨1点实行一次：0 0 1 ? * L</div><div class="line">                 在26分、29分、33分执行一次：0 26,29,33 * * * ?</div><div class="line">                 每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ?</div></pre></td></tr></table></figure>
+<p>生成cron表达式工具:<br><a href="http://pan.baidu.com/s/1pKZKQWb" target="_blank" rel="external">CronExpBuilder-1.0(触发器表达式生成器).jar</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/08/收发邮件/" itemprop="url">
                   收发邮件
                 </a>
@@ -1614,154 +1787,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/05/tomcat集群/" itemprop="url">
-                  tomcat集群
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-05T18:51:10+08:00" content="2017-03-05">
-              2017-03-05
-            </time>
-          </span>
-
-
-
-
-
-              <span>
-                  |
-                <span>更新于</span>
-                <time>
-                  2017-03-05
-                  18:51:10
-                </time>
-              </span>
-
-
-
-
-
-
-
-          
-            <span class="post-category" >
-              |
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tomcat/" itemprop="url" rel="index">
-                    <span itemprop="name">tomcat</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-            
-               <span id="/2017/03/05/tomcat集群/" class="leancloud_visitors" data-flag-title="tomcat集群">
-                 |
-                 <span class="post-meta-item-icon">
-                   <i class="fa fa-eye"></i>
-                 </span>
-                 <span class="post-meta-item-text">阅读量 </span>
-                 <span class="leancloud-visitors-count"></span>
-                
-                  |
-                  <span class="post-meta-item-text">最近 </span>
-                  <span class="leancloud-updated-at"></span>
-                  </span>
-                
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="1-tomcat集群"><a href="#1-tomcat集群" class="headerlink" title="1 tomcat集群"></a>1 tomcat集群</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/05/tomcat集群/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1807,7 +1832,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1824,7 +1849,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
