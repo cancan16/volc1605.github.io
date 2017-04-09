@@ -77,71 +77,17 @@
 
 
 
-<meta name="description" content="1 quartz使用quartz核心接口
-
-
-Schecduler  核心调度器
-Job         任务
-JobDetail   任务描述
-Trigger     触发器
-
-
-quratz任务的注册(蓝线)和执行(红线)
-
-Tigger
-
-
-SimpleTrigger 简单的触发，指定时间
-CronTrigger 表达式触发,处理复杂时间执行，类似日历
-
-
-2 简单使用demo定义job12">
+<meta name="description" content="1 quartz使用&amp;emsp;&amp;emsp;Quartz是一个Java下作业控制的开源框架。Quartz用来创建或简单或复杂的调度时间表，执行Java下任意数量的作业。版本1.0发布于2002年9月13日，当前版本2.2.1发布于2013年9月24日。可以通过CronTrigger定义Quartz的调度时间表（例如0 0 12 ? * WED表示“每周三上午12：00”）。此外，时间表也可以通过S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring整合quartz">
 <meta property="og:url" content="https://volc1605.github.io/2017/04/09/spring整合quartz/index.html">
 <meta property="og:site_name" content="VOLC">
-<meta property="og:description" content="1 quartz使用quartz核心接口
-
-
-Schecduler  核心调度器
-Job         任务
-JobDetail   任务描述
-Trigger     触发器
-
-
-quratz任务的注册(蓝线)和执行(红线)
-
-Tigger
-
-
-SimpleTrigger 简单的触发，指定时间
-CronTrigger 表达式触发,处理复杂时间执行，类似日历
-
-
-2 简单使用demo定义job12">
+<meta property="og:description" content="1 quartz使用&amp;emsp;&amp;emsp;Quartz是一个Java下作业控制的开源框架。Quartz用来创建或简单或复杂的调度时间表，执行Java下任意数量的作业。版本1.0发布于2002年9月13日，当前版本2.2.1发布于2013年9月24日。可以通过CronTrigger定义Quartz的调度时间表（例如0 0 12 ? * WED表示“每周三上午12：00”）。此外，时间表也可以通过S">
 <meta property="og:image" content="https://volcfamily.cn/images/spring整合quratz/quratz.PNG">
-<meta property="og:updated_time" content="2017-04-09T09:34:57.098Z">
+<meta property="og:updated_time" content="2017-04-09T10:15:49.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring整合quartz">
-<meta name="twitter:description" content="1 quartz使用quartz核心接口
-
-
-Schecduler  核心调度器
-Job         任务
-JobDetail   任务描述
-Trigger     触发器
-
-
-quratz任务的注册(蓝线)和执行(红线)
-
-Tigger
-
-
-SimpleTrigger 简单的触发，指定时间
-CronTrigger 表达式触发,处理复杂时间执行，类似日历
-
-
-2 简单使用demo定义job12">
+<meta name="twitter:description" content="1 quartz使用&amp;emsp;&amp;emsp;Quartz是一个Java下作业控制的开源框架。Quartz用来创建或简单或复杂的调度时间表，执行Java下任意数量的作业。版本1.0发布于2002年9月13日，当前版本2.2.1发布于2013年9月24日。可以通过CronTrigger定义Quartz的调度时间表（例如0 0 12 ? * WED表示“每周三上午12：00”）。此外，时间表也可以通过S">
 <meta name="twitter:image" content="https://volcfamily.cn/images/spring整合quratz/quratz.PNG">
 
 
@@ -444,7 +390,8 @@ CronTrigger 表达式触发,处理复杂时间执行，类似日历
       
 
       
-        <h3 id="1-quartz使用"><a href="#1-quartz使用" class="headerlink" title="1 quartz使用"></a>1 quartz使用</h3><p>quartz核心接口</p>
+        <h3 id="1-quartz使用"><a href="#1-quartz使用" class="headerlink" title="1 quartz使用"></a>1 quartz使用</h3><p>&emsp;&emsp;<strong>Quartz</strong>是一个Java下作业控制的开源框架。Quartz用来创建或简单或复杂的调度时间表，执行Java下任意数量的作业。版本1.0发布于2002年9月13日，当前版本2.2.1发布于2013年9月24日。<br>可以通过CronTrigger定义Quartz的调度时间表（例如0 0 12 ? * WED表示“每周三上午12：00”）。此外，时间表也可以通过SimpleTrigger，由Date定义触发的开始时间、毫秒的时间间隔和重复计数（例如“在下周三12：00，然后每隔10秒、执行5次”）。可以使用Calender定义例外的日程（例如“没有周末和节假日”）。<br>作业可以是实现了Job接口任意的Java类。作业监听器（JobListener）和触发器监听器（TriggerListener）通知作业的执行（和其他事件）。作业及其触发器可以被持久化。<br>Quartz一般用于企业级应用程序，以支持工作流、系统管理（维护）活动，并在应用程序中提供实时的服务。Quartz还支持集群。<br>Quartz是Terracotta公司的开源产品。 .NET平台下的对应产品叫Quartz.NET。<br>quratz任务的注册(蓝线)和执行(红线)</p>
+<p><img src="https://volcfamily.cn/images/spring整合quratz/quratz.PNG" alt="quartz"><br><a id="more"></a><br>quartz核心接口</p>
 <blockquote>
 <ul>
 <li>Schecduler  核心调度器</li>
@@ -453,8 +400,6 @@ CronTrigger 表达式触发,处理复杂时间执行，类似日历
 <li>Trigger     触发器</li>
 </ul>
 </blockquote>
-<p>quratz任务的注册(蓝线)和执行(红线)</p>
-<p><img src="https://volcfamily.cn/images/spring整合quratz/quratz.PNG" alt="quartz"></p>
 <p>Tigger</p>
 <blockquote>
 <ul>
