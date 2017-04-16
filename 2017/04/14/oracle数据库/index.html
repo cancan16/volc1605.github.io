@@ -83,7 +83,7 @@
 <meta property="og:url" content="https://volc1605.github.io/2017/04/14/oracle数据库/index.html">
 <meta property="og:site_name" content="VOLC">
 <meta property="og:description" content="1 oracle数据库对表设置自增ID">
-<meta property="og:updated_time" content="2017-04-14T12:15:03.376Z">
+<meta property="og:updated_time" content="2017-04-16T06:13:04.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oracle数据库">
 <meta name="twitter:description" content="1 oracle数据库对表设置自增ID">
@@ -390,6 +390,7 @@
       
         <h3 id="1-oracle数据库对表设置自增ID"><a href="#1-oracle数据库对表设置自增ID" class="headerlink" title="1 oracle数据库对表设置自增ID"></a>1 oracle数据库对表设置自增ID</h3><a id="more"></a>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">-- 创建序列</span></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">SEQUENCE</span> SYS_MAIL_PLAN_WAIT_SEQUENCE</div><div class="line">   <span class="keyword">increment</span> <span class="keyword">by</span> <span class="number">1</span>    <span class="comment">-- 每次递增1</span></div><div class="line">   <span class="keyword">start</span> <span class="keyword">with</span> <span class="number">1</span>       <span class="comment">-- 从1开始</span></div><div class="line">   <span class="keyword">nomaxvalue</span>      <span class="comment">-- 没有最大值</span></div><div class="line">   <span class="keyword">minvalue</span> <span class="number">1</span>       <span class="comment">-- 最小值=1</span></div><div class="line">   <span class="keyword">NOCYCLE</span>;      <span class="comment">-- 不循环</span></div><div class="line"><span class="comment">-- 创建触发器，每次新增SYS_MAIL_PLAN_WAIT表数据之前被执行，并将SYS_MAIL_PLAN_WAIT中PLAN_ID自增1</span></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">TRIGGER</span> SYS_MAIL_PLAN_WAIT_TRIGGER</div><div class="line">    <span class="keyword">BEFORE</span> <span class="keyword">INSERT</span> <span class="keyword">ON</span> SYS_MAIL_PLAN_WAIT</div><div class="line">  <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></div><div class="line">  <span class="keyword">BEGIN</span></div><div class="line">    <span class="keyword">SELECT</span> SYS_MAIL_PLAN_WAIT_SEQUENCE.nextval <span class="keyword">INTO</span> :new.PLAN_ID <span class="keyword">FROM</span> DUAL;</div><div class="line">  <span class="keyword">END</span>;</div><div class="line">  </div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> SYS_MAIL_PLAN_WAIT(PROS_ID) <span class="keyword">VALUES</span> (<span class="string">'1'</span>);</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> SYS_MAIL_PLAN_WAIT(PROS_ID) <span class="keyword">VALUES</span> (<span class="string">'3'</span>);</div></pre></td></tr></table></figure>
+<h3 id="2-批量更新"><a href="#2-批量更新" class="headerlink" title="2 批量更新"></a>2 批量更新</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;update id="lockTaskPlan"&gt;</div><div class="line">	begin</div><div class="line">	&lt;foreach collection="mailPlanList" item="item" index="index" separator=";" close=""&gt;</div><div class="line">		UPDATE SYS_MAIL_PLAN_WAIT SET STATUS =</div><div class="line">		#&#123;item.status&#125;,thread_id = #&#123;item.threadId&#125; WHERE PLAN_ID = #&#123;item.planId&#125;</div><div class="line">	&lt;/foreach&gt;</div><div class="line">	;end;</div><div class="line">&lt;/update&gt;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -650,7 +651,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-oracle数据库对表设置自增ID"><span class="nav-number">1.</span> <span class="nav-text">1 oracle数据库对表设置自增ID</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-oracle数据库对表设置自增ID"><span class="nav-number">1.</span> <span class="nav-text">1 oracle数据库对表设置自增ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-批量更新"><span class="nav-number">2.</span> <span class="nav-text">2 批量更新</span></a></li></ol></div>
             
           </div>
         </section>
