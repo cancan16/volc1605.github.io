@@ -1,0 +1,1070 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ajax," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1 解决跨域问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="请求跨域问题">
+<meta property="og:url" content="https://volc1605.github.io/2017/06/01/请求跨域问题/index.html">
+<meta property="og:site_name" content="VOLC">
+<meta property="og:description" content="1 解决跨域问题">
+<meta property="og:image" content="https://volc1605.github.io/images/请求跨域问题/kuayu.png">
+<meta property="og:image" content="https://volc1605.github.io/images/请求跨域问题/jiexi.png">
+<meta property="og:updated_time" content="2017-06-01T16:01:53.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="请求跨域问题">
+<meta name="twitter:description" content="1 解决跨域问题">
+<meta name="twitter:image" content="https://volc1605.github.io/images/请求跨域问题/kuayu.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://volc1605.github.io/2017/06/01/请求跨域问题/"/>
+
+  <title> 请求跨域问题 | VOLC </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '85094232-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?87980c86b4555bd9921e799ec5e26fb5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">VOLC</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Volc's Blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                请求跨域问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-01T19:33:33+08:00" content="2017-06-01">
+              2017-06-01
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2017-06-01
+                  19:33:33
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2017/06/01/请求跨域问题/" class="leancloud_visitors" data-flag-title="请求跨域问题">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-解决跨域问题"><a href="#1-解决跨域问题" class="headerlink" title="1 解决跨域问题"></a>1 解决跨域问题</h3><a id="more"></a>
+<h4 id="1-1-问题产生原因"><a href="#1-1-问题产生原因" class="headerlink" title="1.1 问题产生原因"></a>1.1 问题产生原因</h4><p>浏览器对ajax请求的限制，不允许跨域请求资源。<br><a href="http://www.a.com" target="_blank" rel="external">http://www.a.com</a>   <a href="http://www.b.com" target="_blank" rel="external">http://www.b.com</a>       是跨域<br><a href="http://www.a.com" target="_blank" rel="external">http://www.a.com</a>   <a href="http://www.a.com:8080" target="_blank" rel="external">http://www.a.com:8080</a>  是跨域<br><a href="http://a.a.com" target="_blank" rel="external">http://a.a.com</a>     <a href="http://b.a.com" target="_blank" rel="external">http://b.a.com</a>          是跨域<br><a href="http://www.a.com" target="_blank" rel="external">http://www.a.com</a>   <a href="http://www.a.com/api" target="_blank" rel="external">http://www.a.com/api</a>   不是</p>
+<p>总结：<br>不同的域名或不同的端口都是跨域请求。<br><img src="https://volc1605.github.io/images/请求跨域问题/kuayu.png" alt="kuayu"></p>
+<h4 id="1-2-测试"><a href="#1-2-测试" class="headerlink" title="1.2 测试"></a>1.2 测试</h4><p>json.jsp资源<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></div><div class="line">	pageEncoding=<span class="string">"UTF-8"</span>%&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span></div><div class="line">    /* <span class="attr">String</span> <span class="attr">callback</span> = <span class="string">request.getParameter(</span>"<span class="attr">callback</span>");</div><div class="line">    <span class="attr">if</span> (<span class="attr">null</span> != <span class="string">callback)</span> &#123;</div><div class="line">    	<span class="attr">out.print</span>(<span class="attr">callback</span> + "(&#123;\"<span class="attr">abc</span>\"<span class="attr">:123</span>&#125;)");</div><div class="line">    &#125; <span class="attr">else</span> &#123;</div><div class="line">    	<span class="attr">out.print</span>("&#123;\"<span class="attr">abc</span>\"<span class="attr">:123</span>&#125;)");</div><div class="line">    &#125; */</div><div class="line">    <span class="attr">out.print</span>("&#123;\"<span class="attr">abc</span>\"<span class="attr">:</span> \"<span class="attr">123</span>\""&#125;);</div><div class="line">	/*<span class="attr">out.print</span>("<span class="attr">fun</span>(&#123;"\"<span class="attr">abc</span>\"<span class="attr">:</span> \"<span class="attr">123</span>\""&#125;)");*/</div><div class="line">%&gt;</div></pre></td></tr></table></figure></p>
+<p>test-json.htm文件，与json.jsp资源属于不同的项目中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 访问url: http://manage.taotao.com/test-json.htm --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Insert title here<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span></span></div><div class="line">	<span class="attr">src</span>=<span class="string">"http://manage.taotao.com/js/jquery-easyui-1.4.1/jquery.min.js"</span>&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">	alert ($);</div><div class="line">    $ (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	    $.ajax (&#123;</div><div class="line">	        <span class="attr">type</span> : <span class="string">"GET"</span>,</div><div class="line">	        <span class="attr">url</span> : <span class="string">"http://manage.taotao.com/json.jsp"</span>,</div><div class="line">	        <span class="attr">dataType</span> : <span class="string">"json"</span>,</div><div class="line">	        <span class="attr">success</span> : <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">		        alert (data.abc);</div><div class="line">	        &#125;</div><div class="line">	    &#125;);</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>经过测试可以得出,script标签是可以跨域请求的，而ajax不能跨域请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=“text/javascript” src=&quot;http://www.manage.com/js/jquery-easyui-1.4.1/jquery.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>如果换成script标签请求资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=“text/javascript” src=&quot;http://manage.taotao.com/json.jsp&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>会出现以下错误，意思是js解析出错了，因为资源返回的是{“abc”:”123”}json格式的字符串数据无法解析成js<br><img src="https://volc1605.github.io/images/请求跨域问题/jiexi.png" alt="kuayu"><br>如果资源返回结果变成out.print(“fun({“\”abc\”: \”123\””})”);<br>就会出现fun is not defined错误，说明可以解析js，但是返回的这个fun函数找不到。那么就在test-json.htm中定义一个fun函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">	alert(data.abc);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再次请求弹出返回的数据。<br>以上就是jsonp的原理:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Jsonp的原理：</div><div class="line">1、	jsonp通过script标签的src可以跨域请求的特性，加载资源</div><div class="line">2、	将加载的资源（通过一个方法名将数据进行包裹）当做是js脚本解析</div><div class="line">3、	定义一个回调函数，获取传入的数据</div></pre></td></tr></table></figure></p>
+<h3 id="2-使用jsonp-处理跨域请求"><a href="#2-使用jsonp-处理跨域请求" class="headerlink" title="2 使用jsonp,处理跨域请求"></a>2 使用jsonp,处理跨域请求</h3><p>请求代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">	<span class="attr">url</span>: <span class="string">"http://manage.taotao.com/rest/api/item/cat?callback=category.getDataService"</span>,</div><div class="line">	<span class="attr">dataType</span>: <span class="string">"jsonp"</span>,</div><div class="line">	<span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">		<span class="comment">// data的值：category.getDataService(&#123;abc: 123&#125;)</span></div><div class="line">		alert(data.abc);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$.getJSONP(<span class="string">"http://manage.taotao.com/rest/api/item/cat?callback=category.getDataService"</span>, category.getDataService)</div><div class="line"><span class="keyword">var</span> category = &#123;</div><div class="line">	<span class="attr">getDataService</span> : <span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>后台接口代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">"api/item/cat"</span>)</div><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiItemCatController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> ItemCatService itemCatService;</div><div class="line">    <span class="comment">// private static final ObjectMapper MAPPER = new ObjectMapper();</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@Title</span> queryItemCat</div><div class="line">     * <span class="doctag">@Description</span> 对外提供查询类目借口数据</div><div class="line">     * <span class="doctag">@return</span> ResponseEntity&lt;ItemCatResult&gt;</div><div class="line">     * <span class="doctag">@throws</span> </div><div class="line">     * url:http://manage.taotao.com/rest/api/item/cat?callback=category.getDataService</div><div class="line">     */</div><div class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</div><div class="line">    <span class="function"><span class="keyword">public</span> ResponseEntity&lt;String&gt; <span class="title">queryItemCat</span><span class="params">(@RequestParam(<span class="string">"callback"</span>)</span> String callback) </span>&#123;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">	    ItemCatResult itemCatResult = <span class="keyword">this</span>.itemCatService.queryAllToTree();</div><div class="line">	    String json = MAPPER.writeValueAsString(itemCatResult);</div><div class="line">	    <span class="keyword">if</span> (callback.isEmpty()) &#123;</div><div class="line">		<span class="keyword">return</span> ResponseEntity.ok(json);</div><div class="line">	    &#125;</div><div class="line">	    <span class="keyword">return</span> ResponseEntity.ok(callback + <span class="string">"("</span> + json + <span class="string">");"</span>); <span class="comment">// 拼接成js</span></div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	    e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">		<span class="keyword">return</span> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(<span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="3-统一解决jsonp请求，并处理中文乱码"><a href="#3-统一解决jsonp请求，并处理中文乱码" class="headerlink" title="3 统一解决jsonp请求，并处理中文乱码"></a>3 统一解决jsonp请求，并处理中文乱码</h3><h4 id="3-1-接口"><a href="#3-1-接口" class="headerlink" title="3.1 #接口"></a>3.1 #接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</div><div class="line"><span class="keyword">import</span> org.springframework.http.HttpStatus;</div><div class="line"><span class="keyword">import</span> org.springframework.http.ResponseEntity;</div><div class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</div><div class="line"><span class="keyword">import</span> com.taotao.common.bean.ItemCatResult;</div><div class="line"><span class="keyword">import</span> com.taotao.manage.service.ItemCatService;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@ClassName</span> ApiItemCatController</div><div class="line"> * <span class="doctag">@Description</span> </div><div class="line"> * <span class="doctag">@Author</span> youtanzhi</div><div class="line"> * <span class="doctag">@Date</span> 2017年2月14日 下午9:29:43</div><div class="line"> * url: http://manage.taotao.com/rest/api/item/cat</div><div class="line"> */</div><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">"api/item/cat"</span>)</div><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiItemCatController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> ItemCatService itemCatService;</div><div class="line">    <span class="comment">// private static final ObjectMapper MAPPER = new ObjectMapper();</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@Title</span> queryItemCat</div><div class="line">     * <span class="doctag">@Description</span> 对外提供查询类目借口数据</div><div class="line">     * <span class="doctag">@return</span> ResponseEntity&lt;ItemCatResult&gt;</div><div class="line">     * <span class="doctag">@throws</span> </div><div class="line">     */</div><div class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</div><div class="line">    <span class="function"><span class="keyword">public</span> ResponseEntity&lt;ItemCatResult&gt; <span class="title">queryItemCat</span><span class="params">(@RequestParam(<span class="string">"callback"</span>)</span> String callback) </span>&#123;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">	    ItemCatResult itemCatResult = <span class="keyword">this</span>.itemCatService.queryAllToTree();</div><div class="line">	    <span class="keyword">return</span> ResponseEntity.ok(itemCatResult);</div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	    e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(<span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-2-初始化servlet-xml文件中配置消息转化器"><a href="#3-2-初始化servlet-xml文件中配置消息转化器" class="headerlink" title="3.2 初始化servlet.xml文件中配置消息转化器"></a>3.2 初始化servlet.xml文件中配置消息转化器</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></div><div class="line">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span></div><div class="line">	<span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></div><div class="line">	<span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span></div><div class="line">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span></div><div class="line">        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd</div><div class="line">        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"&gt;</div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 定义注解驱动 加载多个消息转化器 默认编码为ISO-8859-1(不支持中出现了乱码) --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span></div><div class="line">		<span class="comment">&lt;!-- 自定义essageConverter 为utf-8解决中文乱码问题 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">mvc:message-converters</span> <span class="attr">register-defaults</span>=<span class="string">"true"</span>&gt;</span><span class="comment">&lt;!-- true代表使用自定的消息转化器 --&gt;</span></div><div class="line">			<span class="comment">&lt;!--&lt;bean class="org.springframework.http.converter.StringHttpMessageConverter"&gt; </span></div><div class="line">				&lt;constructor-arg index="0" value="UTF-8" /&gt; &lt;/bean&gt; --&gt;</div><div class="line">			<span class="tag">&lt;<span class="name">bean</span></span></div><div class="line">				<span class="attr">class</span>=<span class="string">"com.taotao.common.spring.exetend.converter.json.CallbackMappingJackson2HttpMessageConverter"</span>&gt;</div><div class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"callbackName"</span> <span class="attr">value</span>=<span class="string">"callback"</span> /&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">mvc:message-converters</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 结束 --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 定义Controller的扫描包 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.taotao.manage.controller"</span> /&gt;</span></div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 定义试图解析器 --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- Example: prefix="/WEB-INF/jsp/", suffix=".jsp", viewname="test" -&gt; </span></div><div class="line">		"/WEB-INF/jsp/test.jsp" --&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">bean</span></span></div><div class="line">		<span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</div><div class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/views/"</span> /&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 使用fileupload-common上传组件需要sring的支持，这里就要配置支持上传组件的视图解析器 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span></span></div><div class="line">		<span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</div><div class="line">		<span class="comment">&lt;!-- 限制文件的最大上传大小，字节单位5M --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span> <span class="attr">value</span>=<span class="string">"5242880"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="3-3-自定义消息转化器处理类"><a href="#3-3-自定义消息转化器处理类" class="headerlink" title="3.3 自定义消息转化器处理类"></a>3.3 自定义消息转化器处理类</h4><p>引用jar<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!-- spring-web 这里用于加载消息转化器类 --&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;spring-web&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line">&lt;!-- Apache工具组件 --&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;commons-io&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;javax.servlet&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;servlet-api&lt;/artifactId&gt;</div><div class="line">	&lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p>处理类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</div><div class="line"><span class="keyword">import</span> org.apache.commons.io.IOUtils;</div><div class="line"><span class="keyword">import</span> org.apache.commons.lang3.StringUtils;</div><div class="line"><span class="keyword">import</span> org.springframework.http.HttpOutputMessage;</div><div class="line"><span class="keyword">import</span> org.springframework.http.converter.HttpMessageNotWritableException;</div><div class="line"><span class="keyword">import</span> org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;</div><div class="line"><span class="keyword">import</span> org.springframework.web.context.request.RequestContextHolder;</div><div class="line"><span class="keyword">import</span> org.springframework.web.context.request.ServletRequestAttributes;</div><div class="line"><span class="keyword">import</span> com.fasterxml.jackson.core.JsonEncoding;</div><div class="line"><span class="keyword">import</span> com.fasterxml.jackson.core.JsonProcessingException;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallbackMappingJackson2HttpMessageConverter</span> <span class="keyword">extends</span> <span class="title">MappingJackson2HttpMessageConverter</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 做jsonp的支持的标识，在请求参数中加该参数</span></div><div class="line">    <span class="keyword">private</span> String callbackName;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">writeInternal</span><span class="params">(Object object, HttpOutputMessage outputMessage)</span> <span class="keyword">throws</span> IOException, HttpMessageNotWritableException </span>&#123;</div><div class="line">	<span class="comment">// 从threadLocal中获取当前的Request对象</span></div><div class="line">	HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();</div><div class="line">	String callbackParam = request.getParameter(callbackName);</div><div class="line">	<span class="keyword">if</span> (StringUtils.isEmpty(callbackParam)) &#123;</div><div class="line">	    <span class="comment">// 没有找到callback参数，直接返回json数据</span></div><div class="line">	    <span class="keyword">super</span>.writeInternal(object, outputMessage);</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">	    JsonEncoding encoding = getJsonEncoding(outputMessage.getHeaders().getContentType());</div><div class="line">	    <span class="keyword">try</span> &#123;</div><div class="line">		String result = callbackParam + <span class="string">"("</span> + <span class="keyword">super</span>.getObjectMapper().writeValueAsString(object) + <span class="string">");"</span>;</div><div class="line">		IOUtils.write(result, outputMessage.getBody(), encoding.getJavaName());</div><div class="line">	    &#125; <span class="keyword">catch</span> (JsonProcessingException ex) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> HttpMessageNotWritableException(<span class="string">"Could not write JSON: "</span> + ex.getMessage(), ex);</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCallbackName</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> callbackName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCallbackName</span><span class="params">(String callbackName)</span> </span>&#123;</div><div class="line">	<span class="keyword">this</span>.callbackName = callbackName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>如果文章对您有用请随意打赏，谢谢支持！</div>
+    <button style="width: 52px;height:30px" id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span style="width: 52px;height:30px">赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/w.png" alt="VOLC WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/z.jpg" alt="VOLC Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ajax/" rel="tag">#ajax</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/16/fastJson解析json字符串/" rel="next" title="fastjson解析json字符串">
+                <i class="fa fa-chevron-left"></i> fastjson解析json字符串
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+	
+	
+		<!--高速版-->
+		<div id="SOHUCS"></div>
+		<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+		<script type="text/javascript">
+			window.changyan.api.config({
+				appid: 'cysWqhUtX',
+				conf: 'prod_f7cff9e56768bb81fb92b0045961ff85'
+			});
+		</script>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/0.png"
+               alt="VOLC" />
+          <p class="site-author-name" itemprop="name">VOLC</p>
+          <p class="site-description motion-element" itemprop="description">volc</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/volc1605" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/volcliu" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2297464654/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/volc" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yisu.ren/index.php/" title="一俗人_PHP" target="_blank">一俗人_PHP</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.fackyou.org/" title="Delay.Hsiao_PHP" target="_blank">Delay.Hsiao_PHP</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-解决跨域问题"><span class="nav-number">1.</span> <span class="nav-text">1 解决跨域问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-问题产生原因"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 问题产生原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-测试"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用jsonp-处理跨域请求"><span class="nav-number">2.</span> <span class="nav-text">2 使用jsonp,处理跨域请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-统一解决jsonp请求，并处理中文乱码"><span class="nav-number">3.</span> <span class="nav-text">3 统一解决jsonp请求，并处理中文乱码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-接口"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 #接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-初始化servlet-xml文件中配置消息转化器"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 初始化servlet.xml文件中配置消息转化器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-自定义消息转化器处理类"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 自定义消息转化器处理类</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright" style="margin-right: 14px">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2017</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">VOLC</span>
+	&nbsp;&nbsp;&nbsp;
+	<a href="http://www.miitbeian.gov.cn/">苏ICP备17018811号</a>
+  </div>
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <div class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>本站总访问量<span><span id="busuanzi_value_site_pv"></span>
+    <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+    <span>您是第</span>
+    <span id="busuanzi_value_site_uv"></span>
+    <span>个小伙伴</span>
+	<span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+	<span id="showDays"></span>
+  </div>
+ 	
+<script>
+	var birthDay = new Date('09/1/2016');
+	var now = new Date();
+	var duration = now.getTime() - birthDay.getTime();
+	var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+	document.getElementById('showDays').innerHTML='本站已运行' + total + '天';
+</script>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+﻿
+
+
+  
+
+
+
+ 
+		
+
+      <!-- UY BEGIN -->
+
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+
+      <!-- UY END -->
+
+  
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uSB1w939Pcabp8qlmznF7Spw-gzGzoHsz", "98j3mTSX2edWrjz0KNvtWaI5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+          var UPDATED_AT = '.leancloud-updated-at'; // 新增代码 定义最近变更时间的class
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+          // console.log(results);
+          for(var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');   // 获取阅读量
+            var updatedT = item.updatedAt; // 新增代码 获取最近浏览时间 需要注意的是updateT是对象并不是字符串
+            var element = document.getElementById(url);
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+            // 新增代码 转换日期格式
+            if(updatedT != null && updatedT != '') {
+              var a = [updatedT.getFullYear(), updatedT.getMonth() + 1, updatedT.getDate(), updatedT.getHours(), updatedT.getMinutes(), updatedT.getSeconds()];
+              for(var j = 0,len = a.length; j < len; j++) {
+                  if(a[j] < 10) {
+                      a[j] = '0' + a[j];
+                  }
+              }
+              var updateTime = a[0] + '-' + a[1] + '-' + a[2] + ' ' + a[3] + ':' + a[4] + ':' + a[5];
+              $(element).find(UPDATED_AT).text(updateTime);
+            }
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            var updatedAtContent = $(element).find(UPDATED_AT);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+            // 新增代码 如果首页的文章没有更新侧默认为暂无更新
+            if(updatedAtContent.text() == '') {
+              updatedAtContent.text('无人浏览');
+            }
+            // 结束
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
