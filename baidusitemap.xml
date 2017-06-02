@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
-    <lastmod>2017-06-02T12:45:38.829Z</lastmod>
+    <lastmod>2017-06-02T13:26:37.107Z</lastmod>
     <data>
         <display>
         <title>Redis</title>
@@ -17,6 +17,26 @@
            
              
               <breadCrumb title="Rdies" url="https://volc1605.github.io/categories/Rdies/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/06/02/spring%E6%95%B4%E5%90%88httpclient/</loc>
+    <lastmod>2017-06-02T13:02:21.627Z</lastmod>
+    <data>
+        <display>
+        <title>spring整合httpclient</title>
+        <pubTime>2017-06-01T16:47:49.000Z</pubTime>
+        
+        <tag>httpclient</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
           
         </display>
     </data>
@@ -162,26 +182,6 @@
         <tag>java</tag>
          
         <tag>excel</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2017/06/02/spring%E6%95%B4%E5%90%88httpclient/</loc>
-    <lastmod>2017-06-01T17:39:54.476Z</lastmod>
-    <data>
-        <display>
-        <title>spring整合httpclient</title>
-        <pubTime>2017-06-01T16:47:49.000Z</pubTime>
-        
-        <tag>httpclient</tag>
          
          
            
