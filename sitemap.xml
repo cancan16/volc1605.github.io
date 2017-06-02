@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://volc1605.github.io/2017/01/05/MySQL%E4%B8%BB%E4%BB%8E%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/</loc>
+    
+    <lastmod>2017-06-02T10:02:42.757Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
     
     <lastmod>2017-06-02T08:13:54.735Z</lastmod>
@@ -187,13 +194,6 @@
     <loc>https://volc1605.github.io/2016/11/23/linux/</loc>
     
     <lastmod>2017-03-05T05:04:06.153Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://volc1605.github.io/2017/01/05/MySQL%E4%B8%BB%E4%BB%8E%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/</loc>
-    
-    <lastmod>2017-03-05T03:13:57.877Z</lastmod>
     
   </url>
   
