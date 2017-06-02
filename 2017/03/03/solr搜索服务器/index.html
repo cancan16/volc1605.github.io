@@ -77,16 +77,16 @@
 
 
 
-<meta name="description" content="1 solr">
+<meta name="description" content="1 windows下使用solr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux下安装solr搜索服务器">
+<meta property="og:title" content="solr搜索服务器">
 <meta property="og:url" content="https://volc1605.github.io/2017/03/03/solr搜索服务器/index.html">
 <meta property="og:site_name" content="VOLC">
-<meta property="og:description" content="1 solr">
-<meta property="og:updated_time" content="2017-06-02T15:14:47.291Z">
+<meta property="og:description" content="1 windows下使用solr">
+<meta property="og:updated_time" content="2017-06-02T15:30:39.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux下安装solr搜索服务器">
-<meta name="twitter:description" content="1 solr">
+<meta name="twitter:title" content="solr搜索服务器">
+<meta name="twitter:description" content="1 windows下使用solr">
 
 
 
@@ -109,7 +109,7 @@
 
   <link rel="canonical" href="https://volc1605.github.io/2017/03/03/solr搜索服务器/"/>
 
-  <title> linux下安装solr搜索服务器 | VOLC </title>
+  <title> solr搜索服务器 | VOLC </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -301,7 +301,7 @@
             
             
               
-                linux下安装solr搜索服务器
+                solr搜索服务器
               
             
           </h1>
@@ -366,7 +366,7 @@
 
           
             
-               <span id="/2017/03/03/solr搜索服务器/" class="leancloud_visitors" data-flag-title="linux下安装solr搜索服务器">
+               <span id="/2017/03/03/solr搜索服务器/" class="leancloud_visitors" data-flag-title="solr搜索服务器">
                  |
                  <span class="post-meta-item-icon">
                    <i class="fa fa-eye"></i>
@@ -388,7 +388,10 @@
       
 
       
-        <h3 id="1-solr"><a href="#1-solr" class="headerlink" title="1 solr"></a>1 solr</h3><a id="more"></a>
+        <h3 id="1-windows下使用solr"><a href="#1-windows下使用solr" class="headerlink" title="1 windows下使用solr"></a>1 windows下使用solr</h3><a id="more"></a>
+<h4 id="1-1-解压solr-4-10-2-zip文件"><a href="#1-1-解压solr-4-10-2-zip文件" class="headerlink" title="1.1 解压solr-4.10.2.zip文件"></a>1.1 解压solr-4.10.2.zip文件</h4><p>cmd进入D:\solr-4.10.2\example目录<br>执行启动命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">D:\solr-4.10.2\example&gt;java -jar start.jar</div></pre></td></tr></table></figure></p>
+<p>启动成功，浏览器访问<br>访问url: <a href="http://127.0.0.1:8983" target="_blank" rel="external">http://127.0.0.1:8983</a><br>修改：<set name="contextPath"><systemproperty name="hostContext" default="/"></systemproperty></set><br>通过nginx代理通过域名客直接访问。</p>
+<h3 id="2-solr"><a href="#2-solr" class="headerlink" title="2 solr"></a>2 solr</h3><!-- more -->
 <p>修改<br>nginx solr.taotao.com<br>启动solr<br>java -jar start.jar<br>浏览器访问<br>solr.taotao.com/solr</p>
 <p>修改D:\solr-4.10.2\example\contexts\solr-jetty-context.xml文件<br>修改：<set name="contextPath"><systemproperty name="hostContext" default="/"></systemproperty></set><br>目的是可以solr.taotao.com这样访问</p>
 <p>放置独立的搜索项目<br>启动方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd D:\solr-4.10.2\example</div><div class="line">java -Dsolr.solr.home=taotao-solr -s jar start.jar</div></pre></td></tr></table></figure></p>
@@ -640,7 +643,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-solr"><span class="nav-number">1.</span> <span class="nav-text">1 solr</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-windows下使用solr"><span class="nav-number">1.</span> <span class="nav-text">1 windows下使用solr</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-解压solr-4-10-2-zip文件"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 解压solr-4.10.2.zip文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-solr"><span class="nav-number">2.</span> <span class="nav-text">2 solr</span></a></li></ol></div>
             
           </div>
         </section>
