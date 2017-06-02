@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
+    
+    <lastmod>2017-06-02T17:15:03.708Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://volc1605.github.io/2017/03/03/solr%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     
-    <lastmod>2017-06-02T16:47:33.374Z</lastmod>
+    <lastmod>2017-06-02T17:13:38.478Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>https://volc1605.github.io/2017/06/02/SSO/</loc>
     
     <lastmod>2017-06-02T15:10:17.116Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
-    
-    <lastmod>2017-06-02T13:32:23.993Z</lastmod>
     
   </url>
   
