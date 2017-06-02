@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/03/03/solr%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2017-06-02T15:14:47.291Z</lastmod>
+    <data>
+        <display>
+        <title>linux下安装solr搜索服务器</title>
+        <pubTime>2017-03-02T16:05:13.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>java</tag>
+         
+        <tag>solr</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2017/06/02/SSO/</loc>
     <lastmod>2017-06-02T15:10:17.116Z</lastmod>
     <data>
@@ -426,30 +450,6 @@
 
     
   <url>
-    <loc>https://volc1605.github.io/2017/03/03/solr%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2017-03-06T16:00:52.016Z</lastmod>
-    <data>
-        <display>
-        <title>linux下安装solr搜索服务器</title>
-        <pubTime>2017-03-02T16:05:13.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-        <tag>java</tag>
-         
-        <tag>solr</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85RabbitMQ/</loc>
     <lastmod>2017-03-06T15:55:57.800Z</lastmod>
     <data>
@@ -659,9 +659,9 @@
         <title>电视剧</title>
         <pubTime>2017-02-21T14:43:36.000Z</pubTime>
         
-        <tag>电视剧</tag>
-         
         <tag>VOLC</tag>
+         
+        <tag>电视剧</tag>
          
          
            
@@ -727,9 +727,9 @@
         <title>电影</title>
         <pubTime>2017-02-21T14:37:44.000Z</pubTime>
         
-        <tag>VOLC</tag>
-         
         <tag>电影</tag>
+         
+        <tag>VOLC</tag>
          
          
            
