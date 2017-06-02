@@ -4,28 +4,8 @@
 
     
   <url>
-    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
-    <lastmod>2017-06-02T17:15:03.708Z</lastmod>
-    <data>
-        <display>
-        <title>Redis</title>
-        <pubTime>2017-06-02T04:59:16.000Z</pubTime>
-        
-        <tag>redis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Rdies" url="https://volc1605.github.io/categories/Rdies/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://volc1605.github.io/2017/03/03/solr%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2017-06-02T17:13:38.478Z</lastmod>
+    <lastmod>2017-06-02T18:04:51.961Z</lastmod>
     <data>
         <display>
         <title>solr搜索服务器</title>
@@ -41,6 +21,26 @@
            
              
               <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
+    <lastmod>2017-06-02T17:15:03.708Z</lastmod>
+    <data>
+        <display>
+        <title>Redis</title>
+        <pubTime>2017-06-02T04:59:16.000Z</pubTime>
+        
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Rdies" url="https://volc1605.github.io/categories/Rdies/"/>
           
         </display>
     </data>
@@ -659,9 +659,9 @@
         <title>电视剧</title>
         <pubTime>2017-02-21T14:43:36.000Z</pubTime>
         
-        <tag>VOLC</tag>
-         
         <tag>电视剧</tag>
+         
+        <tag>VOLC</tag>
          
          
            
@@ -727,9 +727,9 @@
         <title>电影</title>
         <pubTime>2017-02-21T14:37:44.000Z</pubTime>
         
-        <tag>电影</tag>
-         
         <tag>VOLC</tag>
+         
+        <tag>电影</tag>
          
          
            
