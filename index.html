@@ -398,39 +398,12 @@
 
       
         
-          
-            <p>Redis特性<br><img src="https://volc1605.github.io/images/Redis/texing.png" alt="texing"></p>
-<h3 id="1-windows-64-环境下解压安装包redis-2-8-9-zip"><a href="#1-windows-64-环境下解压安装包redis-2-8-9-zip" class="headerlink" title="1 windows(64)环境下解压安装包redis-2.8.9.zip"></a>1 windows(64)环境下解压安装包redis-2.8.9.zip</h3><p>感兴趣的点击 -&gt;&gt; <a href="http://volcfamily.cn/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis/" target="_blank" rel="external">linux下安装Redis</a></p>
-<h4 id="1-1-删除Redis服务"><a href="#1-1-删除Redis服务" class="headerlink" title="1.1 删除Redis服务"></a>1.1 删除Redis服务</h4><p>管理员命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">C:\windows\system32&gt;sc delete Redis</div><div class="line">[SC] DeleteService 成功</div><div class="line"></div><div class="line">C:\windows\system32&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="1-2-双击redis-server-exe"><a href="#1-2-双击redis-server-exe" class="headerlink" title="1.2 双击redis-server.exe"></a>1.2 双击redis-server.exe</h4><p><img src="https://volc1605.github.io/images/Redis/redis.png" alt="redis"></p>
-<h4 id="1-3-注册到系统服务中"><a href="#1-3-注册到系统服务中" class="headerlink" title="1.3 注册到系统服务中"></a>1.3 注册到系统服务中</h4><p>执行以下命令即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">D:\redis-2.8.9&gt;redis-server --service-install redis.windows.conf --loglevel verbose</div><div class="line">[13828] 02 Jun 14:17:18.824 # Redis successfully installed as a service.</div><div class="line">D:\redis-2.8.9&gt;</div></pre></td></tr></table></figure></p>
-<p>找到Redis服务并启动</p>
-<h4 id="1-4-测试"><a href="#1-4-测试" class="headerlink" title="1.4 测试"></a>1.4 测试</h4><p>双击D:\redis-2.8.9\redis-cli.exe</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; ping</div><div class="line">PONG  -- 成功</div><div class="line">127.0.0.1:6379&gt;</div></pre></td></tr></table></figure>
-<h4 id="1-5-优化内存"><a href="#1-5-优化内存" class="headerlink" title="1.5 优化内存"></a>1.5 优化内存</h4><p>修改D:\redis-2.8.9\redis.windows.conf文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># maxmemory &lt;bytes&gt;</div><div class="line">maxmemory 200mb          # 200M</div></pre></td></tr></table></figure></p>
-<p>重启Redis服务,可以看到D:\redis-2.8.9&gt;\RedisQFork_1004.dat这个文件大小控制在300M左右，节省了内存资源。</p>
-<h4 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5 总结"></a>1.5 总结</h4><p>可连接外部服务器上的Redis<br><img src="https://volc1605.github.io/images/Redis/cl.png" alt="cl"></p>
-<h3 id="2-redis-cli的使用之命令返回值"><a href="#2-redis-cli的使用之命令返回值" class="headerlink" title="2 redis-cli的使用之命令返回值"></a>2 redis-cli的使用之命令返回值</h3><p><img src="https://volc1605.github.io/images/Redis/re.png" alt="cl"></p>
-<h3 id="3-多数据库"><a href="#3-多数据库" class="headerlink" title="3 多数据库"></a>3 多数据库</h3><p><img src="https://volc1605.github.io/images/Redis/many.png" alt="many"></p>
-<p>FLUSHALL  – 清空所有数据库的所有数据<br>FLUSHDB   –  清空当前所在数据库的数据</p>
-<h3 id="4-Redis的基本命令"><a href="#4-Redis的基本命令" class="headerlink" title="4 Redis的基本命令"></a>4 Redis的基本命令</h3><h4 id="4-1-KEYS"><a href="#4-1-KEYS" class="headerlink" title="4.1 KEYS"></a>4.1 KEYS</h4><p><img src="https://volc1605.github.io/images/Redis/p1.png" alt="cl"></p>
-<h4 id="4-2-EXISTS"><a href="#4-2-EXISTS" class="headerlink" title="4.2 EXISTS"></a>4.2 EXISTS</h4><p><img src="https://volc1605.github.io/images/Redis/p2.png" alt="cl"></p>
-<h4 id="4-3-DEL"><a href="#4-3-DEL" class="headerlink" title="4.3 DEL"></a>4.3 DEL</h4><p><img src="https://volc1605.github.io/images/Redis/p3.png" alt="cl"><br>删除key为a、b、c、d的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">key a b c d</div></pre></td></tr></table></figure></p>
-<h4 id="4-4-TYPE"><a href="#4-4-TYPE" class="headerlink" title="4.4 TYPE"></a>4.4 TYPE</h4><p><img src="https://volc1605.github.io/images/Redis/p4.png" alt="p4"></p>
-<h4 id="4-5-HELP"><a href="#4-5-HELP" class="headerlink" title="4.5 HELP"></a>4.5 HELP</h4><p>HELP 空格 tab键<br><img src="https://volc1605.github.io/images/Redis/p5.png" alt="cl"></p>
-<h3 id="5-Redis的字符串数据类型"><a href="#5-Redis的字符串数据类型" class="headerlink" title="5 Redis的字符串数据类型"></a>5 Redis的字符串数据类型</h3><h4 id="5-1-字符串类型"><a href="#5-1-字符串类型" class="headerlink" title="5.1 字符串类型"></a>5.1 字符串类型</h4><p><img src="https://volc1605.github.io/images/Redis/d1.png" alt="d1"></p>
-<h4 id="5-2-GET、SET"><a href="#5-2-GET、SET" class="headerlink" title="5.2 GET、SET"></a>5.2 GET、SET</h4><p><img src="https://volc1605.github.io/images/Redis/d2.png" alt="d1"></p>
-<h4 id="5-3-INCR"><a href="#5-3-INCR" class="headerlink" title="5.3 INCR"></a>5.3 INCR</h4><p><img src="https://volc1605.github.io/images/Redis/d3.png" alt="d1"></p>
-<h4 id="5-3-INCRBY"><a href="#5-3-INCRBY" class="headerlink" title="5.3 INCRBY"></a>5.3 INCRBY</h4><p><img src="https://volc1605.github.io/images/Redis/d4.png" alt="d1"></p>
-<h4 id="5-3-DECR、DECRBY"><a href="#5-3-DECR、DECRBY" class="headerlink" title="5.3 DECR、DECRBY"></a>5.3 DECR、DECRBY</h4><p><img src="https://volc1605.github.io/images/Redis/d5.png" alt="d1"></p>
-<h4 id="5-3-APPEND"><a href="#5-3-APPEND" class="headerlink" title="5.3 APPEND"></a>5.3 APPEND</h4><p><img src="https://volc1605.github.io/images/Redis/d6.png" alt="d1"></p>
-<h4 id="5-3-STRLEN"><a href="#5-3-STRLEN" class="headerlink" title="5.3 STRLEN"></a>5.3 STRLEN</h4><p><img src="https://volc1605.github.io/images/Redis/d7.png" alt="d1"></p>
-<h4 id="5-3-MSET、MGET"><a href="#5-3-MSET、MGET" class="headerlink" title="5.3 MSET、MGET"></a>5.3 MSET、MGET</h4><p><img src="https://volc1605.github.io/images/Redis/d8.png" alt="d1"></p>
-<h3 id="6-Redis之生存时间-用于缓存"><a href="#6-Redis之生存时间-用于缓存" class="headerlink" title="6 Redis之生存时间(用于缓存)"></a>6 Redis之生存时间(用于缓存)</h3><h4 id="6-1-设置生存时间"><a href="#6-1-设置生存时间" class="headerlink" title="6.1 设置生存时间"></a>6.1 设置生存时间</h4><p><img src="https://volc1605.github.io/images/Redis/s1.png" alt="s"><br>TTL返回值：<br>大于0的数字：剩余生存时间，单位为秒<br>-1 ： 没有生存时间，永久存储<br>-2 ： 数据已经被删除</p>
-<h4 id="6-1-清除生存时间"><a href="#6-1-清除生存时间" class="headerlink" title="6.1 清除生存时间"></a>6.1 清除生存时间</h4><p><img src="https://volc1605.github.io/images/Redis/s2.png" alt="s"><br>生存时间是针对值的，并不是key。</p>
-<h4 id="6-2-设置毫秒"><a href="#6-2-设置毫秒" class="headerlink" title="6.2 设置毫秒"></a>6.2 设置毫秒</h4><p><img src="https://volc1605.github.io/images/Redis/s3.png" alt="s"></p>
-
-          
+          <p>Redis特性<br><img src="https://volc1605.github.io/images/Redis/texing.png" alt="texing"><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/06/02/Redis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
