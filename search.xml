@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[SSO]]></title>
+      <url>https://volc1605.github.io/2017/06/02/SSO/</url>
+      <content type="html"><![CDATA[<h3 id="1-单点登录"><a href="#1-单点登录" class="headerlink" title="1 单点登录"></a>1 单点登录</h3><h4 id="1-1-单点登录特点"><a href="#1-1-单点登录特点" class="headerlink" title="1.1 单点登录特点"></a>1.1 单点登录特点</h4><p>之前实现的登录和注册是在同一个tomcat内部完成，我们现在的系统架构是每一个系统都是由一个团队0进行维护，每个系统都是单独部署运行一个单独的tomcat，所以，不能将用户的登录信息保存到session中（多个tomcat的session是不能共享的），所以我们需要一个单独的系统来维护用户的登录信息。</p>
+<p>普通登录：用户数据保存在session中，下次登录获取cookie的sessionId对应的值再去从session中获取用户数据。<br>单点登录(SSO<a href="http://blog.csdn.net/cutesource/article/details/5838693" target="_blank" rel="external">参考</a>):<br>流程和普通登录类似，不同的是用户数据存放在系统外不redis缓存中，从而实现多系统数据的共享。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Redis]]></title>
       <url>https://volc1605.github.io/2017/06/02/Redis/</url>
       <content type="html"><![CDATA[<p>Redis特性<br><img src="https://volc1605.github.io/images/Redis/texing.png" alt="texing"><br><a id="more"></a></p>

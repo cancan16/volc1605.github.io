@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/06/02/SSO/</loc>
+    <lastmod>2017-06-02T15:10:17.116Z</lastmod>
+    <data>
+        <display>
+        <title>SSO</title>
+        <pubTime>2017-06-02T13:54:21.000Z</pubTime>
+        
+        <tag>sso</tag>
+         
+         
+           
+             
+              <breadCrumb title="SSO" url="https://volc1605.github.io/categories/SSO/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
     <lastmod>2017-06-02T13:32:23.993Z</lastmod>
     <data>
@@ -639,9 +659,9 @@
         <title>电视剧</title>
         <pubTime>2017-02-21T14:43:36.000Z</pubTime>
         
-        <tag>VOLC</tag>
-         
         <tag>电视剧</tag>
+         
+        <tag>VOLC</tag>
          
          
            
@@ -707,9 +727,9 @@
         <title>电影</title>
         <pubTime>2017-02-21T14:37:44.000Z</pubTime>
         
-        <tag>电影</tag>
-         
         <tag>VOLC</tag>
+         
+        <tag>电影</tag>
          
          
            
