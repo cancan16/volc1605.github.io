@@ -303,6 +303,161 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/05/linux下安装RabbitMQ/" itemprop="url">
+                  linux下安装RabbitMQ
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-05T11:15:54+08:00" content="2017-03-05">
+              2017-03-05
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2017-06-03
+                  11:15:54
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
+                    <span itemprop="name">RabbitMQ</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2017/03/05/linux下安装RabbitMQ/" class="leancloud_visitors" data-flag-title="linux下安装RabbitMQ">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+                  |
+                  <span class="post-meta-item-text">最近 </span>
+                  <span class="leancloud-updated-at"></span>
+                  </span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="1-windows下安装RabbitMQ"><a href="#1-windows下安装RabbitMQ" class="headerlink" title="1 windows下安装RabbitMQ"></a>1 windows下安装RabbitMQ</h3><h4 id="1-1-注意事项"><a href="#1-1-注意事项" class="headerlink" title="1.1 注意事项"></a>1.1 注意事项</h4><p>1.推荐使用3.4.1版本。<br>2.推荐使用默认的安装路径(c盘)<br>3.系统用户名必须是英文<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Users\Administrator&gt;</div></pre></td></tr></table></figure></p>
+<p>4.计算机名必须是英文<br>5.系统的用户必须是管理员<br>6.<br>安装失败的同学应该如何解决：<br>    1、    重装系统  –  不推荐<br>    2、    将RabbitMQ安装到linux虚拟机中<br>        a)    推荐<br>    3、    使用别人安装好的RabbitMQ服务<br>        a)    只要给你开通一个账户即可。<br>        b)    使用公用的RabbitMQ服务。<br>        c)    推荐</p>
+<h4 id="1-2-安装"><a href="#1-2-安装" class="headerlink" title="1.2 安装"></a>1.2 安装</h4><p>下载地址：<a href="http://www.rabbitmq.com/download.html">http://www.rabbitmq.com/download.html</a></p>
+<h5 id="1-2-1-安装Erlang"><a href="#1-2-1-安装Erlang" class="headerlink" title="1.2.1 安装Erlang"></a>1.2.1 安装Erlang</h5><p>下载地址：<a href="http://www.erlang.org/download/otp_win64_17.3.exe">http://www.erlang.org/download/otp_win64_17.3.exe</a><br>以管理员身份运行安装，安装默认路径，安装过程中可能出现以下提示<br><img src="https://volc1605.github.io/images/rabbitmq/e.png" alt="e"><br>直接忽略即可。</p>
+<h5 id="1-2-2-安装rabbitmq"><a href="#1-2-2-安装rabbitmq" class="headerlink" title="1.2.2 安装rabbitmq"></a>1.2.2 安装rabbitmq</h5><p>以管理员的什么安装，安装成功后，系统服务中有RabbitMQ服务，尝试停止、启动、重启确认安装成功。</p>
+<h5 id="1-2-3-连接rabbitmq服务"><a href="#1-2-3-连接rabbitmq服务" class="headerlink" title="1.2.3 连接rabbitmq服务"></a>1.2.3 连接rabbitmq服务</h5><p>以管理员身份进入安装目录(C:\Program Files (x86)\RabbitMQ Server\rabbitmq_server-3.4.1\sbin)目录下<br>执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmq-plugins enable rabbitmq_management</div></pre></td></tr></table></figure></p>
+<h5 id="1-2-4-登录"><a href="#1-2-4-登录" class="headerlink" title="1.2.4 登录"></a>1.2.4 登录</h5><p>浏览器访问:127.0.0.1:15672<br>默认账号：guest 密码：guest</p>
+<h3 id="2-Linux下安装RabbitMQ"><a href="#2-Linux下安装RabbitMQ" class="headerlink" title="2 Linux下安装RabbitMQ"></a>2 Linux下安装RabbitMQ</h3>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/05/linux下安装RabbitMQ/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/02/SSO/" itemprop="url">
                   SSO
                 </a>
@@ -1584,154 +1739,6 @@
           <h3 id="1-oracle数据库对表设置自增ID"><a href="#1-oracle数据库对表设置自增ID" class="headerlink" title="1 oracle数据库对表设置自增ID"></a>1 oracle数据库对表设置自增ID</h3>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/04/14/oracle数据库/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/05/win配置MySQL/" itemprop="url">
-                  win配置MySQL
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-05T12:07:09+08:00" content="2017-01-05">
-              2017-01-05
-            </time>
-          </span>
-
-
-
-
-
-              <span>
-                  |
-                <span>更新于</span>
-                <time>
-                  2017-03-31
-                  15:07:09
-                </time>
-              </span>
-
-
-
-
-
-
-
-          
-            <span class="post-category" >
-              |
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-            
-               <span id="/2017/01/05/win配置MySQL/" class="leancloud_visitors" data-flag-title="win配置MySQL">
-                 |
-                 <span class="post-meta-item-icon">
-                   <i class="fa fa-eye"></i>
-                 </span>
-                 <span class="post-meta-item-text">阅读量 </span>
-                 <span class="leancloud-visitors-count"></span>
-                
-                  |
-                  <span class="post-meta-item-text">最近 </span>
-                  <span class="leancloud-updated-at"></span>
-                  </span>
-                
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="1-遇到的错误"><a href="#1-遇到的错误" class="headerlink" title="1 遇到的错误"></a>1 遇到的错误</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/05/win配置MySQL/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
