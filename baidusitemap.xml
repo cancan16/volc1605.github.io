@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
+    <lastmod>2017-06-03T05:08:46.164Z</lastmod>
+    <data>
+        <display>
+        <title>Redis</title>
+        <pubTime>2017-06-02T04:59:16.000Z</pubTime>
+        
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Rdies" url="https://volc1605.github.io/categories/Rdies/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85RabbitMQ/</loc>
     <lastmod>2017-06-03T04:56:52.794Z</lastmod>
     <data>
@@ -61,26 +81,6 @@
            
              
               <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
-    <lastmod>2017-06-02T17:15:03.708Z</lastmod>
-    <data>
-        <display>
-        <title>Redis</title>
-        <pubTime>2017-06-02T04:59:16.000Z</pubTime>
-        
-        <tag>redis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Rdies" url="https://volc1605.github.io/categories/Rdies/"/>
           
         </display>
     </data>

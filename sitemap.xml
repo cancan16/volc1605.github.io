@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
+    
+    <lastmod>2017-06-03T05:08:46.164Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85RabbitMQ/</loc>
     
     <lastmod>2017-06-03T04:56:52.794Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://volc1605.github.io/2017/03/03/solr%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     
     <lastmod>2017-06-02T18:16:33.928Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
-    
-    <lastmod>2017-06-02T17:15:03.708Z</lastmod>
     
   </url>
   
