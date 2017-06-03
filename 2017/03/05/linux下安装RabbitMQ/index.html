@@ -83,15 +83,15 @@
 <meta property="og:url" content="https://volc1605.github.io/2017/03/05/linux下安装RabbitMQ/index.html">
 <meta property="og:site_name" content="VOLC">
 <meta property="og:description" content="1 安装RabbitMQ">
-<meta property="og:image" content="http://volc1605.github.io/images/rabbitmq/login.PNG">
-<meta property="og:image" content="http://volc1605.github.io/images/rabbitmq/create.gif">
-<meta property="og:image" content="http://volc1605.github.io/images/rabbitmq/createv.gif">
-<meta property="og:image" content="http://volc1605.github.io/images/rabbitmq/binding.gif">
-<meta property="og:updated_time" content="2017-03-06T15:55:57.800Z">
+<meta property="og:image" content="https://volc1605.github.io/images/rabbitmq/login.PNG">
+<meta property="og:image" content="https://volc1605.github.io/images/rabbitmq/create.gif">
+<meta property="og:image" content="https://volc1605.github.io/images/rabbitmq/createv.gif">
+<meta property="og:image" content="https://volc1605.github.io/images/rabbitmq/binding.gif">
+<meta property="og:updated_time" content="2017-06-03T02:39:58.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下安装RabbitMQ">
 <meta name="twitter:description" content="1 安装RabbitMQ">
-<meta name="twitter:image" content="http://volc1605.github.io/images/rabbitmq/login.PNG">
+<meta name="twitter:image" content="https://volc1605.github.io/images/rabbitmq/login.PNG">
 
 
 
@@ -399,7 +399,7 @@
 <h4 id="3、配置"><a href="#3、配置" class="headerlink" title="3、配置"></a>3、配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">cd /etc/rabbitmq</div><div class="line"># 复制配置文件</div><div class="line">cp /usr/share/doc/rabbitmq-server-3.4.1/rabbitmq.config.example /etc/rabbitmq/</div><div class="line"># mv重命名</div><div class="line">mv rabbitmq.config.example rabbitmq.config</div><div class="line"># 开启普通用户远程访问</div><div class="line">vi /etc/rabbitmq/rabbitmq.config</div><div class="line"># 搜索&#123;loopback_users, []&#125;，去掉前面的%%和后面的, 保存退出</div><div class="line"># 重启rabbitmq服务</div><div class="line">service rabbitmq-server restart</div><div class="line"># 设置开机启动</div><div class="line">chkconfig rabbitmq-server on</div></pre></td></tr></table></figure>
 <h4 id="4、开启web界面管理工具"><a href="#4、开启web界面管理工具" class="headerlink" title="4、开启web界面管理工具"></a>4、开启web界面管理工具</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cd /etc/rabbitmq</div><div class="line">rabbitmq-plugins enable rabbitmq_management</div><div class="line">#开放5672和15672两个端口</div><div class="line">/sbin/iptables -I INPUT -p tcp --dport 15672 -j ACCEPT</div><div class="line">/sbin/iptables -I INPUT -p tcp --dport 5672 -j ACCEPT</div><div class="line">/etc/rc.d/init.d/iptables save</div></pre></td></tr></table></figure>
 <h4 id="5、创建用户"><a href="#5、创建用户" class="headerlink" title="5、创建用户"></a>5、创建用户</h4><p>浏览器访问，服务器ip+rabbitmq访问端口<br>192.168.10.25:15672<br>默认账号：guest 密码：guest<br>创建用户</p>
-<h3 id="2-创建用户绑定交换机"><a href="#2-创建用户绑定交换机" class="headerlink" title="2 创建用户绑定交换机"></a>2 创建用户绑定交换机</h3><p>本地登录地址：<a href="http://127.0.0.1:15672" target="_blank" rel="external">http://127.0.0.1:15672</a><br><!-- ![rabbitmq](https://volc1605.github.io/images/rabbitmq/login.PNG) --><br><img src="http://volc1605.github.io/images/rabbitmq/login.PNG" alt="rabbitmq"><br>1、创建普通用户<br>rabbitmq默认账户为：guest 密码：guest，拥有最高权限，这里需要创建普通权限的用户<br><img src="http://volc1605.github.io/images/rabbitmq/create.gif" alt="rabbitmq"><br>2、为用户添加Virtual Hosts访问权限<br><img src="http://volc1605.github.io/images/rabbitmq/createv.gif" alt="rabbitmq"><br>3、监听队列绑定交换机，实现数据同步。<br>1) 后台系统声明交换机(定义交换机持久化并自动声明的交换机,自动声明并不是在tomcat启动时声明，而是在使用中没有交换机时才声明)。<br>2) 其他系统定义队列(一个持久化自动声明的队列 ，需要绑定后台系统(taotao-manage-web)创建的交换机，这种绑定要人工维护实现(设置权限更灵活))。<br>3) 当后台数据改变时，会发送一个消息给队列，其他系统监听队列是否有消息存在，如果有消息在本系统进行处理。<br>搜索系统需要获取数据的更新，删除和添加消息<br>前台系统需要获取数据的更新和删除消息<br>使用projectname账户登录rabbitmq后台，进行绑定<br><img src="http://volc1605.github.io/images/rabbitmq/binding.gif" alt="rabbitmq"></p>
+<h3 id="2-创建用户绑定交换机"><a href="#2-创建用户绑定交换机" class="headerlink" title="2 创建用户绑定交换机"></a>2 创建用户绑定交换机</h3><p>本地登录地址：<a href="http://127.0.0.1:15672" target="_blank" rel="external">http://127.0.0.1:15672</a><br><!-- ![rabbitmq](https://volc1605.github.io/images/rabbitmq/login.PNG) --><br><img src="https://volc1605.github.io/images/rabbitmq/login.PNG" alt="rabbitmq"><br>1、创建普通用户<br>rabbitmq默认账户为：guest 密码：guest，拥有最高权限，这里需要创建普通权限的用户<br><img src="https://volc1605.github.io/images/rabbitmq/create.gif" alt="rabbitmq"><br>2、为用户添加Virtual Hosts访问权限<br><img src="https://volc1605.github.io/images/rabbitmq/createv.gif" alt="rabbitmq"><br>3、监听队列绑定交换机，实现数据同步。<br>1) 后台系统声明交换机(定义交换机持久化并自动声明的交换机,自动声明并不是在tomcat启动时声明，而是在使用中没有交换机时才声明)。<br>2) 其他系统定义队列(一个持久化自动声明的队列 ，需要绑定后台系统(taotao-manage-web)创建的交换机，这种绑定要人工维护实现(设置权限更灵活))。<br>3) 当后台数据改变时，会发送一个消息给队列，其他系统监听队列是否有消息存在，如果有消息在本系统进行处理。<br>搜索系统需要获取数据的更新，删除和添加消息<br>前台系统需要获取数据的更新和删除消息<br>使用projectname账户登录rabbitmq后台，进行绑定<br><img src="https://volc1605.github.io/images/rabbitmq/binding.gif" alt="rabbitmq"></p>
 
       
     </div>

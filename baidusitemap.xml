@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85RabbitMQ/</loc>
+    <lastmod>2017-06-03T02:39:58.243Z</lastmod>
+    <data>
+        <display>
+        <title>linux下安装RabbitMQ</title>
+        <pubTime>2017-03-05T03:15:54.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>rabbitmq</tag>
+         
+         
+           
+             
+              <breadCrumb title="RabbitMQ" url="https://volc1605.github.io/categories/RabbitMQ/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2016/11/01/JS/</loc>
     <lastmod>2017-06-02T18:27:58.959Z</lastmod>
     <data>
@@ -463,28 +485,6 @@
            
              
               <breadCrumb title="架构" url="https://volc1605.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85RabbitMQ/</loc>
-    <lastmod>2017-03-06T15:55:57.800Z</lastmod>
-    <data>
-        <display>
-        <title>linux下安装RabbitMQ</title>
-        <pubTime>2017-03-05T03:15:54.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-        <tag>rabbitmq</tag>
-         
-         
-           
-             
-              <breadCrumb title="RabbitMQ" url="https://volc1605.github.io/categories/RabbitMQ/"/>
           
         </display>
     </data>
