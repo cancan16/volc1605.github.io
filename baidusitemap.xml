@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2016/11/01/notes/</loc>
+    <lastmod>2017-06-03T13:51:50.149Z</lastmod>
+    <data>
+        <display>
+        <title>Notes</title>
+        <pubTime>2016-11-01T14:28:20.000Z</pubTime>
+        
+        <tag>terminal</tag>
+         
+        <tag>command</tag>
+         
+         
+           
+             
+              <breadCrumb title="Notes" url="https://volc1605.github.io/categories/Notes/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
     <lastmod>2017-06-03T05:08:46.164Z</lastmod>
     <data>
@@ -71,9 +93,9 @@
         <title>solr搜索服务器</title>
         <pubTime>2017-03-02T16:05:13.000Z</pubTime>
         
-        <tag>linux</tag>
-         
         <tag>java</tag>
+         
+        <tag>linux</tag>
          
         <tag>solr</tag>
          
@@ -453,9 +475,9 @@
         <title>linux下安装和操作mysql</title>
         <pubTime>2016-12-12T02:48:23.000Z</pubTime>
         
-        <tag>linux</tag>
-         
         <tag>mysql</tag>
+         
+        <tag>linux</tag>
          
          
            
@@ -861,28 +883,6 @@
            
              
               <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2016/11/01/notes/</loc>
-    <lastmod>2017-02-21T02:21:02.393Z</lastmod>
-    <data>
-        <display>
-        <title>Notes</title>
-        <pubTime>2016-11-01T14:28:20.000Z</pubTime>
-        
-        <tag>terminal</tag>
-         
-        <tag>command</tag>
-         
-         
-           
-             
-              <breadCrumb title="Notes" url="https://volc1605.github.io/categories/Notes/"/>
           
         </display>
     </data>

@@ -93,7 +93,7 @@
 在windows命令行窗口下执行：  
 12netstat -aon|findstr &amp;quot;8080&amp;quot;TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448
 端口“8080”被PID（进程号）为2448的进程占用。查看端口“8080”被哪个应">
-<meta property="og:updated_time" content="2017-02-21T02:21:02.393Z">
+<meta property="og:updated_time" content="2017-06-03T13:51:50.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Notes">
 <meta name="twitter:description" content="1.查看端口号并关闭相关进程
@@ -424,6 +424,10 @@
 <p>2.3 有提示的关闭进程</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">taskkill /t /im notepad.exe</div><div class="line">taskkill /t /pid 2152</div></pre></td></tr></table></figure>
 <p>这个效果是提示后在使用者确定后关闭,有提示框。<br>2.4 强行终止进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">taskkill /f /im notepad.exe</div><div class="line">taskkill /f /pid 2152</div></pre></td></tr></table></figure></p>
+<p>2.5 关闭一个.bat文件</p>
+<p>为mvnDebug.bat文件添加title为mvn<br>部分内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@echo off</div><div class="line">title mvn</div><div class="line">@REM enable echoing my setting MAVEN_BATCH_ECHO to &apos;on&apos;</div><div class="line">@if &quot;%MAVEN_BATCH_ECHO%&quot; == &quot;on&quot;  echo %MAVEN_BATCH_ECHO%</div></pre></td></tr></table></figure></p>
+<p>关闭mvnDebug.bat文件<br>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Users\Administrator&gt;taskkill /fi  &quot;windowtitle eq mvn&quot;</div></pre></td></tr></table></figure></p>
+<p>windowtitle eq mvn<br>eq 后面指定需要关闭的.bat文件的title即可</p>
 <blockquote>
 <p>3.端口状态</p>
 </blockquote>
