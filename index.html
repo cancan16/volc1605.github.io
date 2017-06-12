@@ -303,6 +303,151 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/12/多线程/" itemprop="url">
+                  多线程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-12T09:37:52+08:00" content="2017-06-12">
+              2017-06-12
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2017-06-12
+                  09:37:52
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2017/06/12/多线程/" class="leancloud_visitors" data-flag-title="多线程">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+                  |
+                  <span class="post-meta-item-text">最近 </span>
+                  <span class="leancloud-updated-at"></span>
+                  </span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="同步方法"><a href="#同步方法" class="headerlink" title="同步方法"></a>同步方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.biusoft;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> balance;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Account</span><span class="params">(<span class="keyword">int</span> balance)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.balance = balance;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getBalance</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> balance;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * add方法和withdraw方法不是同步方法的情况下：</div><div class="line">	 * 两个线程操作同一个Account对象，并访问Account对象中add和withdraw方法时获取到的num值并不是实时的。保证不了数据的安全性。</div><div class="line">	 * 同步方法的情况下：</div><div class="line">	 * 同步方法，方法含有锁，那么这个锁就是该方法所在的Account类对象</div><div class="line">	 * 当同一个Account对象调用add方法时就不会再执行withdraw方法，只有add方法释放掉Account类锁后才能执行withd方法</div><div class="line">	 * 这样保证balance数据的安全性。</div><div class="line">	 * </div><div class="line">	 * 注意：每个对象都可以做为锁，但一个对象做为锁时，应该被多个线程共享，这样才会有意义，</div><div class="line">	 * 在并发环境下，一个没有共享的对象作为锁是没有意义的。</div><div class="line">	 * 例如：每个线程中都创建一个Test对象，而Test对象中的同步方法是不起作用的。</div><div class="line">	 * </div><div class="line">	 * 专业描述synchronized(lock):</div><div class="line">	 * 	每个锁对象都有两个队列，一个是就绪队列，一个是阻塞队列，</div><div class="line">	 * 	就绪队列存储了将要获得锁的线程，阻塞队列存储了被阻塞的线程，</div><div class="line">	 * 	当一个被线程被唤醒 (notify)后，才会进入到就绪队列，等待cpu的调度。</div><div class="line">	 * 	当一开始线程a第一次执行account.add方法时，jvm会检查锁对象account 的就绪队列是否已经有线程在等待，如果有则表明account的锁已经被占用了，由于是第一次运行，account的就绪队列为空，所以线程a获得了锁， 执行account.add方法。</div><div class="line">	 * 	如果恰好在这个时候，线程b要执行account.withdraw方法，因为线程a已经获得了锁还没有释放，所以线程 b要进入account的就绪队列，等到得到锁后才可以执行。</div><div class="line">	 * 	一个线程执行临界区代码过程如下：</div><div class="line">	 *	1 获得同步锁</div><div class="line">	 *	2 清空工作内存</div><div class="line">	 *	3 从主存拷贝变量副本到工作内存</div><div class="line">	 *	4 对这些变量计算</div><div class="line">	 *	5 将变量从工作内存写回到主存</div><div class="line">	 *	6 释放锁</div><div class="line">	 *	可见，synchronized既保证了多线程的并发有序性，又保证了多线程的内存可见性。</div><div class="line">	 * </div><div class="line">	 * </div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">		balance = balance + num;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">withdraw</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">		balance = balance - num;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">		Account account = <span class="keyword">new</span> Account(<span class="number">1000</span>);</div><div class="line">		Thread a = <span class="keyword">new</span> Thread(<span class="keyword">new</span> AddThread(account, <span class="number">20</span>), <span class="string">"add"</span>);</div><div class="line">		Thread b = <span class="keyword">new</span> Thread(<span class="keyword">new</span> WithdrawThread(account, <span class="number">20</span>), <span class="string">"withdraw"</span>);</div><div class="line">		a.start();</div><div class="line">		b.start();</div><div class="line">		a.join();</div><div class="line">		b.join();</div><div class="line">		System.out.println(account.getBalance());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AddThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">		Account account;</div><div class="line">		<span class="keyword">int</span> amount;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">AddThread</span><span class="params">(Account account, <span class="keyword">int</span> amount)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>.account = account;</div><div class="line">			<span class="keyword">this</span>.amount = amount;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">200000</span>; i++) &#123;</div><div class="line">				account.add(amount);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">WithdrawThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">		Account account;</div><div class="line">		<span class="keyword">int</span> amount;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">WithdrawThread</span><span class="params">(Account account, <span class="keyword">int</span> amount)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>.account = account;</div><div class="line">			<span class="keyword">this</span>.amount = amount;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</div><div class="line">				account.withdraw(amount);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/05/linux下安装RabbitMQ/" itemprop="url">
                   RabbitMQ
                 </a>
@@ -1613,154 +1758,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/14/oracle数据库/" itemprop="url">
-                  oracle数据库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-14T13:08:17+08:00" content="2017-04-14">
-              2017-04-14
-            </time>
-          </span>
-
-
-
-
-
-              <span>
-                  |
-                <span>更新于</span>
-                <time>
-                  2017-04-14
-                  13:08:17
-                </time>
-              </span>
-
-
-
-
-
-
-
-          
-            <span class="post-category" >
-              |
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ORACLE/" itemprop="url" rel="index">
-                    <span itemprop="name">ORACLE</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-            
-               <span id="/2017/04/14/oracle数据库/" class="leancloud_visitors" data-flag-title="oracle数据库">
-                 |
-                 <span class="post-meta-item-icon">
-                   <i class="fa fa-eye"></i>
-                 </span>
-                 <span class="post-meta-item-text">阅读量 </span>
-                 <span class="leancloud-visitors-count"></span>
-                
-                  |
-                  <span class="post-meta-item-text">最近 </span>
-                  <span class="leancloud-updated-at"></span>
-                  </span>
-                
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="1-oracle数据库对表设置自增ID"><a href="#1-oracle数据库对表设置自增ID" class="headerlink" title="1 oracle数据库对表设置自增ID"></a>1 oracle数据库对表设置自增ID</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/14/oracle数据库/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1806,7 +1803,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1823,7 +1820,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
