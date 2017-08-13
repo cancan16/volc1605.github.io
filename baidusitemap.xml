@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
+    <lastmod>2017-08-13T14:57:23.649Z</lastmod>
+    <data>
+        <display>
+        <title>Redis</title>
+        <pubTime>2017-06-02T04:59:16.000Z</pubTime>
+        
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="https://volc1605.github.io/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis/</loc>
+    <lastmod>2017-08-13T14:57:06.114Z</lastmod>
+    <data>
+        <display>
+        <title>linux下安装Redis</title>
+        <pubTime>2017-03-05T02:50:43.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="https://volc1605.github.io/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2017/02/21/%E7%94%B5%E8%A7%86%E5%89%A7/</loc>
     <lastmod>2017-08-12T01:13:12.521Z</lastmod>
     <data>
@@ -285,26 +327,6 @@
            
              
               <breadCrumb title="Notes" url="https://volc1605.github.io/categories/Notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
-    <lastmod>2017-06-03T05:08:46.164Z</lastmod>
-    <data>
-        <display>
-        <title>Redis</title>
-        <pubTime>2017-06-02T04:59:16.000Z</pubTime>
-        
-        <tag>redis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Rdies" url="https://volc1605.github.io/categories/Rdies/"/>
           
         </display>
     </data>
@@ -794,28 +816,6 @@
 
     
   <url>
-    <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis/</loc>
-    <lastmod>2017-03-05T03:13:23.438Z</lastmod>
-    <data>
-        <display>
-        <title>linux下安装Redis</title>
-        <pubTime>2017-03-05T02:50:43.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-        <tag>redis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Redis" url="https://volc1605.github.io/categories/Redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://volc1605.github.io/2017/02/17/%E8%A7%A6%E5%8F%91%E5%99%A8%E8%B0%83%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</loc>
     <lastmod>2017-03-03T16:37:51.569Z</lastmod>
     <data>
@@ -843,9 +843,9 @@
         <title>MySQL存储过程</title>
         <pubTime>2017-01-20T11:13:26.000Z</pubTime>
         
-        <tag>mysql</tag>
-         
         <tag>java</tag>
+         
+        <tag>mysql</tag>
          
         <tag>存储过程</tag>
          
@@ -933,9 +933,9 @@
         <title>MyBatis批量</title>
         <pubTime>2017-02-21T02:35:04.000Z</pubTime>
         
-        <tag>mybatis</tag>
-         
         <tag>java</tag>
+         
+        <tag>mybatis</tag>
          
          
            
