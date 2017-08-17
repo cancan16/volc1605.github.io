@@ -99,9 +99,9 @@
         <title>电视剧</title>
         <pubTime>2017-02-21T14:43:36.000Z</pubTime>
         
-        <tag>VOLC</tag>
-         
         <tag>电视剧</tag>
+         
+        <tag>VOLC</tag>
          
          
            
@@ -385,9 +385,9 @@
         <title>solr搜索服务器</title>
         <pubTime>2017-03-02T16:05:13.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>linux</tag>
+         
+        <tag>java</tag>
          
         <tag>solr</tag>
          
@@ -843,9 +843,9 @@
         <title>MySQL存储过程</title>
         <pubTime>2017-01-20T11:13:26.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>mysql</tag>
+         
+        <tag>java</tag>
          
         <tag>存储过程</tag>
          
@@ -889,9 +889,9 @@
         <title>电影</title>
         <pubTime>2017-02-21T14:37:44.000Z</pubTime>
         
-        <tag>电影</tag>
-         
         <tag>VOLC</tag>
+         
+        <tag>电影</tag>
          
          
            
@@ -933,9 +933,9 @@
         <title>MyBatis批量</title>
         <pubTime>2017-02-21T02:35:04.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>mybatis</tag>
+         
+        <tag>java</tag>
          
          
            
@@ -1101,9 +1101,9 @@
         <title>JDBC</title>
         <pubTime>2017-02-06T01:18:52.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>jdbc</tag>
+         
+        <tag>java</tag>
          
          
            
