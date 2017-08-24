@@ -303,6 +303,158 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/24/页面获取静态资源properties配置文件中的key值/" itemprop="url">
+                  页面获取静态资源properties配置文件中的key值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-24T17:59:15+08:00" content="2017-08-24">
+              2017-08-24
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2017-08-24
+                  17:59:15
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2017/08/24/页面获取静态资源properties配置文件中的key值/" class="leancloud_visitors" data-flag-title="页面获取静态资源properties配置文件中的key值">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+                  |
+                  <span class="post-meta-item-text">最近 </span>
+                  <span class="leancloud-updated-at"></span>
+                  </span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-页面获取配置文件中的key值"><a href="#1-页面获取配置文件中的key值" class="headerlink" title="1. 页面获取配置文件中的key值"></a>1. 页面获取配置文件中的key值</h3><p>登录成功后，加载index.html页面，在index页面中引入获取资源的getProperties.js<br>getProperties.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> configParam = <span class="literal">null</span>;</div><div class="line">$.ajax(&#123;</div><div class="line">    <span class="attr">type</span>: <span class="string">'POST'</span>,</div><div class="line">    <span class="attr">url</span>: <span class="string">"readProperties/properties"</span>,</div><div class="line">	<span class="comment">// async: false, // 同步请求会出现以下警告</span></div><div class="line">    data: <span class="built_in">JSON</span>.stringify(&#123;&#125;),</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">        configParam = data;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- S 获取resource中配置文件中的request.properties中的key值 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"#springUrl('/static/pushstatic/js/definejs/getProperties.js')"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- E --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// console.log(configParam); </span></div><div class="line">		<span class="comment">// 这样是获取不到configParam的值的。</span></div><div class="line">		<span class="comment">// index.html加载顺序:getProperties.js(ajax并没有请求)-&gt;ready方法中的console.log(configParam);-&gt; getProperties.js中的请求</span></div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>警告：<br><img src="https://volc1605.github.io/images/async/async.png" alt="async"><br>出现的场景：<br>后台返回index.html视图，浏览器加载，index引入的getProperties.js,而在js中同步请求资源，才会出现警告。<br>这句警告意思是：<br>XMLHttpRequest  【ajax】发送请求，是在浏览器js的主线程上(加载index.html页面)，ajax同步发送请求引起的，这样会引起很不好的用户体验，可能导致浏览器卡死等等！<br>警告是针对HTML5说的，因为在html5以前，JavaScript是完全的单线程方式，主线程之外不存在其他线程。但在Html5中增加了Worker对象，每个Worker运行在一个独立的线程中，Worker线程被阻塞一般是不会影响主线程和浏览器的。因此，如果非要使用同步的Ajax（这种情况应该很少见），那就放到Worker线程中吧，千万千万不要放到主线程里。<br>解决方法：</p>
+<ol>
+<li>子页面中获取console.log(configParam)是可行的，可将<script type="text/javascript" src="#springUrl('/static/pushstatic/js/definejs/getProperties.js')"></script>放在加index.html的上一个加载页面。</li>
+<li>加载index.html时后台返回model到页面中。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/18/goeasy实时web端推送/" itemprop="url">
                   goeasy实时web端推送
                 </a>
@@ -1612,154 +1764,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/02/从github拉取项目/" itemprop="url">
-                  从github拉取项目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-02T12:32:16+08:00" content="2017-06-02">
-              2017-06-02
-            </time>
-          </span>
-
-
-
-
-
-              <span>
-                  |
-                <span>更新于</span>
-                <time>
-                  2017-06-02
-                  12:32:16
-                </time>
-              </span>
-
-
-
-
-
-
-
-          
-            <span class="post-category" >
-              |
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/GitHub/" itemprop="url" rel="index">
-                    <span itemprop="name">GitHub</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-            
-               <span id="/2017/06/02/从github拉取项目/" class="leancloud_visitors" data-flag-title="从github拉取项目">
-                 |
-                 <span class="post-meta-item-icon">
-                   <i class="fa fa-eye"></i>
-                 </span>
-                 <span class="post-meta-item-text">阅读量 </span>
-                 <span class="leancloud-visitors-count"></span>
-                
-                  |
-                  <span class="post-meta-item-text">最近 </span>
-                  <span class="leancloud-updated-at"></span>
-                  </span>
-                
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="1-使用github客户端windows-powershell操作项目"><a href="#1-使用github客户端windows-powershell操作项目" class="headerlink" title="1 使用github客户端windows powershell操作项目"></a>1 使用github客户端windows powershell操作项目</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/02/从github拉取项目/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1805,7 +1809,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1813,7 +1817,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
