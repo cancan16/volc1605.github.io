@@ -303,6 +303,154 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/01/JS/" itemprop="url">
+                  JS
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-01T22:05:27+08:00" content="2016-11-01">
+              2016-11-01
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2016-12-22
+                  10:42:27
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2016/11/01/JS/" class="leancloud_visitors" data-flag-title="JS">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+                  |
+                  <span class="post-meta-item-text">最近 </span>
+                  <span class="leancloud-updated-at"></span>
+                  </span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1-windows对象setTimeOut-用于发送验证码倒计时"><a href="#1-windows对象setTimeOut-用于发送验证码倒计时" class="headerlink" title="1.windows对象setTimeOut()用于发送验证码倒计时"></a>1.windows对象setTimeOut()用于发送验证码倒计时</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//短信验证码倒计时</div><div class="line">var wait = 30;</div><div class="line">function time(o) &#123;</div><div class="line">    if (wait == 0) &#123;</div><div class="line">        o.removeAttribute(&quot;disabled&quot;);</div><div class="line">        o.innerHTML = &quot;发送短信验证码&quot;;</div><div class="line">        wait = 30;</div><div class="line">    &#125; else &#123;</div><div class="line">        o.setAttribute(&quot;disabled&quot;, true);  </div><div class="line">        o.innerHTML = &quot;重新发送(&quot; + wait + &quot;)&quot;;</div><div class="line"></div><div class="line">        wait--;  </div><div class="line">        setTimeout(function()&#123;time(o)&#125;, 2)</div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/01/JS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/12/memcache/" itemprop="url">
                   memcache
                 </a>
@@ -1630,159 +1778,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/03/jsp页面之间传值/" itemprop="url">
-                  jsp页面之间传值
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-03T23:56:33+08:00" content="2016-06-03">
-              2016-06-03
-            </time>
-          </span>
-
-
-
-
-
-              <span>
-                  |
-                <span>更新于</span>
-                <time>
-                  2016-06-03
-                  23:56:33
-                </time>
-              </span>
-
-
-
-
-
-
-
-          
-            <span class="post-category" >
-              |
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-            
-               <span id="/2016/06/03/jsp页面之间传值/" class="leancloud_visitors" data-flag-title="jsp页面之间传值">
-                 |
-                 <span class="post-meta-item-icon">
-                   <i class="fa fa-eye"></i>
-                 </span>
-                 <span class="post-meta-item-text">阅读量 </span>
-                 <span class="leancloud-visitors-count"></span>
-                
-                  |
-                  <span class="post-meta-item-text">最近 </span>
-                  <span class="leancloud-updated-at"></span>
-                  </span>
-                
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-jsp页面之间传值"><a href="#1-jsp页面之间传值" class="headerlink" title="1 jsp页面之间传值"></a>1 jsp页面之间传值</h3><p>index.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</div><div class="line">	pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%@ page trimDirectiveWhitespaces=&quot;true&quot;%&gt;</div><div class="line">&lt;%@ page session=&quot;false&quot;%&gt;</div><div class="line">&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot;%&gt;</div><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery-1.2.6.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	$ (document).ready (function () &#123;</div><div class="line">		&lt;%request.getRequestDispatcher(&quot;./success.jsp?a=1&amp;b=2&quot;).forward(request, response);%&gt;</div><div class="line">	&#125;);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>success.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</div><div class="line">	pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;%@ page trimDirectiveWhitespaces=&quot;true&quot;%&gt;</div><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</div><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery-1.2.6.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body id=&quot;mainframe&quot;&gt;</div><div class="line">	&lt;div class=&quot;w&quot; id=&quot;headers&quot;&gt;</div><div class="line">		&lt;input id=&quot;pid&quot; type=&quot;hidden&quot; value=&quot;$&#123;param&#125;&quot; /&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	$ (document).ready (function () &#123;</div><div class="line">	    alert ($ (&apos;#pid&apos;).val ()); // &#123;b=2, a=1&#125;</div><div class="line">    &#125;);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="2-jsp页面session存取数据"><a href="#2-jsp页面session存取数据" class="headerlink" title="2 jsp页面session存取数据"></a>2 jsp页面session存取数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">存：</div><div class="line">&lt;% request.getSession().setAttribute(&quot;userLoginName&quot;, getUser().getLoginName()); %&gt;</div><div class="line">取：</div><div class="line">console.log(&apos;$&#123;sessionScope.userLoginName &#125;&apos;);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1823,7 +1823,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1831,7 +1831,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1840,7 +1840,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

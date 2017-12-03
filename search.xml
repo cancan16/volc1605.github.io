@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[idea提交代码到GIT]]></title>
+      <url>https://volc1605.github.io/2017/12/03/idea%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%88%B0GIT/</url>
+      <content type="html"><![CDATA[<h3 id="idea提交代码到GIT"><a href="#idea提交代码到GIT" class="headerlink" title="idea提交代码到GIT"></a>idea提交代码到GIT</h3><p>注意：首先在git上创建空的项目仓库</p>
+<p>VCS-&gt;Enable Version Control…，然后选择Git<br>右键点击src或代码文件，Git – Add – Commit（先Add再Commit）<br>首次提交会选择提交的url，点击Define remote填写仓库url</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[页面获取静态资源properties配置文件中的key值]]></title>
       <url>https://volc1605.github.io/2017/08/24/%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84key%E5%80%BC/</url>
       <content type="html"><![CDATA[<h3 id="1-页面获取配置文件中的key值"><a href="#1-页面获取配置文件中的key值" class="headerlink" title="1. 页面获取配置文件中的key值"></a>1. 页面获取配置文件中的key值</h3><a id="more"></a>
