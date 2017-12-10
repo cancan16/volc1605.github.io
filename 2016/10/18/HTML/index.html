@@ -85,7 +85,7 @@
 <meta property="og:description" content="1.input中autocomplete12&amp;lt;!-- autocomplete：为on时返回页面时，input中的值仍然存在 --&amp;gt;&amp;lt;input name=&quot;user_phone&quot; id=&quot;user_phone&quot; type=&quot;text&quot; class=&quot;form-control required&quot;   autocomplete=&quot;off&quot; placeholder=&quot;请填写您注册的手">
 <meta property="og:image" content="https://volc1605.github.io/images/html/ueditorConfig.png">
 <meta property="og:image" content="https://volc1605.github.io/images/html/configJson.png">
-<meta property="og:updated_time" content="2017-06-03T15:55:49.213Z">
+<meta property="og:updated_time" content="2017-12-10T17:55:56.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML">
 <meta name="twitter:description" content="1.input中autocomplete12&amp;lt;!-- autocomplete：为on时返回页面时，input中的值仍然存在 --&amp;gt;&amp;lt;input name=&quot;user_phone&quot; id=&quot;user_phone&quot; type=&quot;text&quot; class=&quot;form-control required&quot;   autocomplete=&quot;off&quot; placeholder=&quot;请填写您注册的手">
@@ -420,6 +420,8 @@
 </blockquote>
 <p>放入加入style样式table中</p>
 <h1 id="失去焦点事件"><a href="#失去焦点事件" class="headerlink" title="失去焦点事件"></a>失去焦点事件</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">onblur=”validate(this, 0)”</div><div class="line">validate: function(item, index) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="4-html传值遇到的问题"><a href="#4-html传值遇到的问题" class="headerlink" title="4.html传值遇到的问题"></a>4.html传值遇到的问题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 获取页面之间跳转get方式传过来的值</div><div class="line">function getQueryStr(str) &#123;</div><div class="line">	var rs = new RegExp(&quot;(^|)&quot; + str + &quot;=([^&amp;]*)(&amp;|$)&quot;, &quot;gi&quot;).exec(String(window.document.location.href)), tmp;</div><div class="line">	if (tmp = rs) &#123;</div><div class="line">		return decodeURI(tmp[2]);</div><div class="line">	&#125;</div><div class="line">	return &quot;&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>遇到的问题是有些浏览器编码不同导致传入到另一个html页面时中文参数出现乱码，解决方式是：”&amp;name=” + encodeURI(“中文参数”)<br>在html页面get请求服务器接口时也会出现乱码，解决方式是：”&amp;name=” + encodeURI(encodeURI(“中文参数”))，进行两次encode编码。</p>
 
       
     </div>
@@ -563,7 +565,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">62</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -571,7 +573,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -580,7 +582,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -665,7 +667,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-input中autocomplete"><span class="nav-number">1.</span> <span class="nav-text">1.input中autocomplete</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-UEditor使用注意事项"><span class="nav-number">2.</span> <span class="nav-text">2.UEditor使用注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1引入UEditor和回显图片"><span class="nav-number">2.1.</span> <span class="nav-text">2.1引入UEditor和回显图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2设置获取ueditor内容"><span class="nav-number">2.2.</span> <span class="nav-text">2.2设置获取ueditor内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-输入框对齐"><span class="nav-number">3.</span> <span class="nav-text">3.输入框对齐</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#失去焦点事件"><span class="nav-number">4.</span> <span class="nav-text">失去焦点事件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-input中autocomplete"><span class="nav-number">1.</span> <span class="nav-text">1.input中autocomplete</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-UEditor使用注意事项"><span class="nav-number">2.</span> <span class="nav-text">2.UEditor使用注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1引入UEditor和回显图片"><span class="nav-number">2.1.</span> <span class="nav-text">2.1引入UEditor和回显图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2设置获取ueditor内容"><span class="nav-number">2.2.</span> <span class="nav-text">2.2设置获取ueditor内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-输入框对齐"><span class="nav-number">3.</span> <span class="nav-text">3.输入框对齐</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#失去焦点事件"><span class="nav-number">4.</span> <span class="nav-text">失去焦点事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-html传值遇到的问题"><span class="nav-number">5.</span> <span class="nav-text">4.html传值遇到的问题</span></a></li></ol></div>
             
           </div>
         </section>

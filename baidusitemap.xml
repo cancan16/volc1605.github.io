@@ -4,6 +4,116 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2017/12/11/layer/</loc>
+    <lastmod>2017-12-10T18:02:32.329Z</lastmod>
+    <data>
+        <display>
+        <title>layer</title>
+        <pubTime>2017-12-10T17:56:20.000Z</pubTime>
+        
+        <tag>layui</tag>
+         
+         
+           
+             
+              <breadCrumb title="LAYUI" url="https://volc1605.github.io/categories/LAYUI/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/10/18/HTML/</loc>
+    <lastmod>2017-12-10T17:55:56.328Z</lastmod>
+    <data>
+        <display>
+        <title>HTML</title>
+        <pubTime>2016-10-18T14:03:22.000Z</pubTime>
+        
+        <tag>html</tag>
+         
+        <tag>ueditor</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORK" url="https://volc1605.github.io/categories/WORK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/05/linux%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2017-12-10T17:48:14.473Z</lastmod>
+    <data>
+        <display>
+        <title>linux下部署项目</title>
+        <pubTime>2017-03-05T05:21:34.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>tomcat</tag>
+         
+        <tag>部署</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://volc1605.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/10/18/MyBatis/</loc>
+    <lastmod>2017-12-10T17:46:38.705Z</lastmod>
+    <data>
+        <display>
+        <title>MyBatis</title>
+        <pubTime>2016-10-18T13:41:21.000Z</pubTime>
+        
+        <tag>mybatis</tag>
+         
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORK" url="https://volc1605.github.io/categories/WORK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/26/%E7%9B%90%E5%80%BC%E5%8A%A0%E5%AF%86/</loc>
+    <lastmod>2017-12-10T17:45:28.577Z</lastmod>
+    <data>
+        <display>
+        <title>盐值加密</title>
+        <pubTime>2017-03-26T07:32:08.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>盐值</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2017/12/03/idea%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%88%B0GIT/</loc>
     <lastmod>2017-12-03T15:48:05.787Z</lastmod>
     <data>
@@ -101,28 +211,6 @@
            
              
               <breadCrumb title="PUSH" url="https://volc1605.github.io/categories/PUSH/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2016/10/18/MyBatis/</loc>
-    <lastmod>2017-08-18T09:49:58.892Z</lastmod>
-    <data>
-        <display>
-        <title>MyBatis</title>
-        <pubTime>2016-10-18T13:41:21.000Z</pubTime>
-        
-        <tag>mybatis</tag>
-         
-        <tag>mysql</tag>
-         
-         
-           
-             
-              <breadCrumb title="WORK" url="https://volc1605.github.io/categories/WORK/"/>
           
         </display>
     </data>
@@ -400,28 +488,6 @@
 
     
   <url>
-    <loc>https://volc1605.github.io/2016/10/18/HTML/</loc>
-    <lastmod>2017-06-03T15:55:49.213Z</lastmod>
-    <data>
-        <display>
-        <title>HTML</title>
-        <pubTime>2016-10-18T14:03:22.000Z</pubTime>
-        
-        <tag>html</tag>
-         
-        <tag>ueditor</tag>
-         
-         
-           
-             
-              <breadCrumb title="WORK" url="https://volc1605.github.io/categories/WORK/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://volc1605.github.io/2017/06/02/SSO/</loc>
     <lastmod>2017-06-03T15:52:11.125Z</lastmod>
     <data>
@@ -491,9 +557,9 @@
         <title>solr搜索服务器</title>
         <pubTime>2017-03-02T16:05:13.000Z</pubTime>
         
-        <tag>linux</tag>
-         
         <tag>java</tag>
+         
+        <tag>linux</tag>
          
         <tag>solr</tag>
          
@@ -718,28 +784,6 @@
 
     
   <url>
-    <loc>https://volc1605.github.io/2017/03/26/%E7%9B%90%E5%80%BC%E5%8A%A0%E5%AF%86/</loc>
-    <lastmod>2017-03-26T08:40:29.273Z</lastmod>
-    <data>
-        <display>
-        <title>盐值加密</title>
-        <pubTime>2017-03-26T07:32:08.000Z</pubTime>
-        
-        <tag>java</tag>
-         
-        <tag>盐值</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://volc1605.github.io/2016/12/12/linux%E6%93%8D%E4%BD%9Cmysql/</loc>
     <lastmod>2017-03-22T07:49:35.095Z</lastmod>
     <data>
@@ -849,30 +893,6 @@
            
              
               <breadCrumb title="tomcat" url="https://volc1605.github.io/categories/tomcat/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2017/03/05/linux%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2017-03-05T13:19:30.729Z</lastmod>
-    <data>
-        <display>
-        <title>linux下部署项目</title>
-        <pubTime>2017-03-05T05:21:34.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-        <tag>tomcat</tag>
-         
-        <tag>部署</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="https://volc1605.github.io/categories/Linux/"/>
           
         </display>
     </data>
