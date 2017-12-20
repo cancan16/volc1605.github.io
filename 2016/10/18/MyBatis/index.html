@@ -83,7 +83,7 @@
 <meta property="og:url" content="https://volc1605.github.io/2016/10/18/MyBatis/index.html">
 <meta property="og:site_name" content="VOLC">
 <meta property="og:description" content="1.判断字段值是否存在并录入数据sql123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;!-- 录入短信套餐信息 --&amp;gt;&amp;lt;insert id=&quot;addSmsPackage&quot; parameterType=&quot;java.util.Map&quot;&amp;gt;	INSERT INTO	tp_package_in">
-<meta property="og:updated_time" content="2017-12-10T17:46:38.705Z">
+<meta property="og:updated_time" content="2017-12-19T05:36:16.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis">
 <meta name="twitter:description" content="1.判断字段值是否存在并录入数据sql123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;!-- 录入短信套餐信息 --&amp;gt;&amp;lt;insert id=&quot;addSmsPackage&quot; parameterType=&quot;java.util.Map&quot;&amp;gt;	INSERT INTO	tp_package_in">
@@ -396,10 +396,8 @@
 <h1 id="5-spring-mybatis"><a href="#5-spring-mybatis" class="headerlink" title="5. spring+mybatis"></a>5. spring+mybatis</h1><pre><code>配置参考：https://my.oschina.net/wangt10/blog/508344
 </code></pre><h1 id="6-mybatis插入返回逐渐id"><a href="#6-mybatis插入返回逐渐id" class="headerlink" title="6. mybatis插入返回逐渐id"></a>6. mybatis插入返回逐渐id</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PushMapper</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insertReId</span><span class="params">(Record record)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot; &gt;</div><div class="line">&lt;mapper namespace=&quot;com.baomidou.springwind.mapper.PushMapper&quot;&gt;</div><div class="line">    &lt;sql id=&quot;Base_Column_List&quot;&gt;</div><div class="line">      id, content, sys_id, status, create_time</div><div class="line">    &lt;/sql&gt;</div><div class="line">    &lt;insert id=&quot;insertReId&quot; parameterType=&quot;com.baomidou.springwind.entity.push.Record&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot;&gt;</div><div class="line">        insert into p_push_record (content,sysId,createTime)</div><div class="line">        VALUES (#&#123;content&#125;,#&#123;sysId&#125;,#&#123;createTime&#125;);</div><div class="line">    &lt;/insert&gt;</div><div class="line">&lt;/mapper&gt;</div><div class="line"></div><div class="line"># 7. 报错记录</div></pre></td></tr></table></figure>
-<p>org.apache.ibatis.builder.IncompleteElementException: Could not find result map java.util.LinkedHashMap</p>
-<p>所有的xml文件中的方法里存在没有和DAO接口对应的返回类型。<br>DAO接口返回类型为map而xml中方法的返回类型为对象(resultType)，应该为resultMap，否则就会报错</p>
-<pre><code>
-</code></pre><p>请求参数必须是bean对象，插入成功后，该数据的逐渐id已经写入到请求对象(com.baomidou.springwind.entity.push.Record)中。</p>
+<p>org.apache.ibatis.builder.IncompleteElementException: Could not find result map java.util.LinkedHashMap<br>```<br>所有的xml文件中的方法里存在没有和DAO接口对应的返回类型。<br>DAO接口返回类型为map而xml中方法的返回类型为对象(resultType)，应该为resultMap，否则就会报错</p>
+<p>请求参数必须是bean对象，插入成功后，该数据的逐渐id已经写入到请求对象(com.baomidou.springwind.entity.push.Record)中。</p>
 
       
     </div>
