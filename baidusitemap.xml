@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
-    <lastmod>2017-12-20T15:19:27.687Z</lastmod>
+    <lastmod>2017-12-20T15:23:20.151Z</lastmod>
     <data>
         <display>
         <title>Redis</title>
@@ -17,6 +17,26 @@
            
              
               <breadCrumb title="Redis" url="https://volc1605.github.io/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/12/11/layer/</loc>
+    <lastmod>2017-12-20T15:23:15.158Z</lastmod>
+    <data>
+        <display>
+        <title>layer</title>
+        <pubTime>2017-12-10T17:56:20.000Z</pubTime>
+        
+        <tag>layui</tag>
+         
+         
+           
+             
+              <breadCrumb title="LAYUI" url="https://volc1605.github.io/categories/LAYUI/"/>
           
         </display>
     </data>
@@ -37,26 +57,6 @@
            
              
               <breadCrumb title="JS" url="https://volc1605.github.io/categories/JS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2017/12/11/layer/</loc>
-    <lastmod>2017-12-20T14:54:43.444Z</lastmod>
-    <data>
-        <display>
-        <title>layer</title>
-        <pubTime>2017-12-10T17:56:20.000Z</pubTime>
-        
-        <tag>layui</tag>
-         
-         
-           
-             
-              <breadCrumb title="LAYUI" url="https://volc1605.github.io/categories/LAYUI/"/>
           
         </display>
     </data>

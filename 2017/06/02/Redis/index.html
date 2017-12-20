@@ -105,7 +105,7 @@
 <meta property="og:image" content="https://volc1605.github.io/images/Redis/s2.png">
 <meta property="og:image" content="https://volc1605.github.io/images/Redis/s3.png">
 <meta property="og:image" content="https://volc1605.github.io/images/Redis/anzhuang.png">
-<meta property="og:updated_time" content="2017-12-20T15:19:27.687Z">
+<meta property="og:updated_time" content="2017-12-20T15:23:20.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis">
 <meta name="twitter:description" content="Redis特性">
@@ -462,7 +462,7 @@
 <h3 id="8-linux安装Redis"><a href="#8-linux安装Redis" class="headerlink" title="8 linux安装Redis"></a>8 linux安装Redis</h3><p><img src="https://volc1605.github.io/images/Redis/anzhuang.png" alt="anzhaung"><br>注意：需要开放6379端口</p>
 <h3 id="9-缓存三暖男"><a href="#9-缓存三暖男" class="headerlink" title="9 缓存三暖男"></a>9 缓存三暖男</h3><p>ehcache memcache redis<br><a href="http://www.cnblogs.com/duanxz/p/5215274.html" target="_blank" rel="external">http://www.cnblogs.com/duanxz/p/5215274.html</a></p>
 <p>关于redis和memcache的不同，下面罗列了一些相关说法，供记录：<br>    redis和memecache的不同在于[2]：<br>    1、存储方式：<br>    memecache 把数据全部存在内存之中，断电后会挂掉，数据不能超过内存大小<br>    redis有部份存在硬盘上，这样能保证数据的持久性，支持数据的持久化（笔者注：有快照和AOF日志两种持久化方式，在实际应用的时候，要特别注意配置文件快照参数，要不就很有可能服务器频繁满载做dump）。<br>    2、数据支持类型：<br>    redis在数据支持上要比memecache多的多。<br>    3、使用底层模型不同：<br>    新版本的redis直接自己构建了VM 机制 ，因为一般的系统调用系统函数的话，会浪费一定的时间去移动和请求。<br>    4、运行环境不同：<br>    redis目前官方只支持LINUX 上去行，从而省去了对于其它系统的支持，这样的话可以更好的把精力用于本系统 环境上的优化，虽然后来微软有一个小组为其写了补丁。但是没有放到主干上<br>个人总结一下，有持久化需求或者对数据结构和处理有高级要求的应用，选择redis，其他简单的key/value存储，选择memcache。</p>
-<p>关系型与非关系型数据库<br><a href="https://www.zhihu.com/question/24225007" target="_blank" rel="external">https://www.zhihu.com/question/24225007</a><br>```</p>
+<p>关系型与非关系型数据库<br><a href="https://www.zhihu.com/question/24225007" target="_blank" rel="external">https://www.zhihu.com/question/24225007</a></p>
 
       
     </div>
