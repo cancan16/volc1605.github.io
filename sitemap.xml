@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://volc1605.github.io/2016/11/01/JS/</loc>
+    
+    <lastmod>2017-12-21T01:45:46.396Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://volc1605.github.io/2017/12/11/layer/</loc>
     
     <lastmod>2017-12-21T00:56:46.553Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
     
     <lastmod>2017-12-20T15:23:20.151Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://volc1605.github.io/2016/11/01/JS/</loc>
-    
-    <lastmod>2017-12-20T15:15:39.854Z</lastmod>
     
   </url>
   
