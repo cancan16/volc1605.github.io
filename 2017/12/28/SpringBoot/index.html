@@ -80,7 +80,12 @@
 <meta name="description" content="1. SpringBoot
 springboot应用启动方式有两种：
 
-1 main方法启动2 借助插件启动">
+1 main方法启动2 借助插件启动
+
+
+1.1 组合注解@SpringBootApplication注解是Spring Boot的核心注解，它其实是一个组合注解，组合了一下注解：
+
+@SpringBootConfiguration： 这是Spring Boot项目的配置注解，这也是一个组合注解在Spring Boot项目中推">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot">
 <meta property="og:url" content="https://volc1605.github.io/2017/12/28/SpringBoot/index.html">
@@ -88,16 +93,26 @@ springboot应用启动方式有两种：
 <meta property="og:description" content="1. SpringBoot
 springboot应用启动方式有两种：
 
-1 main方法启动2 借助插件启动">
+1 main方法启动2 借助插件启动
+
+
+1.1 组合注解@SpringBootApplication注解是Spring Boot的核心注解，它其实是一个组合注解，组合了一下注解：
+
+@SpringBootConfiguration： 这是Spring Boot项目的配置注解，这也是一个组合注解在Spring Boot项目中推">
 <meta property="og:image" content="https://volc1605.github.io/images/springboot/springboot.png">
 <meta property="og:image" content="https://volc1605.github.io/images/springboot/springboot2.png">
-<meta property="og:updated_time" content="2017-12-28T14:33:39.858Z">
+<meta property="og:updated_time" content="2017-12-28T14:38:28.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot">
 <meta name="twitter:description" content="1. SpringBoot
 springboot应用启动方式有两种：
 
-1 main方法启动2 借助插件启动">
+1 main方法启动2 借助插件启动
+
+
+1.1 组合注解@SpringBootApplication注解是Spring Boot的核心注解，它其实是一个组合注解，组合了一下注解：
+
+@SpringBootConfiguration： 这是Spring Boot项目的配置注解，这也是一个组合注解在Spring Boot项目中推">
 <meta name="twitter:image" content="https://volc1605.github.io/images/springboot/springboot.png">
 
 
@@ -406,6 +421,15 @@ springboot应用启动方式有两种：
 <p>1 main方法启动<br>2 借助插件启动</p>
 </blockquote>
 <p><img src="https://volc1605.github.io/images/springboot/springboot2.png" alt="desktop"></p>
+<h4 id="1-1-组合注解"><a href="#1-1-组合注解" class="headerlink" title="1.1 组合注解"></a>1.1 组合注解</h4><p>@SpringBootApplication注解是Spring Boot的核心注解，它其实是一个组合注解，组合了一下注解：</p>
+<ol>
+<li><p>@SpringBootConfiguration：<br> 这是Spring Boot项目的配置注解，这也是一个组合注解<br>在Spring Boot项目中推荐使用@ SpringBootConfiguration替代@Configuration</p>
+</li>
+<li><p>@EnableAutoConfiguration：<br> 启用自动配置，该注解会使Spring Boot根据项目中依赖的jar包自动配置项目的配置项：<br>a)    如：我们添加了spring-boot-starter-web的依赖，项目中也就会引入SpringMVC的依赖，Spring Boot就会自动配置tomcat和SpringMVC<br>添加了spring-boot-starter-web的依赖，项目中也就会引入SpringMVC的依赖，Spring Boot就会自动配置tomcat和SpringMVC</p>
+</li>
+<li><p>@ComponentScan：默认扫描@SpringBootApplication所在类的同级目录以及它的子目录</p>
+</li>
+</ol>
 
       
     </div>
@@ -645,7 +669,7 @@ springboot应用启动方式有两种：
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SpringBoot"><span class="nav-number">1.</span> <span class="nav-text">1. SpringBoot</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SpringBoot"><span class="nav-number">1.</span> <span class="nav-text">1. SpringBoot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-组合注解"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 组合注解</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
