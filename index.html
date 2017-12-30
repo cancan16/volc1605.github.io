@@ -414,6 +414,14 @@
 <li><p>@ComponentScan：默认扫描@SpringBootApplication所在类的同级目录以及它的子目录</p>
 </li>
 </ol>
+<p>如果我们不需要Spring Boot自动配置，想关闭某一项的自动配置，该如何设置呢？<br>比如：我们不想自动配置Redis，想手动配置。<br><img src="https://volc1605.github.io/images/springboot/springboot3.png" alt="desktop"></p>
+<h4 id="1-2-设置项目启动banner图片"><a href="#1-2-设置项目启动banner图片" class="headerlink" title="1.2 设置项目启动banner图片"></a>1.2 设置项目启动banner图片</h4><p>默认是这样的<br><img src="https://volc1605.github.io/images/springboot/springboot2.png" alt="desktop"><br>可以通过，在resources目录下创建一个banner.txt文件，这个文件中保存自定义启动banner就可以了</p>
+<ol>
+<li>banner生成网址:<a href="http://patorjk.com/software/taag/#p=display&amp;h=3&amp;v=3&amp;f=4Max&amp;t=itcast%20Spring%20Boot" target="_blank" rel="external">http://patorjk.com/software/taag/#p=display&amp;h=3&amp;v=3&amp;f=4Max&amp;t=itcast%20Spring%20Boot</a></li>
+<li>拷贝生成的字符到一个文本文件中，并且将该文件命名为banner.txt</li>
+<li>将banner.txt拷贝到项目的resources目录中：</li>
+</ol>
+<p>通过设置属性关闭springboot启动时banner的隐藏<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123; // 一个springboot应用的入口</div><div class="line">	// SpringApplication.run(HelloApplication.class, args);</div><div class="line">	SpringApplication app = new SpringApplication(HelloApplication.class);</div><div class="line">	app.setBannerMode(Banner.Mode.OFF); // 关闭启动是的springbootbanner</div><div class="line">	app.run(args);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
           
         
