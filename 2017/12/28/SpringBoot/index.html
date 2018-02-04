@@ -100,7 +100,7 @@
 <meta property="og:image" content="https://volc1605.github.io/images/springboot/springboot14.png">
 <meta property="og:image" content="https://volc1605.github.io/images/springboot/springboot15.png">
 <meta property="og:image" content="https://volc1605.github.io/images/springboot/springboot16.png">
-<meta property="og:updated_time" content="2018-02-04T06:17:49.841Z">
+<meta property="og:updated_time" content="2018-02-04T06:20:49.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot">
 <meta name="twitter:description" content="SpringBoot">
@@ -479,7 +479,7 @@
 <h5 id="将spring-boot-starter-tomcat的范围设置为provided"><a href="#将spring-boot-starter-tomcat的范围设置为provided" class="headerlink" title="将spring-boot-starter-tomcat的范围设置为provided"></a>将spring-boot-starter-tomcat的范围设置为provided</h5><p>设置为provided是在打包时会将该包排除，因为要放到独立的tomcat中运行，是不需要的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;</div><div class="line">	&lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
 <h5 id="修改代码，设置启动配置"><a href="#修改代码，设置启动配置" class="headerlink" title="修改代码，设置启动配置"></a>修改代码，设置启动配置</h5><p>需要继承SpringBootServletInitializer，然后重写configure，将Spring Boot的入口类设置进去。</p>
 <p><img src="https://volc1605.github.io/images/springboot/springboot16.png" alt="desktop"></p>
-<h5 id="打war包"><a href="#打war包" class="headerlink" title="打war包"></a>打war包</h5><p>项目右击debug as-&gt;maven builder…<br>Goals: clean package<br>运行就会打成war包</p>
+<h5 id="打war包"><a href="#打war包" class="headerlink" title="打war包"></a>打war包</h5><p>项目右击debug as-&gt;maven builder…<br>Goals: clean package<br>运行就会打成war包，然后放到..\webapps\ROOT目录下,次ROOT目录是空目录</p>
 
       
     </div>
