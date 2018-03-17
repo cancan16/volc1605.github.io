@@ -402,7 +402,8 @@
             <h3 id="队列和线程"><a href="#队列和线程" class="headerlink" title="队列和线程"></a>队列和线程</h3><p>队列能够解决很多需求，如消息推送，发布，订阅，根据需求完成业务逻辑处理高并发请求。<br>JDK 自带FIFO(FIFO First Input First Output先进先出)队列的选择。如何正确选择队列呢？<br>最重要的一点是要保证线程安全，使用BlockingQueue阻塞队列，它就是一个阻塞队列，那何为阻塞队列？<br>简单来说，就是在BlockingQueue为空时从队头取数据将会被阻塞，因为此时还没有数据可取，一旦队列中有数据了，取数据的线程就会释放得到了数据；如果BlockingQueue有容量限制且满了，那么插入数据的线程将会阻塞，知道队列中有空闲位置可以插入数据了，才会释放。经过上面一段描述，可以发现这不就是一个生产者-消费者模型吗？<br>这样保证了数据的有序，线程的安全。<br><strong>实现生产者与消费者模式图解：</strong><br><img src="https://volc1605.github.io/images/队列和线程/1.png" alt="duilie"></p>
 <hr>
 <hr>
-<p>——————</p>
+<hr>
+<hr>
 <hr>
 <hr>
 <p>接下来就是BlockingQueue的实际运用。</p>
