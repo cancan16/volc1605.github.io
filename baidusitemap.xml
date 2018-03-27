@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2016/11/23/linux/</loc>
+    <lastmod>2018-03-27T14:46:29.605Z</lastmod>
+    <data>
+        <display>
+        <title>linux常用命令</title>
+        <pubTime>2016-11-23T08:11:36.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://volc1605.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2018/03/17/%E9%98%9F%E5%88%97%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2018-03-17T15:36:05.369Z</lastmod>
     <data>
@@ -62,26 +82,6 @@
         <tag>tomcat</tag>
          
         <tag>部署</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="https://volc1605.github.io/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://volc1605.github.io/2016/11/23/linux/</loc>
-    <lastmod>2018-02-12T13:03:04.013Z</lastmod>
-    <data>
-        <display>
-        <title>linux常用命令</title>
-        <pubTime>2016-11-23T08:11:36.000Z</pubTime>
-        
-        <tag>linux</tag>
          
          
            
@@ -467,9 +467,9 @@
         <title>电视剧</title>
         <pubTime>2017-02-21T14:43:36.000Z</pubTime>
         
-        <tag>VOLC</tag>
-         
         <tag>电视剧</tag>
+         
+        <tag>VOLC</tag>
          
          
            
@@ -1089,9 +1089,9 @@
         <title>电影</title>
         <pubTime>2017-02-21T14:37:44.000Z</pubTime>
         
-        <tag>电影</tag>
-         
         <tag>VOLC</tag>
+         
+        <tag>电影</tag>
          
          
            
