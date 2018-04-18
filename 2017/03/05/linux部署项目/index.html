@@ -83,7 +83,7 @@
 <meta property="og:url" content="https://volc1605.github.io/2017/03/05/linux部署项目/index.html">
 <meta property="og:site_name" content="昨天还好好的">
 <meta property="og:description" content="1 部署项目">
-<meta property="og:updated_time" content="2018-03-27T15:54:29.821Z">
+<meta property="og:updated_time" content="2018-04-17T14:54:11.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下部署项目">
 <meta name="twitter:description" content="1 部署项目">
@@ -409,7 +409,9 @@
 <p>systemctlrestart iptables.service # 最后重启防火墙使配置生效<br>systemctlenable iptables.service # 设置防火墙开机启动</p>
 <p>在CentOS7下使用firewall<br>查看防火墙状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@VM_0_11_redhat home]# firewall-cmd --state</div><div class="line">not running</div></pre></td></tr></table></figure></p>
 <p>关闭防火墙<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@VM_0_11_redhat home]# systemctl stop firewalld.service</div></pre></td></tr></table></figure></p>
-<p>开启防火墙<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@VM_0_11_redhat home]# systemctl start firewalld.service</div></pre></td></tr></table></figure></p>
+<p>开启防火墙</p>
+<p>会遇到Failed to start firewalld.service: Unit is masked.的错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@VM_0_11_redhat home]# systemctl start firewalld.service</div><div class="line">[root@VM_0_11_redhat ~]# systemctl start firewalld</div><div class="line">Failed to start firewalld.service: Unit is masked.</div><div class="line">[root@VM_0_11_redhat ~]# systemctl unmask firewalld</div><div class="line">Removed symlink /etc/systemd/system/firewalld.service.</div></pre></td></tr></table></figure>
 <p>禁止开机启动启动防火墙<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@VM_0_11_redhat home]# systemctl disable firewalld.service</div></pre></td></tr></table></figure></p>
 <p>检查是否已安装iptables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@VM_0_11_redhat home]# service iptables status</div></pre></td></tr></table></figure></p>
 <p>安装iptables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@VM_0_11_redhat home]# yum install -y iptables</div></pre></td></tr></table></figure></p>
