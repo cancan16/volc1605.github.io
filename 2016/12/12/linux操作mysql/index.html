@@ -87,7 +87,7 @@
 <meta property="og:image" content="https://volc1605.github.io/images/linux操作mysql/2.png">
 <meta property="og:image" content="https://volc1605.github.io/images/linux操作mysql/3.png">
 <meta property="og:image" content="https://volc1605.github.io/images/linux操作mysql/4.png">
-<meta property="og:updated_time" content="2018-04-19T12:52:49.626Z">
+<meta property="og:updated_time" content="2018-04-19T13:40:22.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下安装和操作mysql">
 <meta name="twitter:description" content="1 linux下安装mysql衍生版(性能高于原版)">
@@ -545,6 +545,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global variables like &apos;default_authentication_plugin&apos;;</div><div class="line">+-------------------------------+-----------------------+</div><div class="line">| Variable_name                 | Value                 |</div><div class="line">+-------------------------------+-----------------------+</div><div class="line">| default_authentication_plugin | caching_sha2_password |</div><div class="line">+-------------------------------+-----------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt;</div></pre></td></tr></table></figure>
 <p>root用户 在安装数据库是，指定的加密插件是：caching_sha2_password，需要把root用户的密码加密方式改成mysql_native_password</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;root&apos;;</div></pre></td></tr></table></figure>
+<p>在CentOS7下使用在线安装的方式安装mysql8，默认已经配置了随服务重启自动启动mysql服务。</p>
 <p>到此linux安装mysql8已经完成</p>
 <h4 id="创建用户和授权"><a href="#创建用户和授权" class="headerlink" title="创建用户和授权"></a>创建用户和授权</h4><p>使用root用户在navicat客户端创建用户时报错</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CREATE USER &apos;lcmysql&apos;@&apos;183.208.23.117&apos; IDENTIFIED WITH mysql_native_password BY &apos;123456lcMy.&apos;;</div><div class="line"></div><div class="line">[SQL]CREATE USER &apos;lcmysql&apos;@&apos;183.208.20.104&apos; IDENTIFIED WITH mysql_native_password BY &apos;lcMYSQL_*123&apos;;</div><div class="line">受影响的行: 0</div><div class="line">时间: 0.062s</div><div class="line"></div><div class="line">[Err] 1055 - Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column &apos;information_schema.PROFILING.SEQ&apos; which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by</div></pre></td></tr></table></figure>
@@ -586,13 +587,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/w.png" alt="            .__           ___  ______ |  |   ____   \  \/ /  _ \|  | _/ ___\  \   (  <_> )  |_\  \___  \_/ \____/|____/\___  > \/ WeChat Pay"/>
+          <img id="wechat_qr" src="/images/w.png" alt="volc WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/z.jpg" alt="            .__           ___  ______ |  |   ____   \  \/ /  _ \|  | _/ ___\  \   (  <_> )  |_\  \___  \_/ \____/|____/\___  > \/ Alipay"/>
+          <img id="alipay_qr" src="/images/z.jpg" alt="volc Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -700,8 +701,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/0.jpg"
-               alt="            .__           ___  ______ |  |   ____   \  \/ /  _ \|  | _/ ___\  \   (  <_> )  |_\  \___  \_/ \____/|____/\___  > \/" />
-          <p class="site-author-name" itemprop="name">            .__           ___  ______ |  |   ____   \  \/ /  _ \|  | _/ ___\  \   (  <_> )  |_\  \___  \_/ \____/|____/\___  > \/</p>
+               alt="volc" />
+          <p class="site-author-name" itemprop="name">volc</p>
           <p class="site-description motion-element" itemprop="description">学海&无涯</p>
         </div>
         <nav class="site-state motion-element">
@@ -834,7 +835,7 @@
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
-    <span class="author" itemprop="copyrightHolder">            .__           ___  ______ |  |   ____   \  \/ /  _ \|  | _/ ___\  \   (  <_> )  |_\  \___  \_/ \____/|____/\___  > \/</span>
+    <span class="author" itemprop="copyrightHolder">volc</span>
 	&nbsp;&nbsp;&nbsp;
 	<a href="http://www.miitbeian.gov.cn/">苏ICP备17018811号</a>
   </div>
