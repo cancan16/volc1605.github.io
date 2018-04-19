@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title><![CDATA[jmeter]]></title>
+      <url>https://volc1605.github.io/2018/04/19/jmeter/</url>
+      <content type="html"><![CDATA[<h3 id="Jmeter压力测试"><a href="#Jmeter压力测试" class="headerlink" title="Jmeter压力测试"></a>Jmeter压力测试</h3><h4 id="创建线程组"><a href="#创建线程组" class="headerlink" title="创建线程组"></a>创建线程组</h4><p><img src="https://volc1605.github.io/images/jmeter/a.png" alt="a"></p>
+<h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><p><img src="https://volc1605.github.io/images/jmeter/a1.png" alt="a1"></p>
+<h4 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h4><h5 id="创建请求头"><a href="#创建请求头" class="headerlink" title="创建请求头"></a>创建请求头</h5><p><img src="https://volc1605.github.io/images/jmeter/c.png" alt="c"></p>
+<h5 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h5><h6 id="普通请求"><a href="#普通请求" class="headerlink" title="普通请求"></a>普通请求</h6><p><img src="https://volc1605.github.io/images/jmeter/c1.png" alt="c1"></p>
+<h6 id="提交文件"><a href="#提交文件" class="headerlink" title="提交文件"></a>提交文件</h6><p><img src="https://volc1605.github.io/images/jmeter/c2.png" alt="c2"></p>
+<h4 id="添加监听器查看结果"><a href="#添加监听器查看结果" class="headerlink" title="添加监听器查看结果"></a>添加监听器查看结果</h4><p><img src="https://volc1605.github.io/images/jmeter/d.png" alt="d"><br><img src="https://volc1605.github.io/images/jmeter/d1.png" alt="d1"><br><img src="https://volc1605.github.io/images/jmeter/d2.png" alt="d2"><br><img src="https://volc1605.github.io/images/jmeter/d3.png" alt="d3"></p>
+<p>保存文件<br>点击运行按钮，可在监听器中查看结果<br><img src="https://volc1605.github.io/images/jmeter/e.png" alt="e"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[fiddler]]></title>
       <url>https://volc1605.github.io/2018/03/27/fiddler/</url>
       <content type="html"><![CDATA[<h3 id="使用fiddler工具抓包app访问服务的接口数据"><a href="#使用fiddler工具抓包app访问服务的接口数据" class="headerlink" title="使用fiddler工具抓包app访问服务的接口数据"></a>使用fiddler工具抓包app访问服务的接口数据</h3><p>浏览器访问 <a href="http://127.0.0.1:8888" target="_blank" rel="external">http://127.0.0.1:8888</a> 查看fiddler是否运行正常</p>
@@ -1380,6 +1393,7 @@ innodb_data_home_dir=&quot;D:/&quot;。
 <h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; DROP USER &apos;lcmysql&apos;@&apos;183.208.11.117&apos;;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure>
 <h4 id="撤销用户权限"><a href="#撤销用户权限" class="headerlink" title="撤销用户权限"></a>撤销用户权限</h4><p>撤销用户查询权限</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; REVOKE SELECT ON &apos;lcmysql&apos;.* FROM &apos;lcmysql&apos;@&apos;183.208.11.117&apos;;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="更改用户密码"><a href="#更改用户密码" class="headerlink" title="更改用户密码"></a>更改用户密码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET PASSWORD FOR &apos;lcmysql&apos;@&apos;183.208.11.117&apos; = PASSWORD(&quot;1234567&quot;);</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     

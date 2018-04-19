@@ -303,6 +303,161 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/26/Maven/" itemprop="url">
+                  Maven
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-26T11:38:25+08:00" content="2016-11-26">
+              2016-11-26
+            </time>
+          </span>
+
+
+
+
+
+              <span>
+                  |
+                <span>更新于</span>
+                <time>
+                  2016-11-26
+                  11:38:25
+                </time>
+              </span>
+
+
+
+
+
+
+
+          
+            <span class="post-category" >
+              |
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Maven/" itemprop="url" rel="index">
+                    <span itemprop="name">Maven</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            
+               <span id="/2016/11/26/Maven/" class="leancloud_visitors" data-flag-title="Maven">
+                 |
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 <span class="post-meta-item-text">阅读量 </span>
+                 <span class="leancloud-visitors-count"></span>
+                
+                  |
+                  <span class="post-meta-item-text">最近 </span>
+                  <span class="leancloud-updated-at"></span>
+                  </span>
+                
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Maven项目不显示-Maven-Dependencies"><a href="#Maven项目不显示-Maven-Dependencies" class="headerlink" title="Maven项目不显示 Maven Dependencies"></a>Maven项目不显示 Maven Dependencies</h1><p>从别目录结构正确的项目中复制.classpath文件，覆盖不显示Maven Dependencies的项目目录中的.classpath</p>
+<h1 id="去掉dynamic-web-module勾选后，每次更新maven项目都会出现以下结构"><a href="#去掉dynamic-web-module勾选后，每次更新maven项目都会出现以下结构" class="headerlink" title="去掉dynamic web module勾选后，每次更新maven项目都会出现以下结构"></a>去掉dynamic web module勾选后，每次更新maven项目都会出现以下结构</h1><p><img src="https://volc1605.github.io/images/Maven/mavenConstruction2.png" alt="maven"></p>
+<p>解决方法：<br>项目properties中maven-&gt;javaee integration去掉勾选<br>去除maven项目中javascript resources引用jar包<br>properties中project facets只选择java，去掉javascript<br>去除maven项目结构目录中含有web app 2.3<br>properties中project facets只选择java 去掉dynamic web module</p>
+<h1 id="解决maven项目名称出现个红叉报错"><a href="#解决maven项目名称出现个红叉报错" class="headerlink" title="解决maven项目名称出现个红叉报错"></a>解决maven项目名称出现个红叉报错</h1><p>properties中project facets的java版本号选择不当</p>
+<h1 id="目录下的创建普通文件夹"><a href="#目录下的创建普通文件夹" class="headerlink" title="目录下的创建普通文件夹"></a>目录下的创建普通文件夹</h1><p>properties中的javabuild path resource-&gt;excluded **</p>
+<h1 id="pom文件war报错"><a href="#pom文件war报错" class="headerlink" title="pom文件war报错"></a>pom文件war报错</h1><p>1.加上webapp中的web.xml文件<br>2.properties中maven deployment assembly(用来配置添加根目录文件夹)不显示<br>    需要在project facets中修改</p>
+<h1 id="项目启动报错"><a href="#项目启动报错" class="headerlink" title="项目启动报错"></a>项目启动报错</h1><p>原因jar包冲突<br>D:\java-tools\apache-maven-3.2.3\repo\org\apache\tomcat\servlet-api\6.0.28\servlet-api-6.0.28.jar</p>
+<h1 id="xsd文件找不到"><a href="#xsd文件找不到" class="headerlink" title="xsd文件找不到"></a>xsd文件找不到</h1><p>报错提示，要引入jar包。或者手动添加xsd文件或者手动指定(参考：<a href="http://www.ibm.com/developerworks/cn/xml/x-1008dubb/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/xml/x-1008dubb/</a>)</p>
+<h2 id="解决pom文件报错和multiple-problems-have-occurred错误"><a href="#解决pom文件报错和multiple-problems-have-occurred错误" class="headerlink" title="解决pom文件报错和multiple problems have occurred错误"></a>解决pom文件报错和multiple problems have occurred错误</h2><p>错误实质上都是jar依赖的问题，只需两步就可解决<br>进入出问题的jar包所在的本地仓库目录<br>1、    删除所有以.lastUpdate结尾的文件<br>a)    1、切换到maven的本地仓库<br>b)    2、在当前目录打开cmd命令行<br>c)    3、执行命令：for /r %i in (*.lastUpdated) do del %i<br>2、    在项目上执行 Maven Update （Alt + F5）</p>
+<h2 id="如何避免jar下载不全导致项目报错"><a href="#如何避免jar下载不全导致项目报错" class="headerlink" title="如何避免jar下载不全导致项目报错"></a>如何避免jar下载不全导致项目报错</h2><p>使用相对稳定的私服下载地址：开源中国(<a href="http://maven.oschina.net/help.html" target="_blank" rel="external">http://maven.oschina.net/help.html</a>)<br>在maven指向的setting.xml文件中进行改变私服URL配置。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/24/java设计模式/" itemprop="url">
                   java设计模式
                 </a>
@@ -1224,7 +1379,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1232,7 +1387,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1241,7 +1396,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
