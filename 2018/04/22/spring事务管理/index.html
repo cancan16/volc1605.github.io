@@ -78,22 +78,19 @@
 
 
 <meta name="description" content="spring事务管理AOP(Aspect Oriented Programming)面向切面编程，在项目中可以使用AOP进行生成日志，数据库读写分离，数据回滚等。
-Spring配置文件中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。
-注解式事务在servlet-context.xm">
+Spring配置文件中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring事务管理">
 <meta property="og:url" content="https://volc1605.github.io/2018/04/22/spring事务管理/index.html">
 <meta property="og:site_name" content="设计是一个发现问题、而不是发现解决方案的过程">
 <meta property="og:description" content="spring事务管理AOP(Aspect Oriented Programming)面向切面编程，在项目中可以使用AOP进行生成日志，数据库读写分离，数据回滚等。
-Spring配置文件中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。
-注解式事务在servlet-context.xm">
+Spring配置文件中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。">
 <meta property="og:image" content="https://volc1605.github.io/images/transaction/a.jpg">
-<meta property="og:updated_time" content="2018-04-22T15:22:39.818Z">
+<meta property="og:updated_time" content="2018-04-22T15:25:09.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring事务管理">
 <meta name="twitter:description" content="spring事务管理AOP(Aspect Oriented Programming)面向切面编程，在项目中可以使用AOP进行生成日志，数据库读写分离，数据回滚等。
-Spring配置文件中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。
-注解式事务在servlet-context.xm">
+Spring配置文件中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。">
 <meta name="twitter:image" content="https://volc1605.github.io/images/transaction/a.jpg">
 
 
@@ -398,6 +395,7 @@ Spring配置文件中关于事务配置总是由三个组成部分，分别是Da
       
         <h3 id="spring事务管理"><a href="#spring事务管理" class="headerlink" title="spring事务管理"></a>spring事务管理</h3><p>AOP(Aspect Oriented Programming)面向切面编程，在项目中可以使用AOP进行生成日志，数据库读写分离，数据回滚等。</p>
 <p>Spring配置文件中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。</p>
+<a id="more"></a>
 <h4 id="注解式事务"><a href="#注解式事务" class="headerlink" title="注解式事务"></a>注解式事务</h4><p>在servlet-context.xml配置文件中加入注解式事务声明</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 使用JDBC事物 --&gt;</div><div class="line">&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</div><div class="line">	&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;!--使用注解事务 --&gt;</div><div class="line">&lt;tx:annotation-driven/&gt;</div></pre></td></tr></table></figure>
 <p>servlet-context.xml配置</p>
