@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://volc1605.github.io/2018/04/24/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</loc>
+    <lastmod>2018-04-24T07:42:54.596Z</lastmod>
+    <data>
+        <display>
+        <title>前后端模板引擎</title>
+        <pubTime>2018-04-24T07:00:27.000Z</pubTime>
+        
+        <tag>velocity</tag>
+         
+         
+           
+             
+              <breadCrumb title="VELOCITY" url="https://volc1605.github.io/categories/VELOCITY/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://volc1605.github.io/2016/11/26/Maven/</loc>
     <lastmod>2018-04-22T15:28:35.018Z</lastmod>
     <data>
@@ -503,9 +523,9 @@
         <title>MyBatis</title>
         <pubTime>2016-10-18T13:41:21.000Z</pubTime>
         
-        <tag>mysql</tag>
-         
         <tag>mybatis</tag>
+         
+        <tag>mysql</tag>
          
          
            
@@ -795,9 +815,9 @@
         <title>solr搜索服务器</title>
         <pubTime>2017-03-02T16:05:13.000Z</pubTime>
         
-        <tag>linux</tag>
-         
         <tag>java</tag>
+         
+        <tag>linux</tag>
          
         <tag>solr</tag>
          
@@ -1143,9 +1163,9 @@
         <title>MySQL存储过程</title>
         <pubTime>2017-01-20T11:13:26.000Z</pubTime>
         
-        <tag>mysql</tag>
-         
         <tag>java</tag>
+         
+        <tag>mysql</tag>
          
         <tag>存储过程</tag>
          
@@ -1379,9 +1399,9 @@
         <title>JDBC</title>
         <pubTime>2017-02-06T01:18:52.000Z</pubTime>
         
-        <tag>jdbc</tag>
-         
         <tag>java</tag>
+         
+        <tag>jdbc</tag>
          
          
            
