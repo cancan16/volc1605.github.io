@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://volc1605.github.io/2018/04/24/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</loc>
-    <lastmod>2018-04-24T07:42:54.596Z</lastmod>
+    <lastmod>2018-04-24T10:06:48.191Z</lastmod>
     <data>
         <display>
         <title>前后端模板引擎</title>
@@ -17,6 +17,26 @@
            
              
               <breadCrumb title="VELOCITY" url="https://volc1605.github.io/categories/VELOCITY/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/04/24/RESTful/</loc>
+    <lastmod>2018-04-24T08:41:13.514Z</lastmod>
+    <data>
+        <display>
+        <title>RESTful</title>
+        <pubTime>2018-04-24T08:00:13.000Z</pubTime>
+        
+        <tag>RESTful</tag>
+         
+         
+           
+             
+              <breadCrumb title="RESTFUL" url="https://volc1605.github.io/categories/RESTFUL/"/>
           
         </display>
     </data>
@@ -815,9 +835,9 @@
         <title>solr搜索服务器</title>
         <pubTime>2017-03-02T16:05:13.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>linux</tag>
+         
+        <tag>java</tag>
          
         <tag>solr</tag>
          
