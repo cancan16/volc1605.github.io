@@ -9,6 +9,7 @@
       <content type="html"><![CDATA[<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h4 id="线程池的作用"><a href="#线程池的作用" class="headerlink" title="线程池的作用"></a>线程池的作用</h4><p>线程池就是处理多线程的形式。</p>
 <p>1.减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</p>
 <p>2.可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</p>
+<a id="more"></a>
 <h4 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h4><p>下面解释下一下构造器中各个参数的含义：</p>
 <blockquote>
 <ul>

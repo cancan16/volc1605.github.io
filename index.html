@@ -398,72 +398,14 @@
 
       
         
-          
-            <h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h4 id="线程池的作用"><a href="#线程池的作用" class="headerlink" title="线程池的作用"></a>线程池的作用</h4><p>线程池就是处理多线程的形式。</p>
+          <h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h4 id="线程池的作用"><a href="#线程池的作用" class="headerlink" title="线程池的作用"></a>线程池的作用</h4><p>线程池就是处理多线程的形式。</p>
 <p>1.减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</p>
 <p>2.可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</p>
-<h4 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h4><p>下面解释下一下构造器中各个参数的含义：</p>
-<blockquote>
-<ul>
-<li>corePoolSize：核心池的大小，这个参数跟后面讲述的线程池的实现原理有非常大的关系。在创建了线程池后，默认情况下，线程池中并没有任何线程，而是等待有任务到来才创建线程去执行任务，除非调用了prestartAllCoreThreads()或者prestartCoreThread()方法，从这2个方法的名字就可以看出，是预创建线程的意思，即在没有任务到来之前就创建corePoolSize个线程或者一个线程。默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中；</li>
-</ul>
-</blockquote>
-<ol>
-<li>核心线程会一直存活，及时没有任务需要执行</li>
-<li>当线程数小于核心线程数时，即使有线程空闲，线程池也会优先创建新线程处理</li>
-<li>设置allowCoreThreadTimeout=true（默认false）时，核心线程会超时关闭</li>
-</ol>
-<blockquote>
-<ul>
-<li>maximumPoolSize：线程池最大线程数，这个参数也是一个非常重要的参数，它表示在线程池中最多能创建多少个线程；</li>
-</ul>
-</blockquote>
-<ol>
-<li>当线程数&gt;=corePoolSize，且任务队列已满时。线程池会创建新线程来处理任务</li>
-<li>当线程数=maxPoolSize，且任务队列已满时，线程池会拒绝处理任务而抛出异常</li>
-</ol>
-<blockquote>
-<ul>
-<li>keepAliveTime：表示线程没有任务执行时最多保持多久时间会终止。默认情况下，只有当线程池中的线程数大于corePoolSize时，keepAliveTime才会起作用，直到线程池中的线程数不大于corePoolSize，即当线程池中的线程数大于corePoolSize时，如果一个线程空闲的时间达到keepAliveTime，则会终止，直到线程池中的线程数不超过corePoolSize。但是如果调用了allowCoreThreadTimeOut(boolean)方法，在线程池中的线程数不大于corePoolSize时，keepAliveTime参数也会起作用，直到线程池中的线程数为0；</li>
-<li>unit：参数keepAliveTime的时间单位，有7种取值，在TimeUnit类中有7种静态属性：</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">TimeUnit.DAYS;               //天</div><div class="line">TimeUnit.HOURS;             //小时</div><div class="line">TimeUnit.MINUTES;           //分钟</div><div class="line">TimeUnit.SECONDS;           //秒</div><div class="line">TimeUnit.MILLISECONDS;      //毫秒</div><div class="line">TimeUnit.MICROSECONDS;      //微妙</div><div class="line">TimeUnit.NANOSECONDS;       //纳秒</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>workQueue：一个阻塞队列，用来存储等待执行的任务，这个参数的选择也很重要，会对线程池的运行过程产生重大影响，一般来说，这里的阻塞队列有以下几种选择：</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ArrayBlockingQueue;</div><div class="line">LinkedBlockingQueue;</div><div class="line">SynchronousQueue;</div></pre></td></tr></table></figure>
-<p>ArrayBlockingQueue和PriorityBlockingQueue使用较少，一般使用LinkedBlockingQueue和Synchronous。线程池的排队策略与BlockingQueue有关。</p>
-<blockquote>
-<ul>
-<li>threadFactory：线程工厂，主要用来创建线程；</li>
-<li>handler：表示当拒绝处理任务时的策略，有以下四种取值：</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。 </div><div class="line">ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。 </div><div class="line">ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</div><div class="line">ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务</div></pre></td></tr></table></figure>
-<h4 id="使用ThreadPoolExecutor"><a href="#使用ThreadPoolExecutor" class="headerlink" title="使用ThreadPoolExecutor"></a>使用ThreadPoolExecutor</h4><p>参数：<br>corePoolSize：核心处理线程组大小；<br>maximumPoolSize：线程池容纳最大线程大小；<br>capacity: 队列任务大小；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">package thread;</div><div class="line"></div><div class="line">import java.util.concurrent.ArrayBlockingQueue;</div><div class="line">import java.util.concurrent.ThreadPoolExecutor;</div><div class="line">import java.util.concurrent.TimeUnit;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        ThreadPoolExecutor executor = new ThreadPoolExecutor(1, 3,</div><div class="line">                200, TimeUnit.MILLISECONDS,</div><div class="line">                new ArrayBlockingQueue&lt;Runnable&gt;(2)); // 队列大小</div><div class="line">        try &#123;</div><div class="line">            for (int i = 0; i &lt; 6; i++) &#123;</div><div class="line">                MyTask myTask = new MyTask(i + 1);</div><div class="line">                executor.execute(myTask);</div><div class="line">                System.out.println(&quot;线程池中线程数目：&quot; + executor.getPoolSize() + &quot;，队列中等待执行的任务数目：&quot; +</div><div class="line">                        executor.getQueue().size() + &quot;，已执行玩别的任务数目：&quot; + executor.getCompletedTaskCount());</div><div class="line">            &#125;</div><div class="line">        &#125; finally &#123;</div><div class="line">            executor.shutdown();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">class MyTask implements Runnable &#123;</div><div class="line">    private int taskNum;</div><div class="line"></div><div class="line">    public MyTask(int num) &#123;</div><div class="line">        this.taskNum = num;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;正在执行task &quot; + taskNum);</div><div class="line">        try &#123;</div><div class="line">            Thread.currentThread().sleep(10000);</div><div class="line">        &#125; catch (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        System.out.println(&quot;task &quot; + taskNum + &quot;执行完毕&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上述代码执行流程如下：</p>
-<blockquote>
-<ul>
-<li>(corePoolSize = 1, maximumPoolSize = 3, capacity = 1, i = 1)<br>当池子大小小于corePoolSize时，就新建线程，并<font color="red">处理请求</font>；</li>
-<li>(corePoolSize = 1, maximumPoolSize = 3, capacity = 1, i = 2)<br>当池子大小等于corePoolSize时，就新建线程作为新的请求，依次放入workQueue中(先进先出的顺序)，<br>  当workQueue满了并且没有新线程时，会使用核心线程组中的空闲线程从workQueue中取<font color="red">请求并处理</font>，如果核心线程组中没有空闲线程，就会等待核心线程组中有空闲线程再从workQueue中取<font color="red">请求并处理</font>；</li>
-<li>(corePoolSize = 1, maximumPoolSize = 3, capacity = 2, i = 5)<br>当workQueue满了，有新请求时，就新建线程入池，<br>  当线程池中的线程数不超过maximumPoolSize时这个新线程会立即<font color="red">处理请求</font>，workQueue中的请求等待核心线程组中有空余线程时或有其他空闲线程(其他空闲线程指的是新建的那些线程执行了完任务并且处于空闲状态的那些线程)从队列中依次<font color="red">处理请求</font>；<br>  (corePoolSize = 1, maximumPoolSize = 3, capacity = 2, i = 6)<br>  当前线程池中的线程数超过了maximumPoolSize，创建的新线程会抛出RejectedExecutionException异常，其他线程执行正常，但是代码需要对异常进行处理；</li>
-<li>当池子的线程数大于corePoolSize的时候，多余的线程会等待keepAliveTime长的时间，如果无请求可处理就自行销毁</li>
-</ul>
-</blockquote>
-<p>如图：</p>
-<p><img src="https://volc1605.github.io/images/多线程/a.gif" alt="a"></p>
-<p>从中可以发现ThreadPoolExecutor就是依靠BlockingQueue的阻塞机制来维持线程池，当池子里的线程无事可干的时候就通过workQueue.take()阻塞住。</p>
-<p>以类比现实生活中看病为例，模拟线程池工作原理，与现实有差异。</p>
-<p><font color="red"><br>executor.execute(myTask)：送来一个病人<br>核心线程组corePoolSize：专家的数量<br>线程池最大线程数量maximumPoolSize：专家和普通医生总数量<br>阻塞队列BlockingQueue workQueue：挂完号的病人(有序)</font></p>
-<p>工作流程:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">当有人来看病时</div><div class="line">        如果还有专家号就不需要挂号，直接找专家看病</div><div class="line">        如果专家号满了就需要去挂号等待</div><div class="line">                 有号，等待直到有空闲的专家或者普通医生再去看病</div><div class="line">                 无号，直接找普通医生看病</div><div class="line">                          有普通医生则看病</div><div class="line">                          没有普通医生，那这个病人需要挂下午的号或者医院新增专家或普通医生数量以满足需求。</div></pre></td></tr></table></figure>
-<p><br>参考： <a href="https://www.cnblogs.com/aspirant/p/6920418.html" target="_blank" rel="external">https://www.cnblogs.com/aspirant/p/6920418.html</a><br><a href="https://www.cnblogs.com/waytobestcoder/p/5323130.html" target="_blank" rel="external">https://www.cnblogs.com/waytobestcoder/p/5323130.html</a><br><a href="https://blog.csdn.net/cutesource/article/details/6061229" target="_blank" rel="external">https://blog.csdn.net/cutesource/article/details/6061229</a></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/05/07/线程池/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
