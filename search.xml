@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[线程池]]></title>
       <url>https://volc1605.github.io/2018/05/07/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
-      <content type="html"><![CDATA[<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h4 id="线程池的作用"><a href="#线程池的作用" class="headerlink" title="线程池的作用"></a>线程池的作用</h4><p>1.减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</p>
+      <content type="html"><![CDATA[<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h4 id="线程池的作用"><a href="#线程池的作用" class="headerlink" title="线程池的作用"></a>线程池的作用</h4><p>线程池就是处理多线程的形式。</p>
+<p>1.减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</p>
 <p>2.可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</p>
 <h4 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h4><p>下面解释下一下构造器中各个参数的含义：</p>
 <blockquote>
@@ -54,7 +55,7 @@
 <p>上述代码执行流程如下：</p>
 <blockquote>
 <ul>
-<li>(corePoolSize = 1, maximumPoolSize = 3, capacity = 1, i = 1)<br>当池子大小小于corePoolSize时，就新建线程，并<font color="#0099ff" size="12" face="黑体">处理请求</font>；</li>
+<li>(corePoolSize = 1, maximumPoolSize = 3, capacity = 1, i = 1)<br>当池子大小小于corePoolSize时，就新建线程，并<font color="red" size="14" face="黑体">处理请求</font>；</li>
 <li>(corePoolSize = 1, maximumPoolSize = 3, capacity = 1, i = 2)<br>当池子大小等于corePoolSize时，就新建线程作为新的请求，依次放入workQueue中(先进先出的顺序)，<br>  当workQueue满了并且没有新线程时，会使用核心线程组中的空闲线程从workQueue中取请求并处理，如果核心线程组中没有空闲线程，就会等待核心线程组中有空闲线程再从workQueue中取请求并处理；</li>
 <li>(corePoolSize = 1, maximumPoolSize = 3, capacity = 2, i = 5)<br>当workQueue满了，有新请求时，就新建线程入池，<br>  当线程池中的线程数不超过maximumPoolSize时这个新线程会立即处理请求，workQueue中的请求等待核心线程组中有空余线程时或有其他空闲线程(其他空闲线程指的是新建的那些线程执行了完任务并且处于空闲状态的那些线程)从队列中依次处理请求；<br>  (corePoolSize = 1, maximumPoolSize = 3, capacity = 2, i = 6)<br>  当前线程池中的线程数超过了maximumPoolSize，创建的新线程会抛出RejectedExecutionException异常，其他线程执行正常，但是代码需要对异常进行处理；</li>
 <li>当池子的线程数大于corePoolSize的时候，多余的线程会等待keepAliveTime长的时间，如果无请求可处理就自行销毁</li>
@@ -63,8 +64,8 @@
 <p>如图：</p>
 <p><img src="https://volc1605.github.io/images/多线程/a.gif" alt="a"></p>
 <p>从中可以发现ThreadPoolExecutor就是依靠BlockingQueue的阻塞机制来维持线程池，当池子里的线程无事可干的时候就通过workQueue.take()阻塞住。</p>
-<p>线程池中内容：<br>executor.execute(myTask)：执行取水动作<br>核心线程组corePoolSize：碗(主要工具)的数量<br>线程池最大线程数量maximumPoolSize：碗和杯子(备用工具)的总数量<br>阻塞队列BlockingQueue<runnable> workQueue：用来装定量的水盆</runnable></p>
-<p>参考： <a href="https://www.cnblogs.com/aspirant/p/6920418.html" target="_blank" rel="external">https://www.cnblogs.com/aspirant/p/6920418.html</a><br><a href="https://www.cnblogs.com/waytobestcoder/p/5323130.html" target="_blank" rel="external">https://www.cnblogs.com/waytobestcoder/p/5323130.html</a><br><a href="https://blog.csdn.net/cutesource/article/details/6061229" target="_blank" rel="external">https://blog.csdn.net/cutesource/article/details/6061229</a></p>
+<p>以类比现实生活中看病为例，模拟线程池工作原理，与现实有差异。</p>
+<p><font color="red" size="14"><br>executor.execute(myTask)：送来一个病人<br>核心线程组corePoolSize：专家的数量<br>线程池最大线程数量maximumPoolSize：专家和普通医生总数量<br>阻塞队列BlockingQueue workQueue：挂完号的病人(有序)<br>工作流程:<br>当有人来看病时<br>        如果还有专家号就不需要挂号，直接找专家看病<br>        如果专家号满了就需要去挂号等待<br>                 有号，等待直到有空闲的专家或者普通医生再去看病<br>                 无号，直接找普通医生看病<br>                          有普通医生则看病<br>                          没有普通医生，那这个病人需要挂下午的号或者医院新增专家或普通医生数量以满足需求。<br></font><br>参考： <a href="https://www.cnblogs.com/aspirant/p/6920418.html" target="_blank" rel="external">https://www.cnblogs.com/aspirant/p/6920418.html</a><br><a href="https://www.cnblogs.com/waytobestcoder/p/5323130.html" target="_blank" rel="external">https://www.cnblogs.com/waytobestcoder/p/5323130.html</a><br><a href="https://blog.csdn.net/cutesource/article/details/6061229" target="_blank" rel="external">https://blog.csdn.net/cutesource/article/details/6061229</a></p>
 ]]></content>
     </entry>
     
