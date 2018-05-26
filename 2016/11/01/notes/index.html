@@ -77,31 +77,18 @@
 
 
 
-<meta name="description" content="1.查看端口号并关闭相关进程
-1.查看端口占用
-
-在windows命令行窗口下执行：  
-12netstat -aon|findstr &amp;quot;8080&amp;quot;TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448
-端口“8080”被PID（进程号）为2448的进程占用。查看端口“8080”被哪个应">
+<meta name="description" content="1.查看端口号并关闭相关进程 1.查看端口占用  在windows命令行窗口下执行：   12netstat -aon|findstr &amp;quot;8080&amp;quot;TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448 端口“8080”被PID（进程号）为2448的进程占用。查看端口“8080”被哪个应">
+<meta name="keywords" content="terminal,command">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes">
 <meta property="og:url" content="https://volc1605.github.io/2016/11/01/notes/index.html">
 <meta property="og:site_name" content="设计是一个发现问题,而不是发现解决方案的过程">
-<meta property="og:description" content="1.查看端口号并关闭相关进程
-1.查看端口占用
-
-在windows命令行窗口下执行：  
-12netstat -aon|findstr &amp;quot;8080&amp;quot;TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448
-端口“8080”被PID（进程号）为2448的进程占用。查看端口“8080”被哪个应">
+<meta property="og:description" content="1.查看端口号并关闭相关进程 1.查看端口占用  在windows命令行窗口下执行：   12netstat -aon|findstr &amp;quot;8080&amp;quot;TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448 端口“8080”被PID（进程号）为2448的进程占用。查看端口“8080”被哪个应">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-06-03T13:51:50.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Notes">
-<meta name="twitter:description" content="1.查看端口号并关闭相关进程
-1.查看端口占用
-
-在windows命令行窗口下执行：  
-12netstat -aon|findstr &amp;quot;8080&amp;quot;TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448
-端口“8080”被PID（进程号）为2448的进程占用。查看端口“8080”被哪个应">
+<meta name="twitter:description" content="1.查看端口号并关闭相关进程 1.查看端口占用  在windows命令行窗口下执行：   12netstat -aon|findstr &amp;quot;8080&amp;quot;TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448 端口“8080”被PID（进程号）为2448的进程占用。查看端口“8080”被哪个应">
 
 
 
@@ -407,26 +394,26 @@
 <p>1.查看端口占用</p>
 </blockquote>
 <p>在windows命令行窗口下执行：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -aon|findstr &quot;8080&quot;</div><div class="line">TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448</div></pre></td></tr></table></figure>
-<p>端口“8080”被PID（进程号）为2448的进程占用。<br>查看端口“8080”被哪个应用占用，，继续执行下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tasklist|findstr &quot;2448&quot;</div><div class="line">notepad.exe                     2016 Console                 0     16,064 K</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -aon|findstr &quot;8080&quot;</span><br><span class="line">TCP     127.0.0.1:80         0.0.0.0:0               LISTENING       2448</span><br></pre></td></tr></table></figure>
+<p>端口“8080”被PID（进程号）为2448的进程占用。<br>查看端口“8080”被哪个应用占用，，继续执行下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tasklist|findstr &quot;2448&quot;</span><br><span class="line">notepad.exe                     2016 Console                 0     16,064 K</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <blockquote>
 <p>2.关闭进程</p>
 </blockquote>
 <p>2.1 按进程号关闭进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">taskkill /pid 2152</div></pre></td></tr></table></figure>
-<p>多个时格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">taskkill /pid 2152 /pid 1284</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /pid 2152</span><br></pre></td></tr></table></figure>
+<p>多个时格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /pid 2152 /pid 1284</span><br></pre></td></tr></table></figure></p>
 <p>2.2 按进程名关闭进程</p>
 <p>如要关闭notepad.exe,格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">taskkill /im notepad.exe</div></pre></td></tr></table></figure>
-<p>指定多个时格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">taskkill /im notepad.exe /im iexplorer.exe</div></pre></td></tr></table></figure></p>
-<p>如果是要关闭所有的,则使用通配符*,即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">taskkill /im *.exe</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /im notepad.exe</span><br></pre></td></tr></table></figure>
+<p>指定多个时格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /im notepad.exe /im iexplorer.exe</span><br></pre></td></tr></table></figure></p>
+<p>如果是要关闭所有的,则使用通配符*,即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /im *.exe</span><br></pre></td></tr></table></figure></p>
 <p>2.3 有提示的关闭进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">taskkill /t /im notepad.exe</div><div class="line">taskkill /t /pid 2152</div></pre></td></tr></table></figure>
-<p>这个效果是提示后在使用者确定后关闭,有提示框。<br>2.4 强行终止进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">taskkill /f /im notepad.exe</div><div class="line">taskkill /f /pid 2152</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">taskkill /t /im notepad.exe</span><br><span class="line">taskkill /t /pid 2152</span><br></pre></td></tr></table></figure>
+<p>这个效果是提示后在使用者确定后关闭,有提示框。<br>2.4 强行终止进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">taskkill /f /im notepad.exe</span><br><span class="line">taskkill /f /pid 2152</span><br></pre></td></tr></table></figure></p>
 <p>2.5 关闭一个.bat文件</p>
-<p>为mvnDebug.bat文件添加title为mvn<br>部分内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@echo off</div><div class="line">title mvn</div><div class="line">@REM enable echoing my setting MAVEN_BATCH_ECHO to &apos;on&apos;</div><div class="line">@if &quot;%MAVEN_BATCH_ECHO%&quot; == &quot;on&quot;  echo %MAVEN_BATCH_ECHO%</div></pre></td></tr></table></figure></p>
-<p>关闭mvnDebug.bat文件<br>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Users\Administrator&gt;taskkill /fi  &quot;windowtitle eq mvn&quot;</div></pre></td></tr></table></figure></p>
+<p>为mvnDebug.bat文件添加title为mvn<br>部分内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">title mvn</span><br><span class="line">@REM enable echoing my setting MAVEN_BATCH_ECHO to &apos;on&apos;</span><br><span class="line">@if &quot;%MAVEN_BATCH_ECHO%&quot; == &quot;on&quot;  echo %MAVEN_BATCH_ECHO%</span><br></pre></td></tr></table></figure></p>
+<p>关闭mvnDebug.bat文件<br>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;taskkill /fi  &quot;windowtitle eq mvn&quot;</span><br></pre></td></tr></table></figure></p>
 <p>windowtitle eq mvn<br>eq 后面指定需要关闭的.bat文件的title即可</p>
 <blockquote>
 <p>3.端口状态</p>

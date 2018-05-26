@@ -78,11 +78,13 @@
 
 
 <meta name="description" content="idea提交代码到GIT">
+<meta name="keywords" content="git,idea">
 <meta property="og:type" content="article">
 <meta property="og:title" content="idea提交代码到GIT">
 <meta property="og:url" content="https://volc1605.github.io/2017/12/03/idea提交代码到GIT/index.html">
 <meta property="og:site_name" content="设计是一个发现问题,而不是发现解决方案的过程">
 <meta property="og:description" content="idea提交代码到GIT">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-22T15:26:18.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="idea提交代码到GIT">
@@ -391,13 +393,13 @@
         <h3 id="idea提交代码到GIT"><a href="#idea提交代码到GIT" class="headerlink" title="idea提交代码到GIT"></a>idea提交代码到GIT</h3><a id="more"></a>
 <p>注意：首先在git上创建空的项目仓库</p>
 <p>VCS-&gt;Enable Version Control…，然后选择Git<br>右键点击src或代码文件，Git – Add – Commit（先Add再Commit）<br>首次提交会选择提交的url，点击Define remote填写仓库url</p>
-<h3 id="使用命令提交文件夹到git"><a href="#使用命令提交文件夹到git" class="headerlink" title="使用命令提交文件夹到git"></a>使用命令提交文件夹到git</h3><p>1、进入需要提交的文件的目录，右击选择git bash here<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure></p>
-<p>2、把文件添加到版本库中，使用命令 git add .添加到暂存区里面去，不要忘记后面的小数点“.”，意为添加文件夹下的所有文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure></p>
-<p>3、用命令 git commit告诉Git，把文件提交到仓库。引号内为提交说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &apos;first commit&apos;</div></pre></td></tr></table></figure></p>
-<p>4、关联到远程库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin 你的远程库地址</div></pre></td></tr></table></figure></p>
-<p>如：<br>git remote add origin <a href="https://github.com/cade8800/ionic-demo.git" target="_blank" rel="external">https://github.com/cade8800/ionic-demo.git</a><br>5、获取远程库与本地同步合并（如果远程库不为空必须做这一步，否则后面的提交会失败）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull --rebase origin master</div></pre></td></tr></table></figure></p>
-<p>6、把本地库的内容推送到远程，使用 git push命令，实际上是把当前分支master推送到远程。执行此命令后会要求输入用户名、密码，验证通过后即开始上传。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
-<p>7、状态查询命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure></p>
+<h3 id="使用命令提交文件夹到git"><a href="#使用命令提交文件夹到git" class="headerlink" title="使用命令提交文件夹到git"></a>使用命令提交文件夹到git</h3><p>1、进入需要提交的文件的目录，右击选择git bash here<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></p>
+<p>2、把文件添加到版本库中，使用命令 git add .添加到暂存区里面去，不要忘记后面的小数点“.”，意为添加文件夹下的所有文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
+<p>3、用命令 git commit告诉Git，把文件提交到仓库。引号内为提交说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &apos;first commit&apos;</span><br></pre></td></tr></table></figure></p>
+<p>4、关联到远程库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 你的远程库地址</span><br></pre></td></tr></table></figure></p>
+<p>如：<br>git remote add origin <a href="https://github.com/cade8800/ionic-demo.git" target="_blank" rel="noopener">https://github.com/cade8800/ionic-demo.git</a><br>5、获取远程库与本地同步合并（如果远程库不为空必须做这一步，否则后面的提交会失败）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin master</span><br></pre></td></tr></table></figure></p>
+<p>6、把本地库的内容推送到远程，使用 git push命令，实际上是把当前分支master推送到远程。执行此命令后会要求输入用户名、密码，验证通过后即开始上传。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p>
+<p>7、状态查询命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
