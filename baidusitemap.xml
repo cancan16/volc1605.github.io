@@ -1,0 +1,1528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/05/07/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    <lastmod>2018-05-08T12:21:40.532Z</lastmod>
+    <data>
+        <display>
+        <title>线程池</title>
+        <pubTime>2018-05-07T04:46:51.000Z</pubTime>
+        
+        <tag>thread</tag>
+         
+         
+           
+             
+              <breadCrumb title="THREAD" url="https://volc1605.github.io/categories/THREAD/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/11/23/linux/</loc>
+    <lastmod>2018-05-04T08:56:24.721Z</lastmod>
+    <data>
+        <display>
+        <title>linux常用命令</title>
+        <pubTime>2016-11-23T08:11:36.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://volc1605.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/12/12/Nginx/</loc>
+    <lastmod>2018-04-25T17:31:29.354Z</lastmod>
+    <data>
+        <display>
+        <title>Nginx</title>
+        <pubTime>2016-12-12T03:08:48.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="Nginx" url="https://volc1605.github.io/categories/Nginx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/04/24/RESTful/</loc>
+    <lastmod>2018-04-24T10:07:42.374Z</lastmod>
+    <data>
+        <display>
+        <title>RESTful</title>
+        <pubTime>2018-04-24T08:00:13.000Z</pubTime>
+        
+        <tag>RESTful</tag>
+         
+         
+           
+             
+              <breadCrumb title="RESTFUL" url="https://volc1605.github.io/categories/RESTFUL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/04/24/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</loc>
+    <lastmod>2018-04-24T10:06:48.192Z</lastmod>
+    <data>
+        <display>
+        <title>前后端模板引擎</title>
+        <pubTime>2018-04-24T07:00:27.000Z</pubTime>
+        
+        <tag>velocity</tag>
+         
+         
+           
+             
+              <breadCrumb title="VELOCITY" url="https://volc1605.github.io/categories/VELOCITY/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/11/26/Maven/</loc>
+    <lastmod>2018-04-22T15:28:35.019Z</lastmod>
+    <data>
+        <display>
+        <title>Maven</title>
+        <pubTime>2016-11-26T03:38:25.000Z</pubTime>
+        
+        <tag>maven</tag>
+         
+         
+           
+             
+              <breadCrumb title="Maven" url="https://volc1605.github.io/categories/Maven/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/06/03/jsp%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%80%BC/</loc>
+    <lastmod>2018-04-22T15:28:27.091Z</lastmod>
+    <data>
+        <display>
+        <title>jsp页面之间传值</title>
+        <pubTime>2016-06-03T15:56:33.000Z</pubTime>
+        
+        <tag>jsp</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/11/24/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-04-22T15:28:20.955Z</lastmod>
+    <data>
+        <display>
+        <title>java设计模式</title>
+        <pubTime>2016-11-24T02:57:13.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/11/19/MySQL/</loc>
+    <lastmod>2018-04-22T15:27:31.275Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL</title>
+        <pubTime>2016-11-19T02:50:02.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/12/03/idea%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%88%B0GIT/</loc>
+    <lastmod>2018-04-22T15:26:18.939Z</lastmod>
+    <data>
+        <display>
+        <title>idea提交代码到GIT</title>
+        <pubTime>2017-12-03T07:58:38.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+        <tag>idea</tag>
+         
+         
+           
+             
+              <breadCrumb title="git" url="https://volc1605.github.io/categories/git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/03/17/%E9%98%9F%E5%88%97%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2018-04-22T15:25:49.330Z</lastmod>
+    <data>
+        <display>
+        <title>队列和线程</title>
+        <pubTime>2018-03-17T13:54:57.000Z</pubTime>
+        
+        <tag>thread</tag>
+         
+        <tag>queue</tag>
+         
+         
+           
+             
+              <breadCrumb title="QUEUE" url="https://volc1605.github.io/categories/QUEUE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/04/22/spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2018-04-22T15:25:09.523Z</lastmod>
+    <data>
+        <display>
+        <title>spring事务管理</title>
+        <pubTime>2018-04-22T08:19:27.000Z</pubTime>
+        
+        <tag>transaction</tag>
+         
+         
+           
+             
+              <breadCrumb title="TRANSACTION" url="https://volc1605.github.io/categories/TRANSACTION/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/04/19/jmeter/</loc>
+    <lastmod>2018-04-22T15:25:07.411Z</lastmod>
+    <data>
+        <display>
+        <title>jmeter</title>
+        <pubTime>2018-04-19T14:28:02.000Z</pubTime>
+        
+        <tag>jmeter</tag>
+         
+         
+           
+             
+              <breadCrumb title="JMETER" url="https://volc1605.github.io/categories/JMETER/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/03/27/fiddler/</loc>
+    <lastmod>2018-04-22T15:25:05.914Z</lastmod>
+    <data>
+        <display>
+        <title>fiddler</title>
+        <pubTime>2018-03-27T15:58:46.000Z</pubTime>
+        
+        <tag>fiddler</tag>
+         
+         
+           
+             
+              <breadCrumb title="FIDDLER" url="https://volc1605.github.io/categories/FIDDLER/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/12/12/linux%E6%93%8D%E4%BD%9Cmysql/</loc>
+    <lastmod>2018-04-19T14:34:40.138Z</lastmod>
+    <data>
+        <display>
+        <title>linux下安装和操作mysql</title>
+        <pubTime>2016-12-12T02:48:23.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/05/linux%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2018-04-17T14:54:11.625Z</lastmod>
+    <data>
+        <display>
+        <title>linux下部署项目</title>
+        <pubTime>2017-03-05T05:21:34.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>tomcat</tag>
+         
+        <tag>部署</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://volc1605.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/05/16/fastJson%E8%A7%A3%E6%9E%90json%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <lastmod>2018-04-17T12:14:07.235Z</lastmod>
+    <data>
+        <display>
+        <title>解析json字符串</title>
+        <pubTime>2017-05-16T15:21:00.000Z</pubTime>
+        
+        <tag>fastjson</tag>
+         
+        <tag>jackson</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/08/08/webuploader%E4%B8%8A%E4%BC%A0%E9%99%84%E4%BB%B6%E6%8F%92%E4%BB%B6/</loc>
+    <lastmod>2018-04-16T05:25:39.495Z</lastmod>
+    <data>
+        <display>
+        <title>webuploader上传附件插件</title>
+        <pubTime>2017-08-08T07:29:08.000Z</pubTime>
+        
+        <tag>upload</tag>
+         
+        <tag>ftp</tag>
+         
+         
+           
+             
+              <breadCrumb title="upload" url="https://volc1605.github.io/categories/upload/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/10/18/Java/</loc>
+    <lastmod>2018-02-26T09:33:03.079Z</lastmod>
+    <data>
+        <display>
+        <title>Java</title>
+        <pubTime>2016-10-18T13:43:06.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>正则替换</tag>
+         
+        <tag>enum</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORK" url="https://volc1605.github.io/categories/WORK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/04/14/oracle%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2018-02-12T11:16:51.664Z</lastmod>
+    <data>
+        <display>
+        <title>oracle数据库</title>
+        <pubTime>2017-04-14T05:08:17.000Z</pubTime>
+        
+        <tag>oracle</tag>
+         
+        <tag>powerdesigner</tag>
+         
+         
+           
+             
+              <breadCrumb title="ORACLE" url="https://volc1605.github.io/categories/ORACLE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/11/01/JS/</loc>
+    <lastmod>2018-02-12T11:10:29.008Z</lastmod>
+    <data>
+        <display>
+        <title>JS</title>
+        <pubTime>2016-11-01T14:05:27.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+        <tag>baidumap</tag>
+         
+        <tag>echarts</tag>
+         
+        <tag>ztree</tag>
+         
+         
+           
+             
+              <breadCrumb title="JS" url="https://volc1605.github.io/categories/JS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2018/01/01/websocket/</loc>
+    <lastmod>2018-02-12T10:31:35.039Z</lastmod>
+    <data>
+        <display>
+        <title>websocket</title>
+        <pubTime>2018-01-01T07:39:17.000Z</pubTime>
+        
+        <tag>websocket</tag>
+         
+         
+           
+             
+              <breadCrumb title="WEBSOCKET" url="https://volc1605.github.io/categories/WEBSOCKET/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/12/28/SpringBoot/</loc>
+    <lastmod>2018-02-05T15:05:21.556Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot</title>
+        <pubTime>2017-12-28T14:25:27.000Z</pubTime>
+        
+        <tag>springboot</tag>
+         
+         
+           
+             
+              <breadCrumb title="SPRINGBOOT" url="https://volc1605.github.io/categories/SPRINGBOOT/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/04/09/spring%E6%95%B4%E5%90%88quartz/</loc>
+    <lastmod>2018-01-12T05:45:37.130Z</lastmod>
+    <data>
+        <display>
+        <title>spring整合quartz</title>
+        <pubTime>2017-04-09T04:29:23.000Z</pubTime>
+        
+        <tag>quartz</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/10/03/Hexo%E4%B9%8BNexT%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2017-12-29T05:36:58.978Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo之NexT主题搭建博客详细过程</title>
+        <pubTime>2016-10-03T07:39:31.000Z</pubTime>
+        
+        <tag>nodejs</tag>
+         
+        <tag>hexo</tag>
+         
+        <tag>next</tag>
+         
+         
+           
+             
+              <breadCrumb title="HEXO" url="https://volc1605.github.io/categories/HEXO/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/12/11/layer/</loc>
+    <lastmod>2017-12-21T00:56:46.553Z</lastmod>
+    <data>
+        <display>
+        <title>layer</title>
+        <pubTime>2017-12-10T17:56:20.000Z</pubTime>
+        
+        <tag>layui</tag>
+         
+         
+           
+             
+              <breadCrumb title="LAYUI" url="https://volc1605.github.io/categories/LAYUI/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/06/02/Redis/</loc>
+    <lastmod>2017-12-20T15:23:20.152Z</lastmod>
+    <data>
+        <display>
+        <title>Redis</title>
+        <pubTime>2017-06-02T04:59:16.000Z</pubTime>
+        
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="https://volc1605.github.io/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/10/18/MyBatis/</loc>
+    <lastmod>2017-12-19T05:36:16.453Z</lastmod>
+    <data>
+        <display>
+        <title>MyBatis</title>
+        <pubTime>2016-10-18T13:41:21.000Z</pubTime>
+        
+        <tag>mybatis</tag>
+         
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORK" url="https://volc1605.github.io/categories/WORK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/26/%E7%9B%90%E5%80%BC%E5%8A%A0%E5%AF%86/</loc>
+    <lastmod>2017-12-11T08:43:41.111Z</lastmod>
+    <data>
+        <display>
+        <title>盐值加密</title>
+        <pubTime>2017-03-26T07:32:08.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>盐值</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/10/18/HTML/</loc>
+    <lastmod>2017-12-10T17:55:56.328Z</lastmod>
+    <data>
+        <display>
+        <title>HTML</title>
+        <pubTime>2016-10-18T14:03:22.000Z</pubTime>
+        
+        <tag>html</tag>
+         
+        <tag>ueditor</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORK" url="https://volc1605.github.io/categories/WORK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/08/24/%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84key%E5%80%BC/</loc>
+    <lastmod>2017-08-24T11:50:05.860Z</lastmod>
+    <data>
+        <display>
+        <title>页面获取静态资源properties配置文件中的key值</title>
+        <pubTime>2017-08-24T09:59:15.000Z</pubTime>
+        
+        <tag>html</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTML" url="https://volc1605.github.io/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/08/18/goeasy%E5%AE%9E%E6%97%B6web%E7%AB%AF%E6%8E%A8%E9%80%81/</loc>
+    <lastmod>2017-08-24T01:53:09.433Z</lastmod>
+    <data>
+        <display>
+        <title>goeasy实时web端推送</title>
+        <pubTime>2017-08-17T21:24:18.000Z</pubTime>
+        
+        <tag>push</tag>
+         
+         
+           
+             
+              <breadCrumb title="PUSH" url="https://volc1605.github.io/categories/PUSH/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis/</loc>
+    <lastmod>2017-08-13T14:57:06.115Z</lastmod>
+    <data>
+        <display>
+        <title>linux下安装Redis</title>
+        <pubTime>2017-03-05T02:50:43.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="https://volc1605.github.io/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/21/%E7%94%B5%E8%A7%86%E5%89%A7/</loc>
+    <lastmod>2017-08-12T01:13:12.521Z</lastmod>
+    <data>
+        <display>
+        <title>电视剧</title>
+        <pubTime>2017-02-21T14:43:36.000Z</pubTime>
+        
+        <tag>VOLC</tag>
+         
+        <tag>电视剧</tag>
+         
+         
+           
+             
+              <breadCrumb title="VOLC" url="https://volc1605.github.io/categories/VOLC/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/07/27/Stream%E9%99%84%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%8F%92%E4%BB%B6/</loc>
+    <lastmod>2017-08-08T07:33:52.170Z</lastmod>
+    <data>
+        <display>
+        <title>Stream附件上传插件</title>
+        <pubTime>2017-07-27T05:12:40.000Z</pubTime>
+        
+        <tag>upload</tag>
+         
+         
+           
+             
+              <breadCrumb title="upload" url="https://volc1605.github.io/categories/upload/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/07/27/%E4%B8%AA%E6%8E%A8%E6%8E%A8%E9%80%81/</loc>
+    <lastmod>2017-07-27T05:13:13.981Z</lastmod>
+    <data>
+        <display>
+        <title>个推推送</title>
+        <pubTime>2017-07-27T05:05:26.000Z</pubTime>
+        
+        <tag>推送</tag>
+         
+         
+           
+             
+              <breadCrumb title="推送" url="https://volc1605.github.io/categories/%E6%8E%A8%E9%80%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/06/02/%E4%BB%8Egithub%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2017-06-16T08:04:05.868Z</lastmod>
+    <data>
+        <display>
+        <title>从github拉取项目</title>
+        <pubTime>2017-06-02T04:32:16.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+         
+           
+             
+              <breadCrumb title="GitHub" url="https://volc1605.github.io/categories/GitHub/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/06/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2017-06-12T07:27:47.888Z</lastmod>
+    <data>
+        <display>
+        <title>多线程</title>
+        <pubTime>2017-06-12T01:37:52.000Z</pubTime>
+        
+        <tag>thread</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/05/linux%E4%B8%8B%E5%AE%89%E8%A3%85RabbitMQ/</loc>
+    <lastmod>2017-06-03T17:04:31.370Z</lastmod>
+    <data>
+        <display>
+        <title>RabbitMQ</title>
+        <pubTime>2017-03-05T03:15:54.000Z</pubTime>
+        
+        <tag>rabbitmq</tag>
+         
+         
+           
+             
+              <breadCrumb title="RabbitMQ" url="https://volc1605.github.io/categories/RabbitMQ/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/06/02/SSO/</loc>
+    <lastmod>2017-06-03T15:52:11.126Z</lastmod>
+    <data>
+        <display>
+        <title>SSO</title>
+        <pubTime>2017-06-02T13:54:21.000Z</pubTime>
+        
+        <tag>sso</tag>
+         
+         
+           
+             
+              <breadCrumb title="SSO" url="https://volc1605.github.io/categories/SSO/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/11/01/notes/</loc>
+    <lastmod>2017-06-03T13:51:50.149Z</lastmod>
+    <data>
+        <display>
+        <title>Notes</title>
+        <pubTime>2016-11-01T14:28:20.000Z</pubTime>
+        
+        <tag>terminal</tag>
+         
+        <tag>command</tag>
+         
+         
+           
+             
+              <breadCrumb title="Notes" url="https://volc1605.github.io/categories/Notes/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/03/solr%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2017-06-02T18:16:33.929Z</lastmod>
+    <data>
+        <display>
+        <title>solr搜索服务器</title>
+        <pubTime>2017-03-02T16:05:13.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>java</tag>
+         
+        <tag>solr</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/06/02/spring%E6%95%B4%E5%90%88httpclient/</loc>
+    <lastmod>2017-06-02T13:02:21.627Z</lastmod>
+    <data>
+        <display>
+        <title>spring整合httpclient</title>
+        <pubTime>2017-06-01T16:47:49.000Z</pubTime>
+        
+        <tag>httpclient</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/01/05/MySQL%E4%B8%BB%E4%BB%8E%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/</loc>
+    <lastmod>2017-06-02T10:02:42.758Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL主从读写分离</title>
+        <pubTime>2017-01-05T11:35:20.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>主从</tag>
+         
+        <tag>读写分离</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/02/%E6%97%A0%E6%B3%95%E5%86%99%E5%85%A5cookie%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2017-06-01T18:20:43.497Z</lastmod>
+    <data>
+        <display>
+        <title>无法写入cookie问题</title>
+        <pubTime>2017-03-02T15:35:45.000Z</pubTime>
+        
+        <tag>cookie</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/12/24/java%E8%A7%A3%E6%9E%90Excel%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2017-06-01T17:44:51.658Z</lastmod>
+    <data>
+        <display>
+        <title>java操作Excel</title>
+        <pubTime>2016-12-24T02:08:15.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>excel</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/06/01/%E8%AF%B7%E6%B1%82%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2017-06-01T16:12:27.730Z</lastmod>
+    <data>
+        <display>
+        <title>请求跨域问题</title>
+        <pubTime>2017-06-01T11:33:33.000Z</pubTime>
+        
+        <tag>ajax</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/04/08/%E6%94%B6%E5%8F%91%E9%82%AE%E4%BB%B6/</loc>
+    <lastmod>2017-04-27T14:37:02.870Z</lastmod>
+    <data>
+        <display>
+        <title>收发邮件</title>
+        <pubTime>2017-04-08T05:28:00.000Z</pubTime>
+        
+        <tag>javamail</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://volc1605.github.io/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/01/05/win%E9%85%8D%E7%BD%AEMySQL/</loc>
+    <lastmod>2017-04-02T15:34:13.320Z</lastmod>
+    <data>
+        <display>
+        <title>win配置MySQL</title>
+        <pubTime>2017-01-05T04:07:09.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/29/js%E4%B8%AD%E9%80%BB%E8%BE%91%E6%88%96%E7%94%A8%E6%B3%95/</loc>
+    <lastmod>2017-03-29T16:02:53.423Z</lastmod>
+    <data>
+        <display>
+        <title>js中逻辑或用法</title>
+        <pubTime>2017-03-29T15:30:33.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+         
+           
+             
+              <breadCrumb title="JS" url="https://volc1605.github.io/categories/JS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/28/%E5%90%8C%E6%AD%A5github/</loc>
+    <lastmod>2017-03-28T14:43:26.099Z</lastmod>
+    <data>
+        <display>
+        <title>使用idea开发工具同步本地代码到github远程仓库</title>
+        <pubTime>2017-03-28T09:42:33.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="GIT" url="https://volc1605.github.io/categories/GIT/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/05/%E9%A1%B9%E7%9B%AE%E6%9E%84%E6%9E%B6/</loc>
+    <lastmod>2017-03-07T03:30:32.309Z</lastmod>
+    <data>
+        <display>
+        <title>项目架构</title>
+        <pubTime>2017-03-05T14:18:49.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>架构</tag>
+         
+         
+           
+             
+              <breadCrumb title="架构" url="https://volc1605.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/05/%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2017-03-06T08:57:09.947Z</lastmod>
+    <data>
+        <display>
+        <title>图片无法显示的问题</title>
+        <pubTime>2017-03-05T11:57:31.000Z</pubTime>
+        
+        <tag>部署</tag>
+         
+        <tag>nfs</tag>
+         
+         
+           
+             
+              <breadCrumb title="NFS" url="https://volc1605.github.io/categories/NFS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/12/12/linux%E5%AE%89%E8%A3%85JDK/</loc>
+    <lastmod>2017-03-06T08:53:47.678Z</lastmod>
+    <data>
+        <display>
+        <title>linux安装JDK</title>
+        <pubTime>2016-12-12T03:46:46.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>tomcat</tag>
+         
+        <tag>jdk</tag>
+         
+         
+           
+             
+              <breadCrumb title="JDK" url="https://volc1605.github.io/categories/JDK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/03/05/tomcat%E9%9B%86%E7%BE%A4/</loc>
+    <lastmod>2017-03-06T08:53:02.032Z</lastmod>
+    <data>
+        <display>
+        <title>tomcat集群</title>
+        <pubTime>2017-03-05T10:51:10.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>tomcat</tag>
+         
+        <tag>nginx</tag>
+         
+        <tag>部署</tag>
+         
+         
+           
+             
+              <breadCrumb title="tomcat" url="https://volc1605.github.io/categories/tomcat/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/17/%E8%A7%A6%E5%8F%91%E5%99%A8%E8%B0%83%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2017-03-03T16:37:51.569Z</lastmod>
+    <data>
+        <display>
+        <title>事件调用存储过程</title>
+        <pubTime>2017-02-17T09:31:34.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/01/20/MySQL%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2017-02-22T15:41:02.138Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL存储过程</title>
+        <pubTime>2017-01-20T11:13:26.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>mysql</tag>
+         
+        <tag>存储过程</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/21/%E6%8C%89%E6%9C%88%E4%BB%BD%E6%B0%B4%E5%B9%B3%E5%88%86%E8%A1%A8%E6%80%9D%E8%B7%AF/</loc>
+    <lastmod>2017-02-22T15:33:43.586Z</lastmod>
+    <data>
+        <display>
+        <title>按月份水平分表思路</title>
+        <pubTime>2017-02-21T09:53:06.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>分表</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/21/%E7%94%B5%E5%BD%B1/</loc>
+    <lastmod>2017-02-22T13:57:40.020Z</lastmod>
+    <data>
+        <display>
+        <title>电影</title>
+        <pubTime>2017-02-21T14:37:44.000Z</pubTime>
+        
+        <tag>电影</tag>
+         
+        <tag>VOLC</tag>
+         
+         
+           
+             
+              <breadCrumb title="VOLC" url="https://volc1605.github.io/categories/VOLC/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/21/%E9%9F%B3%E4%B9%90/</loc>
+    <lastmod>2017-02-22T13:57:34.847Z</lastmod>
+    <data>
+        <display>
+        <title>音乐</title>
+        <pubTime>2017-02-21T14:36:18.000Z</pubTime>
+        
+        <tag>VOLC</tag>
+         
+        <tag>音乐</tag>
+         
+         
+           
+             
+              <breadCrumb title="VOLC" url="https://volc1605.github.io/categories/VOLC/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/21/MyBatis%E6%89%B9%E9%87%8F/</loc>
+    <lastmod>2017-02-21T14:27:01.573Z</lastmod>
+    <data>
+        <display>
+        <title>MyBatis批量</title>
+        <pubTime>2017-02-21T02:35:04.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="MyBatis" url="https://volc1605.github.io/categories/MyBatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/06/%E8%A7%A6%E5%8F%91%E5%99%A8/</loc>
+    <lastmod>2017-02-21T02:21:34.264Z</lastmod>
+    <data>
+        <display>
+        <title>触发器</title>
+        <pubTime>2017-02-06T01:27:22.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>触发器</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/06/%E8%A7%86%E5%9B%BE/</loc>
+    <lastmod>2017-02-21T02:21:27.608Z</lastmod>
+    <data>
+        <display>
+        <title>视图</title>
+        <pubTime>2017-02-06T01:30:46.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>视图</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/12/22/%E5%85%B3%E4%BA%8Emysql%E5%85%B3%E9%94%AE%E5%AD%97between-and%EF%BC%8C-%EF%BC%8Cin%EF%BC%8Cor%E6%80%A7%E8%83%BD%E5%8F%8A%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2017-02-21T02:21:21.213Z</lastmod>
+    <data>
+        <display>
+        <title>关于mysql关键字between and，>=<，in，or性能及优化</title>
+        <pubTime>2016-12-22T05:37:32.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/01/18/MySQL%E5%88%86%E8%A1%A8/</loc>
+    <lastmod>2017-02-21T02:20:35.905Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL分表</title>
+        <pubTime>2017-01-18T00:31:50.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/16/mysql%E5%88%86%E7%BB%84%E6%8C%89%E6%9D%A1%E4%BB%B6%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE/</loc>
+    <lastmod>2017-02-21T02:20:27.755Z</lastmod>
+    <data>
+        <display>
+        <title>mysql分组按条件获取数据</title>
+        <pubTime>2017-02-16T12:11:34.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/01/18/MySQL%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2017-02-21T02:20:19.876Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL优化</title>
+        <pubTime>2017-01-18T00:28:51.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="https://volc1605.github.io/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/02/06/Jdbc%E5%A4%8D%E4%B9%A0/</loc>
+    <lastmod>2017-02-21T02:15:31.602Z</lastmod>
+    <data>
+        <display>
+        <title>JDBC</title>
+        <pubTime>2017-02-06T01:18:52.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>jdbc</tag>
+         
+         
+           
+             
+              <breadCrumb title="JDBC" url="https://volc1605.github.io/categories/JDBC/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/12/12/DUBBO+ZOOKEEPER/</loc>
+    <lastmod>2017-02-14T13:48:13.311Z</lastmod>
+    <data>
+        <display>
+        <title>Dubbo+zookeeper</title>
+        <pubTime>2016-12-12T03:19:29.000Z</pubTime>
+        
+        <tag>dubbo</tag>
+         
+        <tag>zookeeper</tag>
+         
+        <tag>linux</tag>
+         
+        <tag>tomcat</tag>
+         
+         
+           
+             
+              <breadCrumb title="DUBBO" url="https://volc1605.github.io/categories/DUBBO/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2017/01/13/PHP%E8%AF%B7%E6%B1%82/</loc>
+    <lastmod>2017-02-06T01:39:08.149Z</lastmod>
+    <data>
+        <display>
+        <title>PHP外部请求</title>
+        <pubTime>2017-01-13T14:38:15.000Z</pubTime>
+        
+        <tag>php</tag>
+         
+         
+           
+             
+              <breadCrumb title="PHP" url="https://volc1605.github.io/categories/PHP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://volc1605.github.io/2016/12/12/memcache/</loc>
+    <lastmod>2017-01-06T15:11:25.418Z</lastmod>
+    <data>
+        <display>
+        <title>memcache</title>
+        <pubTime>2016-12-12T03:48:44.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>memcache</tag>
+         
+         
+           
+             
+              <breadCrumb title="Memcache" url="https://volc1605.github.io/categories/Memcache/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+</urlset>
