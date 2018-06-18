@@ -103,7 +103,7 @@
 <meta property="og:image" content="https://volc1605.github.io/images/springboot/springboot15.png">
 <meta property="og:image" content="https://volc1605.github.io/images/springboot/springboot16.png">
 <meta property="og:image" content="https://volc1605.github.io/images/springboot/a.png">
-<meta property="og:updated_time" content="2018-06-18T17:39:50.361Z">
+<meta property="og:updated_time" content="2018-06-18T17:42:42.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot">
 <meta name="twitter:description" content="SpringBoot">
@@ -338,11 +338,6 @@
               2017-12-28
             </time>
           </span>
-
-
-
-
-
               <span>
                   |
                 <span>更新于</span>
@@ -350,14 +345,7 @@
                   2018-06-18
                   22:25:27
                 </time>
-              </span>
-
-
-
-
-
-
-
+          </span>
           
             <span class="post-category" >
               |
@@ -500,7 +488,7 @@
 <p>等待项目自启动后，在使用Ctrl+Shift+F9，再次重新编译，项目再次重启</p>
 <h3 id="JPA配置"><a href="#JPA配置" class="headerlink" title="JPA配置"></a>JPA配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 数据库配置</span><br><span class="line">spring:</span><br><span class="line">  http:</span><br><span class="line">    encoding:</span><br><span class="line">      force: true</span><br><span class="line">      charset: UTF-8</span><br><span class="line">      enabled: true</span><br><span class="line">  datasource:</span><br><span class="line">    driver-class-name: com.mysql.jdbc.Driver</span><br><span class="line">    url: jdbc:mysql://localhost:3306/lcmysql?characterEncoding=UTF-8&amp;useSSL=false</span><br><span class="line">    username: root</span><br><span class="line">    password: root</span><br><span class="line">    # Hikari 数据源专用配置</span><br><span class="line">    hikari:</span><br><span class="line">      maximum-pool-size: 20</span><br><span class="line">      minimum-idle: 5</span><br><span class="line">  # jap配置</span><br><span class="line">  jpa:</span><br><span class="line">    # 默认为MyISAM 两种类型最主要的差别就是Innodb 支持事务处理与外键和行级锁.而MyISAM不支持</span><br><span class="line">    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect</span><br><span class="line">    show-sql: true</span><br><span class="line">    hibernate:</span><br><span class="line">      ddl-auto: update</span><br><span class="line">      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy</span><br></pre></td></tr></table></figure>
 <p>报错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hibernate错误org.hibernate.AnnotationException: No identifier specified for entity:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;entityManagerFactory&apos; defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: com.kfit.pojo.Cat</span><br></pre></td></tr></table></figure>
 <p>原因是：实体类@Id引用包的问题</p>
 <p>Cat实体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import javax.persistence.*;</span><br><span class="line"></span><br><span class="line">@Entity</span><br><span class="line">@Table(name = &quot;cat_test&quot;)</span><br><span class="line">public class Cat &#123;</span><br><span class="line"></span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy = GenerationType.AUTO)</span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line">    private String catName;</span><br><span class="line"></span><br><span class="line">    private int catAge;</span><br><span class="line"></span><br><span class="line">    public int getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(int id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getCatName() &#123;</span><br><span class="line">        return catName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCatName(String catName) &#123;</span><br><span class="line">        this.catName = catName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getCatAge() &#123;</span><br><span class="line">        return catAge;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCatAge(int catAge) &#123;</span><br><span class="line">        this.catAge = catAge;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>App<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line">import org.springframework.boot.autoconfigure.domain.EntityScan;</span><br><span class="line">import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;</span><br><span class="line">import org.springframework.context.annotation.ComponentScan;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 指定这是一个springboot的应用程序</span><br><span class="line"> */</span><br><span class="line">@Configuration</span><br><span class="line">@ComponentScan(basePackages = &quot;com.kfit&quot;) // 扫描Component注解</span><br><span class="line">@EntityScan(basePackages = &quot;com.kfit.pojo&quot;) // 扫描Entity注解</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class App extends SpringBootServletInitializer &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
