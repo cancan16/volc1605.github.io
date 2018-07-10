@@ -1663,7 +1663,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #551ab9;
+  background: #4205a2;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2573,4 +2573,24 @@ hr {
   font-size: 20px;
   font-family: 'Comic Sans MS', sans-serif;
   color: #fff;
+}
+.posts-expand .post-tags a {
+  border-bottom: none;
+  margin-right: 0px;
+  font-size: 13px;
+  padding: 0px 5px;
+  border-radius: 3px;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+.posts-expand .post-tags a:hover {
+  background: #eee;
+}
+.posts-expand .post-body img {
+  border: none;
+  padding: 0px;
+}
+.posts-expand {
+  background-color: #fff;
 }
