@@ -1663,7 +1663,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0fffcf;
+  background: #b9eb5b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2552,7 +2552,7 @@ hr {
   font-family: 'Comic Sans MS', sans-serif;
   color: #fff;
   letter-spacing: 1px;
-  width: 80%;
+  width: 81%;
 }
 .container {
   background-color: rgba(0,0,0,0.75);
@@ -3068,4 +3068,8 @@ img#github-emoji {
   border: none;
   cursor: text;
   box-shadow: none;
+}
+.site-meta .brand {
+  background: #f00;
+  width: 82%;
 }
