@@ -1663,7 +1663,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #3781f6;
+  background: #2eccff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2962,7 +2962,7 @@ img:hover {
   margin-top: 40px;
 }
 .category-all-page {
-  margin: -80px 50px 40px 50px;
+  margin: 0px 0px 5% 0px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
   background-color: #fff;
   padding: 86px 36px 36px 36px;
