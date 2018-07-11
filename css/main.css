@@ -1663,7 +1663,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6cf905;
+  background: #c8361d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2562,7 +2562,7 @@ hr {
   padding-bottom: 0px;
 }
 .posts-expand {
-  padding-top: 80px;
+  padding-top: 0px;
 }
 .posts-expand .post-meta {
   margin: 5px 0px 0px 0px;
@@ -2614,8 +2614,8 @@ hr {
   border-bottom-color: rgba(161,102,171,0);
 }
 .post {
-  margin-bottom: 50px;
-  padding: 45px 36px 36px 36px;
+  margin-bottom: -70px;
+  padding: 10px 36px 36px 36px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
   background-color: #fff;
 }
@@ -2659,7 +2659,8 @@ hr {
 }
 .pagination {
   border: none;
-  margin: 0px;
+  margin: 80px 0 0;
+  text-align: center;
 }
 .pagination .page-number.current {
   border-radius: 100%;
@@ -3083,6 +3084,9 @@ img#github-emoji {
 }
 .with-love {
   color: #ff71a8;
+}
+.main {
+  padding-bottom: 85px;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
