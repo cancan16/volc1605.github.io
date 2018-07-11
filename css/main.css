@@ -1663,7 +1663,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b9eb5b;
+  background: #0a168c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2596,10 +2596,12 @@ hr {
 .logo-line-after {
   display: none;
 }
+.logo-line-before {
+  display: none;
+}
 .menu {
   float: none;
 }
-.logo-line-before,
 .menu .menu-item a {
   font-size: 14px;
   color: #0f2e41;
@@ -3070,6 +3072,9 @@ img#github-emoji {
   box-shadow: none;
 }
 .site-meta .brand {
-  background: #f00;
   width: 82%;
+}
+.headband {
+  height: 1.5px;
+  background-image: linear-gradient(90deg, #f79533 0%, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%);
 }
