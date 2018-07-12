@@ -1663,7 +1663,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2eccff;
+  background: #2f16d1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2601,6 +2601,7 @@ hr {
 }
 .menu {
   float: none;
+  margin: 5% 0 0 0;
 }
 .menu .menu-item a {
   font-size: 14px;
