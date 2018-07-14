@@ -1663,7 +1663,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fee883;
+  background: #ff9fa3;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2557,7 +2557,6 @@ hr {
 }
 .posts-expand {
   padding-top: 0px;
-  margin: 0% -5% 0% 0%;
 }
 .posts-expand .post-meta {
   margin: 5px 0px 0px 0px;
@@ -2607,7 +2606,7 @@ hr {
 }
 .post {
   margin-bottom: 50px;
-  padding: 3px 36px 36px 36px;
+  padding: 3px 5% 36px 4%;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
   background-color: #fff;
 }
@@ -3240,7 +3239,7 @@ code.description {
   margin-left: -6%;
 }
 .content-wrap {
-  width: 106%;
+  width: 107%;
 }
 .site-meta .site-title {
   font-size: 24px;
