@@ -99,7 +99,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://volcfamily.cn/images/interview-question/a.jpeg">
 <meta property="og:image" content="https://volcfamily.cn/images/interview-question/b.jpeg">
-<meta property="og:updated_time" content="2018-07-22T15:39:22.234Z">
+<meta property="og:updated_time" content="2018-07-24T01:59:26.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="interview question">
 <meta name="twitter:image" content="https://volcfamily.cn/images/interview-question/a.jpeg">
@@ -391,7 +391,94 @@
 
       
         <p><div align="center"><br><img style="text-align: center" src="https://volcfamily.cn/images/interview-question/a.jpeg" alt="mianshi"><br><img style="text-align: center" src="https://volcfamily.cn/images/interview-question/b.jpeg" alt="mianshi"><br></div><br><a id="more"></a></p>
-
+<h3 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h3><p>接口是特殊的抽象类<br>区别：<br>1 抽象类可以提供成员方法的实现细节，而接口中只能存在public abstract 方法；<br>2 抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是public static final类型的；<br>3 接口中不能含有静态代码块以及静态方法，而抽象类可以有静态代码块和静态方法；<br>4 一个类只能继承一个抽象类，而一个类却可以实现多个接口。</p>
+<h3 id="JVM加载class文件的原理机制"><a href="#JVM加载class文件的原理机制" class="headerlink" title="JVM加载class文件的原理机制"></a>JVM加载class文件的原理机制</h3><p>JVM中类的装载是由ClassLoader和它的子类来实现的,它负责在运行时查找和装入类文件的类。<br>类装载器把一个类装入Java虚拟机中，要经过三个步骤来完成：装载、链接和初始化，其中链接又可以分成校验、准备、解析装载：查找和导入类或接口的二进制数据(类的编写格式)； 链接：执行下面的校验、准备和解析步骤，其中解析步骤是可以选择的； 校验：检查导入类或接口的二进制数据的正确性； 准备：给类的静态变量分配并初始化存储空间； 解析：将符号引用转成直接引用；初始化：激活类的静态变量,初始化Java代码和静态Java代码块</p>
+<h4 id="jvm内存结构"><a href="#jvm内存结构" class="headerlink" title="jvm内存结构"></a>jvm内存结构</h4><p>![c(<a href="https://volcfamily.cn/images/interview-question/c.png" target="_blank" rel="noopener">https://volcfamily.cn/images/interview-question/c.png</a>)</p>
+<p>java内存主要分为6部分，分别是程序计数器，虚拟机栈，本地方法栈，堆，方法区和直接内存</p>
+<p>1、程序计数器<br>线程私有，即每个线程都会有一个，线程之间互不影响，独立存储。<br>代表着当前线程所执行字节码的行号指示器。</p>
+<p>2、虚拟机栈<br>线程私有，它的生命周期和线程相同。<br>描述的是java方法执行的内存模型：每个方法在执行的同时多会创建一个栈帧用于存储局部变量表、操作数栈、动态链表、方法出口等信息。<br>每一个方法从调用直至完成的过程，就对应着一个栈帧在虚拟机中入栈到出栈的过程。<br>局部变量表存放了编译期可知的各种基本数据类型和对象引用，所需内存空间在编译期确定</p>
+<p>3、本地方法栈<br>同虚拟机栈，只不过本地方法栈位虚拟机使用到的native方法服务。<br>Sun HotSpot虚拟机把本地方法栈和虚拟机栈合二为一。</p>
+<p>4、java堆<br>线程共享<br>主要用于分配对象实例和数组。</p>
+<p>5、方法区<br>线程共享<br>用于存储已被虚拟机加载的类8息、常量、静态变量、即使编译后的代码等数据。</p>
+<p>6、直接内存<br>直接内存并不是虚拟机运行时数据区的一部分。</p>
+<p>总结：<br>大多数 JVM 将内存区域划分为 Method Area（Non-Heap）（方法区） ,Heap（堆） , Program Counter Register（程序计数器） ,   VM Stack（虚拟机栈，也有翻译成JAVA 方法栈的）,Native Method Stack  （ 本地方法栈 ），其中Method Area 和 Heap 是线程共享的  ，VM Stack，Native Method Stack  和Program Counter Register  是非线程共享的。为什么分为 线程共享和非线程共享的呢?请继续往下看。<br>首先我们熟悉一下一个一般性的 Java 程序的工作过程。一个 Java 源程序文件，会被编译为字节码文件（以 class 为扩展名），每个java程序都需要运行在自己的JVM上，然后告知 JVM 程序的运行入口，再被 JVM 通过字节码解释器加载运行。那么程序开始运行后，都是如何涉及到各内存区域的呢？<br>概括地说来，JVM初始运行的时候都会分配好 Method Area（方法区） 和Heap（堆） ，而JVM 每遇到一个线程，就为其分配一个 Program Counter Register（程序计数器） ,   VM Stack（虚拟机栈）和Native Method Stack  （本地方法栈）， 当线程终止时，三者（虚拟机栈，本地方法栈和程序计数器）所占用的内存空间也会被释放掉。这也是为什么我把内存区域分为线程共享和非线程共享的原因，非线程共享的那三个区域的生命周期与所属线程相同，而线程共享的区域与JAVA程序运行的生命周期相同，所以这也是系统垃圾回收的场所只发生在线程共享的区域（实际上对大部分虚拟机来说知发生在Heap上）的原因。</p>
+<p>方法区用于存储JVM加载的类信息、常量、静态变量、即使编译器编译后的代码等数据，是线程隔离的(错误)<br>解析：方法区    和堆都是线程共享的。</p>
+<h4 id="UseCompressedOops有什么作用为什么要使用"><a href="#UseCompressedOops有什么作用为什么要使用" class="headerlink" title="UseCompressedOops有什么作用为什么要使用"></a>UseCompressedOops有什么作用为什么要使用</h4><p>当你将你的应用从 32 位的 JVM 迁移到 64 位的 JVM 时，由于对象的指针从 32 位增加到了 64 位，因此堆内存会突然增加，差不多要翻倍。这也会对 CPU 缓存（容量比内存小很多）的数据产生不利的影响。因为，迁移到 64 位的 JVM 主要动机在于可以指定最大堆大小，通过压缩 OOP 可以节省一定的内存。通过 -XX:+UseCompressedOops 选项，JVM 会使用 32 位的 OOP，而不是 64 位的 OOP。</p>
+<h4 id="怎样通过Java程序来判断JVM是32位还是64位"><a href="#怎样通过Java程序来判断JVM是32位还是64位" class="headerlink" title="怎样通过Java程序来判断JVM是32位还是64位"></a>怎样通过Java程序来判断JVM是32位还是64位</h4><p>你可以检查某些系统属性如 sun.arch.data.model 或 os.arch 来获取该信息。</p>
+<h3 id="instanceofjava关键字"><a href="#instanceofjava关键字" class="headerlink" title="instanceofjava关键字"></a>instanceofjava关键字</h3><p>你在面月薪6000-8000的Java研发职位。面试官也知道JVM这么个大体概念，但知道的也不多。JVM这个概念本身就是“底层”。JVM有一条名为 instanceof 的指令，而Java源码编译到Class文件时会把Java语言中的 instanceof 运算符映射到JVM的 instanceof 指令上。</p>
+<ol>
+<li>instanceof 是javac能识别的一个关键字，对应到Token.INSTANCEOF的token类型。做词法分析的时候扫描到”instanceof”关键字就映射到了一个Token.INSTANCEOF token。jdk7u/jdk7u/langtools: 5c9759e0d341 src/share/classes/com/sun/tools/javac/parser/Token.java</li>
+<li>该编译器的抽象语法树节点有一个JCTree.JCInstanceOf类用于表示instanceof运算。做语法分析的时候解析到instanceof运算符就会生成这个JCTree.JCInstanceof类型的节点。jdk7u/jdk7u/langtools: 5c9759e0d341 src/share/classes/com/sun/tools/javac/parser/JavacParser.java term2Rest()</li>
+<li>中途还得根据Java语言规范对instanceof运算符的编译时检查的规定把有问题的情况找出来。</li>
+<li>到最后生成字节码的时候为JCTree.JCInstanceof节点生成instanceof字节码指令。jdk7u/jdk7u/langtools: 5c9759e0d341 src/share/classes/com/sun/tools/javac/jvm/Gen.java visitTypeTest()</li>
+</ol>
+<h3 id="堆和栈的区别"><a href="#堆和栈的区别" class="headerlink" title="堆和栈的区别"></a>堆和栈的区别</h3><ol>
+<li>栈是存储局部变量，基本数据和方法调用。<br>堆内存是存储Java中的对象。运行时期产生的而对象和数据会在堆中分配空间。是gc管理的最大的区域</li>
+<li>如果栈内存没有可用的空间存储方法调用和局部变量，JVM会抛出java.lang.StackOverFlowError。<br>而如果是堆内存没有可用的空间存储生成的对象，JVM会抛出java.lang.OutOfMemoryError。</li>
+<li>Java的堆是一个运行时数据区，堆是由垃圾回收来负责的，堆的优势是可以动态地分配内存大小，生存期也不必事先告诉编译器，因为它是在运行时动态分配内存的。Java的垃圾收集器会自动收走这些不再使用的数据。但缺点是，由于要在运行时动态分配内存，存取速度较慢。</li>
+<li>栈的优势是，存取速度比堆要快，仅次于寄存器，栈数据可以共享。但缺点是，存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。栈中主要存放一些基本类型的变量（,int, short, long, byte, float, double, boolean, char）和对象句柄。例如编译器先处理int a = 3；首先它会在栈中创建一个变量为a的引用，然后查找栈中是否有3这个值，如果没找到，就将3存放进来，然后将a指向3。</li>
+<li>栈中的数据共享的区别，和两个对象引用同时执行同一个堆中对象是不同的。通过一个对象的引用改变对象的数据，那么另一个对象的引用所指向的堆中的对象数据也会改变。而在栈中int a = 1;int b = 1; a改变不会影响吧的值。</li>
+</ol>
+<h3 id="Class-forName的作用"><a href="#Class-forName的作用" class="headerlink" title="Class.forName的作用"></a>Class.forName的作用</h3><p>调用该访问返回一个类名为指定字符串的类的对象。</p>
+<h3 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h3><h4 id="4种域对象的查找方式"><a href="#4种域对象的查找方式" class="headerlink" title="4种域对象的查找方式"></a>4种域对象的查找方式</h4><p>${pageScope .username} 作用范围: 当前页面<br>${requestScope.username} 作用范围:当前请求<br>${sessionScope.username} 作用范围:当前会话<br>${applicationScope.username} 作用范围:当前应用</p>
+<h4 id="jsp的九大内置对象"><a href="#jsp的九大内置对象" class="headerlink" title="jsp的九大内置对象"></a>jsp的九大内置对象</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类</th>
+<th style="text-align:left">作用域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">request请求对象</td>
+<td style="text-align:left">java.servlet.ServletRequest(接口)HttpServletRequest(实现类)</td>
+<td style="text-align:left">Request</td>
+</tr>
+<tr>
+<td style="text-align:left">response响应对象</td>
+<td style="text-align:left">javax.servlet.SrvletResponse(接口)HttpServletResponse(实现类)</td>
+<td style="text-align:left">Page</td>
+</tr>
+<tr>
+<td style="text-align:left">pageContext页面上下文对象</td>
+<td style="text-align:left">javax.servlet.jsp.PageContext(实现类)</td>
+<td style="text-align:left">Page</td>
+</tr>
+<tr>
+<td style="text-align:left">session会话对象</td>
+<td style="text-align:left">javax.servlet.http.HttpSession(接口)实现类(tomcat)</td>
+<td style="text-align:left">Session</td>
+</tr>
+<tr>
+<td style="text-align:left">application应用程序对象</td>
+<td style="text-align:left">javax.servlet.ServletContext(接口)实现类(Tomcat中的实现类是ApplicationContext)</td>
+<td style="text-align:left">Application</td>
+</tr>
+<tr>
+<td style="text-align:left">out输出对象</td>
+<td style="text-align:left">javax.servlet.jsp.JspWriter</td>
+<td style="text-align:left">Page</td>
+</tr>
+<tr>
+<td style="text-align:left">config配置对象</td>
+<td style="text-align:left">javax.servlet.ServletConfig(在Tomcat中的实现类是StandardWrapper)</td>
+<td style="text-align:left">Page</td>
+</tr>
+<tr>
+<td style="text-align:left">page页面对象</td>
+<td style="text-align:left">javax.lang.Object</td>
+<td style="text-align:left">Page</td>
+</tr>
+<tr>
+<td style="text-align:left">exception例外对象</td>
+<td style="text-align:left">javax.lang.Throwable</td>
+<td style="text-align:left">Page</td>
+</tr>
+</tbody>
+</table>
+<p>总结<br>ServletConfig在Tomcat中的实现类是StandardWrapper<br>ServletContext在Tomcat中的实现类是ApplicationContext<br>Servlet能获取到的ServletConfig和ServletContext是StandardWrapper和ApplicationContext的Facade类<br>Facade是一种设计模式，作用是只开放部分的内容给使用者，详细请搜索Facade设计模式</p>
+<h3 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h3>
       
     </div>
 
@@ -667,7 +754,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口和抽象类的区别"><span class="nav-number">1.</span> <span class="nav-text">接口和抽象类的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM加载class文件的原理机制"><span class="nav-number">2.</span> <span class="nav-text">JVM加载class文件的原理机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jvm内存结构"><span class="nav-number">2.1.</span> <span class="nav-text">jvm内存结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UseCompressedOops有什么作用为什么要使用"><span class="nav-number">2.2.</span> <span class="nav-text">UseCompressedOops有什么作用为什么要使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样通过Java程序来判断JVM是32位还是64位"><span class="nav-number">2.3.</span> <span class="nav-text">怎样通过Java程序来判断JVM是32位还是64位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceofjava关键字"><span class="nav-number">3.</span> <span class="nav-text">instanceofjava关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆和栈的区别"><span class="nav-number">4.</span> <span class="nav-text">堆和栈的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-forName的作用"><span class="nav-number">5.</span> <span class="nav-text">Class.forName的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP"><span class="nav-number">6.</span> <span class="nav-text">JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4种域对象的查找方式"><span class="nav-number">6.1.</span> <span class="nav-text">4种域对象的查找方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jsp的九大内置对象"><span class="nav-number">6.2.</span> <span class="nav-text">jsp的九大内置对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript"><span class="nav-number">7.</span> <span class="nav-text">javascript</span></a></li></ol></div>
             
           </div>
         </section>
